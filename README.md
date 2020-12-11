@@ -39,7 +39,7 @@ Since we are working with different modules, the repository is seperated into di
 - Reporting_Branch -> for Group impostor
 - User_Branch -> for Group Semicolon
 - Mobile_Branch -> for Group Hive
-- Alumni_Manage_Branch -> for Group Sus
+- Alumni_Branch -> for Group Sus
 - Event_Branch -> for Group Backspace
 
 In order to change to your branch, use the following command :
