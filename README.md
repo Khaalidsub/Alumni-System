@@ -1,6 +1,7 @@
 # Alumni-System
 
 ### Introduction
+
 This repository is meant for the alumni system. It is meant for the team to have access for the shared documents,code and whatever is required to be shared among the team.
 
 ## Git installation and Github Desktop
@@ -13,18 +14,22 @@ Github has a desktop GUI application that might help you
 [Github Desktop](https://desktop.github.com/)
 
 In order to pull this repository , you have to use these following commands in your git bash :
+
 ```
 
 git clone https://github.com/Khaalidsub/Alumni-System
 
+cd Alumni-system
+
 ```
+
 You have pulled the repository, look for the new folder that has been created.
 for example if you were in your desktop.
 
-for further information , here is a tutorial : 
+for further information , here is a tutorial :
 [git video tutorial](https://www.youtube.com/watch?v=SWYqp7iY_Tc)
 
-## Project Structure 
+## Project Structure
 
 Since we are working with different modules, the repository is seperated into different branches
 
@@ -37,7 +42,7 @@ Since we are working with different modules, the repository is seperated into di
 - Alumni_Manage_Branch -> for Group Sus
 - Event_Branch -> for Group Backspace
 
-In order to change to your branch, use the following command : 
+In order to change to your branch, use the following command :
 
 ```
 
@@ -45,7 +50,7 @@ git switch BRANCH_NAME
 
 ```
 
-for example 
+for example
 
 ```
 git switch User_Branch
@@ -69,4 +74,4 @@ git push
 
 Important :
 
-__Make sure you are pushing in the correct branch__
+**Make sure you are pushing in the correct branch**
