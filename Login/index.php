@@ -15,17 +15,25 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="login.php" class="sign-in-form">
-            <h2 class="title">Sign in</h2>
+
+          <form action="login.php" class="sign-in-form" method="post">
+			<h2 class="title">Sign in</h2>
+
+			<?php if (isset($_GET['error'])) { ?>
+     		<p class="error"><?php echo $_GET['error']; ?></p>
+			 <?php } ?>
+			 
             <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+			  <i class="fas fa-user"></i>
+			  
+              <input type="text"  name="uname" placeholder="Username" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+			  <input type="password" name="password" placeholder="Password" />
             </div>
-            <input type="submit" value="Login" class="btn solid" />
+			<button type="submit" class="btn solid">Login</button>
+			</form>
             <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
@@ -41,8 +49,11 @@
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
-          </form>
+		  
+		  
+
           <form action="#" class="sign-up-form">
+			  
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
