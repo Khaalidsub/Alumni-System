@@ -79,10 +79,9 @@
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
-            <h3>New here ?</h3>
+            <h3>Universiti Teknologi Malaysia</h3>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
-              ex ratione. Aliquid!
+              Belum Mendaftar sebagai ahli? Daftar di sini
             </p>
             <button class="btn transparent" id="sign-up-btn">
               Sign up
@@ -92,10 +91,9 @@
         </div>
         <div class="panel right-panel">
           <div class="content">
-            <h3>One of us ?</h3>
+            <h3>Sudah berdaftar?</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              laboriosam ad deleniti.
+              Klik sini untuk login
             </p>
             <button class="btn transparent" id="sign-in-btn">
               Sign in
