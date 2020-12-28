@@ -27,9 +27,26 @@ input {
   left: 0;
 }
 
+.utm{
+  position: absolute;
+  top: 17%;
+  transform: translate(-50%, -50%);
+  left: 83%;
+  width: 50%;
+  transition: 1s 0.7s ease-in-out;
+  display: grid;
+  grid-template-columns: 1fr;
+  z-index: 5;
+}
+.utmFont{
+  font-size: 2rem;
+  text-decoration:none;
+  margin-left: 15%;
+}
+
 .signin-signup {
   position: absolute;
-  top: 50%;
+  top: 55%;
   transform: translate(-50%, -50%);
   left: 75%;
   width: 50%;
@@ -275,7 +292,8 @@ form.sign-in-form {
     min-height: 800px;
     height: 100vh;
   }
-  .signin-signup {
+  
+  .signin-signup  {
     width: 100%;
     top: 95%;
     transform: translate(-50%, -100%);

@@ -14,9 +14,13 @@
   <body>
     <div class="container">
       <div class="forms-container">
+        <div class="utm"><img src="img/utm.png" width="600" height="200"> 
+         <h2 class="utmFont" >Sekolah Senibina Skudai <br>
+        </div>
         <div class="signin-signup">
 
-          <form action="login.php" class="sign-in-form" method="post">
+        
+          <form action="login.php" class="sign-in-form" method="post">   
 			<h2 class="title">Sign in</h2>
 
 			<?php if (isset($_GET['error'])) { ?>
@@ -49,6 +53,7 @@
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
+
             </form>
 		  
 
@@ -90,9 +95,9 @@
       <div class="panels-container">
         <div class="panel left-panel">
           <div class="content">
-            <h3>Universiti Teknologi Malaysia</h3>
+            <h3>Belum Mendaftar?</h3>
             <p>
-              Belum Mendaftar sebagai ahli? Daftar di sini
+              Klik sini untuk mendaftar sebagai ahli
             </p>
             <button class="btn transparent" id="sign-up-btn">
               Sign up
