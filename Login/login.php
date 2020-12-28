@@ -14,7 +14,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 	$uname = validate($_POST['uname']);
 	$pass = validate($_POST['password']);
 
-	if (empty($uname)) {
+	if (empty($uname)) {	
 		header("Location: index.php?error=Username is required");
 	    exit();
 	}else if(empty($pass)){
@@ -47,3 +47,9 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 	header("Location: index.php");
 	exit();
 }
+
+function function_alert($message) { 
+      
+    // Display the alert box  
+    echo "<script>alert('$message');</script>"; 
+} 
