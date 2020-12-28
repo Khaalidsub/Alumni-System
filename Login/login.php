@@ -48,8 +48,3 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 	exit();
 }
 
-function function_alert($message) { 
-      
-    // Display the alert box  
-    echo "<script>alert('$message');</script>"; 
-} 

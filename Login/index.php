@@ -57,7 +57,7 @@
             </form>
 		  
 
-          <form action="signup-check.php" class="sign-up-form">
+          <form action="signup-check.php" class="sign-up-form" method="post">
 			  
             <h2 class="title">Sign up</h2>
             <div class="input-field">
