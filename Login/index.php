@@ -33,7 +33,7 @@
 			  <input type="password" name="password" placeholder="Password" />
             </div>
 			<button type="submit" class="btn solid">Login</button>
-			</form>
+			
             <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
@@ -49,7 +49,7 @@
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
-		  
+            </form>
 		  
 
           <form action="#" class="sign-up-form">
