@@ -22,7 +22,7 @@ if (isset($_POST['uname']) && isset($_POST['password'])
 
 
 	if (empty($uname)) {
-		die('please fill');
+		echo"Username is required";
 	    exit();
 	}else if(empty($pass)){
         die('Location: signup.php?error=Password is required');
