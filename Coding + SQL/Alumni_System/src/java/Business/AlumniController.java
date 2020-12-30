@@ -3,11 +3,11 @@
 /**
  * @author Asus
  * @version 1.0
- * @created 29-Dec-2020 11:16:53 PM
+ * @created 30-Dec-2020 10:06:36 PM
  */
 public class AlumniController {
 
-	public Database m_Database;
+	private Database m_Database;
 
 	public AlumniController(){
 
@@ -36,14 +36,19 @@ public class AlumniController {
 	 * @param Address
 	 * @param CurrentJob
 	 * @param PreviousJob
-	 * @param Email/Phone
+	 * @param Email
 	 * @param GraduateYear
 	 * @param SalaryCurrent
 	 * @param SalaryPrevious
 	 * @param Status
+	 * @param Phone
 	 */
-	public String enterDetails(String Name, String password, String Address, String CurrentJob, String PreviousJob, String Email/Phone, int GraduateYear, double SalaryCurrent, double SalaryPrevious, String Status){
+	public String enterDetails(String Name, String password, String Address, String CurrentJob, String PreviousJob, String Email, int GraduateYear, double SalaryCurrent, double SalaryPrevious, String Status, String Phone){
 		return "";
+	}
+
+	public Database getDatabase(){
+		return m_Database;
 	}
 
 	/**
@@ -77,6 +82,14 @@ public class AlumniController {
 
 	public void retUserDetails(){
 
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setDatabase(Database newVal){
+		m_Database = newVal;
 	}
 
 	public void updatePass(){

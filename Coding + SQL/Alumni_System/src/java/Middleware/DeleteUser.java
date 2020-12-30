@@ -1,14 +1,14 @@
 
 
 /**
- * @author user
+ * @author Asus
  * @version 1.0
- * @created 29-Dec-2020 11:16:57 PM
+ * @created 30-Dec-2020 10:06:40 PM
  */
 public class DeleteUser {
 
 	private String MembershipNo;
-	public AdminController m_AdminController;
+	private AdminController m_AdminController;
 
 	public DeleteUser(){
 
@@ -20,6 +20,18 @@ public class DeleteUser {
 
 	public void Delete(){
 
+	}
+
+	public AdminController getAdminController(){
+		return m_AdminController;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setAdminController(AdminController newVal){
+		m_AdminController = newVal;
 	}
 
 }

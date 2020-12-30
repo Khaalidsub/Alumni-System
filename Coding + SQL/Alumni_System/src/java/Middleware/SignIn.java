@@ -1,15 +1,15 @@
 
 
 /**
- * @author user
+ * @author Asus
  * @version 1.0
- * @created 29-Dec-2020 11:17:09 PM
+ * @created 30-Dec-2020 10:06:50 PM
  */
 public class SignIn {
 
 	private String ID;
 	private String password;
-	public SignInController m_SignInController;
+	private SignInController m_SignInController;
 
 	public SignIn(){
 
@@ -27,6 +27,10 @@ public class SignIn {
 
 	}
 
+	public SignInController getSignInController(){
+		return m_SignInController;
+	}
+
 	/**
 	 * 
 	 * @param ID
@@ -34,6 +38,14 @@ public class SignIn {
 	 */
 	public String LoginAcc(String ID, String password){
 		return "";
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setSignInController(SignInController newVal){
+		m_SignInController = newVal;
 	}
 
 	public void userNotFound(){

@@ -3,11 +3,12 @@
 /**
  * @author Asus
  * @version 1.0
- * @created 29-Dec-2020 11:17:07 PM
+ * @created 30-Dec-2020 10:06:48 PM
  */
 public class RegisterController {
-
-	public Database m_Database;
+        
+    boolean valid = true;
+	private Database m_Database;
 
 	public RegisterController(){
 
@@ -15,10 +16,24 @@ public class RegisterController {
 
 	public void finalize() throws Throwable {
 
+	    super.finalize();
+
 	}
 
-	public bool validate(){
-		return null;
+	public Database getDatabase(){
+		return m_Database;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setDatabase(Database newVal){
+		m_Database = newVal;
+	}
+
+	public boolean validate(){
+		return valid;
 	}
 
 	/**
@@ -26,15 +41,16 @@ public class RegisterController {
 	 * @param Address
 	 * @param CurrentJob
 	 * @param PreviousJob
-	 * @param Email/Phone
+	 * @param Email
 	 * @param GraduateYear
 	 * @param Name
 	 * @param password
 	 * @param SalaryCurrent
 	 * @param SalaryPrevious
 	 * @param Status
+	 * @param Phone
 	 */
-	public void validateDetails(String Address, String CurrentJob, String PreviousJob, String Email/Phone, int GraduateYear, String Name, String password, double SalaryCurrent, double SalaryPrevious, String Status){
+	public void validateDetails(String Address, String CurrentJob, String PreviousJob, String Email, int GraduateYear, String Name, String password, double SalaryCurrent, double SalaryPrevious, String Status, String Phone){
 
 	}
 

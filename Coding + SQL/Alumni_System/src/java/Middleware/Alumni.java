@@ -1,9 +1,9 @@
 
 
 /**
- * @author user
+ * @author Asus
  * @version 1.0
- * @created 29-Dec-2020 11:16:51 PM
+ * @created 30-Dec-2020 10:06:35 PM
  */
 public class Alumni extends User {
 
@@ -19,7 +19,7 @@ public class Alumni extends User {
 	private double AlumniSalaryPrevious;
 	private double AlumniSalaryuCurrent;
 	protected String AlumniSatus;
-	public Homepage m_Homepage;
+	private Homepage m_Homepage;
 
 	public Alumni(){
 
@@ -53,7 +53,19 @@ public class Alumni extends User {
 
 	}
 
-	public showSuggestions(){
+	public Homepage getHomepage(){
+		return m_Homepage;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setHomepage(Homepage newVal){
+		m_Homepage = newVal;
+	}
+
+	public void showSuggestions(){
 
 	}
 

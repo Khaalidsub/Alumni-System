@@ -3,11 +3,11 @@
 /**
  * @author Asus
  * @version 1.0
- * @created 29-Dec-2020 11:16:47 PM
+ * @created 30-Dec-2020 10:06:32 PM
  */
 public class AdminController {
 
-	public Database m_Database;
+	private Database m_Database;
 
 	public AdminController(){
 
@@ -25,12 +25,24 @@ public class AdminController {
 		return "";
 	}
 
+	public Database getDatabase(){
+		return m_Database;
+	}
+
 	/**
 	 * 
 	 * @param ID
 	 */
 	public String SearchUsername(String ID){
 		return "";
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setDatabase(Database newVal){
+		m_Database = newVal;
 	}
 
 }

@@ -3,12 +3,12 @@
 /**
  * @author Asus
  * @version 1.0
- * @created 29-Dec-2020 11:16:59 PM
+ * @created 30-Dec-2020 10:06:41 PM
  */
 public class Homepage {
 
-	public SignIn m_SignIn;
-	public Register m_Register;
+	private SignIn m_SignIn;
+	private Register m_Register;
 
 	public Homepage(){
 
@@ -18,12 +18,36 @@ public class Homepage {
 
 	}
 
-	public void onClickReg()(){
+	public Register getRegister(){
+		return m_Register;
+	}
+
+	public SignIn getSignIn(){
+		return m_SignIn;
+	}
+
+	public void onClickReg(){
 
 	}
 
 	public void onClickSignin(){
 
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setRegister(Register newVal){
+		m_Register = newVal;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setSignIn(SignIn newVal){
+		m_SignIn = newVal;
 	}
 
 }

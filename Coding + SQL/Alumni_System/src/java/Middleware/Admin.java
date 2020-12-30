@@ -1,16 +1,16 @@
 
 
 /**
- * @author user
+ * @author Asus
  * @version 1.0
- * @created 29-Dec-2020 11:16:44 PM
+ * @created 30-Dec-2020 10:06:30 PM
  */
 public class Admin extends User {
 
 	private String AdminEmail;
 	private String AdminID;
 	private String AdminName;
-	public AdminUI m_AdminUI;
+	private AdminUI m_AdminUI;
 
 	public Admin(){
 
@@ -50,6 +50,18 @@ public class Admin extends User {
 
 	public void dispUserAcc(){
 
+	}
+
+	public AdminUI getAdminUI(){
+		return m_AdminUI;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setAdminUI(AdminUI newVal){
+		m_AdminUI = newVal;
 	}
 
 	public void showSuggestions(){

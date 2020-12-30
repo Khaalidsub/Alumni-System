@@ -1,14 +1,14 @@
 
 
 /**
- * @author user
+ * @author Asus
  * @version 1.0
- * @created 29-Dec-2020 11:17:02 PM
+ * @created 30-Dec-2020 10:06:45 PM
  */
 public class ManageAcc {
 
 	private String ID;
-	public AlumniController m_AlumniController;
+	private AlumniController m_AlumniController;
 
 	public ManageAcc(){
 
@@ -28,6 +28,10 @@ public class ManageAcc {
 
 	public String enterDetails(){
 		return "";
+	}
+
+	public AlumniController getAlumniController(){
+		return m_AlumniController;
 	}
 
 	/**
@@ -64,6 +68,14 @@ public class ManageAcc {
 
 	public String retPicture(){
 		return "";
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setAlumniController(AlumniController newVal){
+		m_AlumniController = newVal;
 	}
 
 	/**

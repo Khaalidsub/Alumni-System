@@ -3,12 +3,12 @@
 /**
  * @author Asus
  * @version 1.0
- * @created 29-Dec-2020 11:16:49 PM
+ * @created 30-Dec-2020 10:06:33 PM
  */
 public class AdminUI {
 
-	public Register m_Register;
-	public DeleteUser m_DeleteUser;
+	private Register m_Register;
+	private DeleteUser m_DeleteUser;
 
 	public AdminUI(){
 
@@ -24,6 +24,14 @@ public class AdminUI {
 	 */
 	public String deleteUser(String ID){
 		return "";
+	}
+
+	public DeleteUser getDeleteUser(){
+		return m_DeleteUser;
+	}
+
+	public Register getRegister(){
+		return m_Register;
 	}
 
 	public void notFound(){
@@ -46,8 +54,20 @@ public class AdminUI {
 		return "";
 	}
 
-	public void userDeleted(){
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setDeleteUser(DeleteUser newVal){
+		m_DeleteUser = newVal;
+	}
 
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setRegister(Register newVal){
+		m_Register = newVal;
 	}
 
 	public void userDeleted(){

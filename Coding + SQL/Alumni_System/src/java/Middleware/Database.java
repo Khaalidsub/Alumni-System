@@ -3,7 +3,7 @@
 /**
  * @author Asus
  * @version 1.0
- * @created 29-Dec-2020 11:16:55 PM
+ * @created 30-Dec-2020 10:06:38 PM
  */
 public class Database {
 
@@ -25,9 +25,10 @@ public class Database {
 
 	/**
 	 * 
-	 * @param Email/Phone
+	 * @param Email
+	 * @param Phone
 	 */
-	public String getUserDetails(String Email/Phone){
+	public String getUserDetails(String Email, String Phone){
 		return "";
 	}
 
@@ -45,14 +46,15 @@ public class Database {
 	 * @param password
 	 * @param Address
 	 * @param CurrentJob
-	 * @param Email/Phone
+	 * @param Email
 	 * @param GraduateYear
 	 * @param PreviousJob
 	 * @param SalaryCurrent
 	 * @param SalaryPrevious
 	 * @param Status
+	 * @param Phone
 	 */
-	public void safeUserDetails(String Name, String password, String Address, String CurrentJob, String Email/Phone, int GraduateYear, String PreviousJob, double SalaryCurrent, double SalaryPrevious, String Status){
+	public void safeUserDetails(String Name, String password, String Address, String CurrentJob, String Email, int GraduateYear, String PreviousJob, double SalaryCurrent, double SalaryPrevious, String Status, String Phone){
 
 	}
 
