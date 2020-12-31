@@ -25,7 +25,7 @@ public class RegisterDAO {
         
         Class.forName("com.mysql.jdbc.Driver");
         
-        try (Connection connection =  DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql_database?useSSL=false", "root", "");
+        try (Connection connection =  DriverManager.getConnection("jdbc:mysql://localhost:3306/alumni_account?zeroDateTimeBehavior=convertToNull", "root", "");
             
                 PreparedStatement preparedStatement =connection.prepareStatement(insert_users)){
                 preparedStatement.setInt(1,1);
