@@ -3,7 +3,6 @@ package Middleware;
 import business.RegisterController;
 
 
-
 /**
  * @author Asus
  * @version 1.0
@@ -23,7 +22,7 @@ public class Register {
 	private double SalaryPrevious;
         private String Status;
 	private RegisterController m_RegisterController;
-	private SignIn m_SignIn;
+	
 
          //SETTER AND GETTER
          public String getAddress() {
@@ -140,9 +139,7 @@ public class Register {
 		return m_RegisterController;
 	}
 
-	public SignIn getSignIn(){
-		return m_SignIn;
-	}
+	
 
 	/**
 	 * 
@@ -170,13 +167,8 @@ public class Register {
 		m_RegisterController = newVal;
 	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setSignIn(SignIn newVal){
-		m_SignIn = newVal;
-	}
+	
+	
 
 	public void successMessage(){
 

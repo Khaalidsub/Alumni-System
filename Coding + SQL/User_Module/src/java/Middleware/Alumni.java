@@ -27,7 +27,7 @@ public class Alumni extends User {
 	private double AlumniSalaryPrevious;
 	private double AlumniSalaryCurrent;
 	protected String AlumniSatus;
-	private Homepage m_Homepage;
+	
 
     public String getAlumniAddress() {
         return AlumniAddress;
@@ -166,17 +166,13 @@ public class Alumni extends User {
 
 	}
 
-	public Homepage getHomepage(){
-		return m_Homepage;
-	}
+	
 
 	/**
 	 * 
 	 * @param newVal
 	 */
-	public void setHomepage(Homepage newVal){
-		m_Homepage = newVal;
-	}
+	
 
 	public void showSuggestions(){
 
