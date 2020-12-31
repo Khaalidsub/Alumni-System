@@ -5,10 +5,23 @@
  * @version 1.0
  * @created 30-Dec-2020 10:06:48 PM
  */
-public class RegisterController {
+
+package business;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet (name="RegisterController" , urlPatterns = {"/register"} )
+public class RegisterController extends HttpServlet{
         
     boolean valid = true;
-	private Database m_Database;
+	//private Database m_Database;
 
 	public RegisterController(){
 
@@ -20,17 +33,7 @@ public class RegisterController {
 
 	}
 
-	public Database getDatabase(){
-		return m_Database;
-	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setDatabase(Database newVal){
-		m_Database = newVal;
-	}
 
 	public boolean validate(){
 		return valid;
