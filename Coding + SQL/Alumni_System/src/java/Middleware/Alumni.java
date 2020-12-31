@@ -10,7 +10,24 @@ import Middleware.User;
  * @version 1.0
  * @created 30-Dec-2020 10:06:35 PM
  */
+
+
+
 public class Alumni extends User {
+    
+    private String AlumniAddress;
+	protected String AlumniCurrentJob;
+	protected String AlumniEmail;
+	protected int AlumniGraduateYear;
+	protected String AlumniLocation;
+	protected String AlumniMembershipNo;
+	protected String AlumniName;
+	private String AlumniPhoneNo;
+	private String AlumniPreviousJob;
+	private double AlumniSalaryPrevious;
+	private double AlumniSalaryCurrent;
+	protected String AlumniSatus;
+	private Homepage m_Homepage;
 
     public String getAlumniAddress() {
         return AlumniAddress;
@@ -108,19 +125,7 @@ public class Alumni extends User {
         this.AlumniSatus = AlumniSatus;
     }
 
-	private String AlumniAddress;
-	protected String AlumniCurrentJob;
-	protected String AlumniEmail;
-	protected int AlumniGraduateYear;
-	protected String AlumniLocation;
-	protected String AlumniMembershipNo;
-	protected String AlumniName;
-	private String AlumniPhoneNo;
-	private String AlumniPreviousJob;
-	private double AlumniSalaryPrevious;
-	private double AlumniSalaryCurrent;
-	protected String AlumniSatus;
-	private Homepage m_Homepage;
+	
 
         
         

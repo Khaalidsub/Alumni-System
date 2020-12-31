@@ -13,7 +13,7 @@ import DAO.RegisterDAO;
 
 import Middleware.Register;
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -64,7 +64,7 @@ public class RegisterController extends HttpServlet{
          }
          
          
-         response.sendRedirect("");
+         response.sendRedirect("Register.jsp");
      }
 
         
