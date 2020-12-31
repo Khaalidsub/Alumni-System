@@ -1,4 +1,7 @@
 
+import Middleware.User;
+
+
 
 /**
  * @author Asus
@@ -16,9 +19,7 @@ public class Admin extends User {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
+	
 
 	public void dispError(){
 
