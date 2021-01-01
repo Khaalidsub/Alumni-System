@@ -19,24 +19,43 @@
     </tr>
     <tr>
      <td>Password</td>
-     <td><input type="text" name="password" /></td>
-    </tr>
-    <tr>
-     <td>UserName</td>
-     <td><input type="text" name="username" /></td>
-    </tr>
-    <tr>
-     <td>Password</td>
      <td><input type="password" name="password" /></td>
     </tr>
     <tr>
-     <td>Address</td>
-     <td><input type="text" name="address" /></td>
+     <td>Phone No.</td>
+     <td><input type="text" name="phone" /></td>
     </tr>
     <tr>
-     <td>Contact No</td>
-     <td><input type="text" name="contact" /></td>
+     <td>Email</td>
+     <td><input type="text" name="email" /></td>
     </tr>
+    <tr>
+     <td>Address</td>
+     <td><input type="text" name="Address" /></td>
+    </tr>
+    <tr>
+     <td>Previous Job</td>
+     <td><input type="text" name="PreviousJob" /></td>
+    </tr>
+    <tr>
+     <td>Current Job</td>
+     <td><input type="text" name="CurrentJob" /></td>
+    </tr>
+    <tr>
+     <td>Current Salary</td>
+     <td><input type="text" name="SalaryCurrent" /></td>
+    </tr>
+    <tr>
+     <td>Previous Salary</td>
+     <td><input type="text" name="SalaryPrevious" /></td>
+    </tr>
+    <tr>
+     <td>Graduate Year</td>
+     <td><input type="text" name="GraduateYear" /></td>
+    </tr>
+    
+    
+  
    </table>
    <input type="submit" value="Submit" />
   </form>

@@ -8,7 +8,7 @@
 
 package business;
 
-import DAO.RegisterDAO;
+import jdbc.RegisterDAO;
 ;
 
 import Middleware.Register;
@@ -21,7 +21,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet (name="RegisterController" , urlPatterns = {"/register"} )
+import java.sql.*;
+import jdbc.JdbcUtility;
+
+
+@WebServlet (name="RegisterController" , urlPatterns = {"/RegisterController"} )
 public class RegisterController extends HttpServlet{
     private RegisterDAO registerDao;
     
@@ -42,7 +46,7 @@ public class RegisterController extends HttpServlet{
 	 String PreviousJob = request.getParameter("PreviousJob");
 	 double SalaryCurrent = Double.parseDouble("SalaryCurrent");
 	 double SalaryPrevious = Double.parseDouble("SalaryPrevious");
-         String Status = request.getParameter("Email");
+         String Status = request.getParameter("Status");
          
          Register register = new Register();
          
@@ -50,6 +54,7 @@ public class RegisterController extends HttpServlet{
          register.setCurrentJob(CurrentJob);
          register.setEmail(Email);
          register.setName(Name);
+         register.setGraduateYear(GraduateYear);
          register.setPassword(password);
          register.setPhone(Phone);
          register.setPreviousJob(PreviousJob);
@@ -65,10 +70,10 @@ public class RegisterController extends HttpServlet{
          
          
          response.sendRedirect("Register.jsp");
-     }
+        }
 
         
-    boolean valid = true;
+         boolean valid = true;
 	//private Database m_Database;
 
 	public RegisterController(){
