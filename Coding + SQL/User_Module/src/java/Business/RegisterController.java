@@ -62,7 +62,8 @@ public class RegisterController extends HttpServlet{
         jdbcUtility.jdbcConClose();
     }
     
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
         
@@ -121,7 +122,7 @@ public class RegisterController extends HttpServlet{
             
             out.println("<script>");
             out.println("    alert('Student insert failed');");
-            out.println("    window.location = '/RegisterController'");
+            //out.println("    window.location = '/RegisterController'");
             out.println("</script>");            
 	}
 	catch (java.lang.Exception ex)
@@ -132,7 +133,7 @@ public class RegisterController extends HttpServlet{
             
             out.println("<script>");
             out.println("    alert('Student insert failed');");
-            out.println("    window.location = '/User_module/RegisterController'");
+            //out.println("    window.location = '/RegisterController'");
             out.println("</script>");
 	}    
          
