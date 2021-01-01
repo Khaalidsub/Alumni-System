@@ -51,7 +51,7 @@ public class AlumniController extends HttpServlet {
 
             // if the command is missing, then default to login
             if (command == null) {
-                command = "ALUMNI-LIST";
+                command = "ALUMNI-INFO";
             }
 
             switch (command) {
@@ -106,11 +106,9 @@ public class AlumniController extends HttpServlet {
             dispatcher = request.getRequestDispatcher("/alumni/alumniProfile.jsp");
             request.setAttribute("alumni", alumni);
             dispatcher.forward(request, response);
-        } catch (ServletException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }
 
     public Alumni[] getAlumniList() {
