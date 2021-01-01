@@ -6,7 +6,7 @@
  * @created 30-Dec-2020 10:06:48 PM
  */
 
-package business;
+package Business;
 
 import java.io.IOException;
 import java.io.PrintWriter;

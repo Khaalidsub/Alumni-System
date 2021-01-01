@@ -1,6 +1,6 @@
 package Middleware;
 
-import business.RegisterController;
+import Business.RegisterController;
 
 
 /**

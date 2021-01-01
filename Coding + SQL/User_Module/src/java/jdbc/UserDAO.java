@@ -83,10 +83,8 @@ public class UserDAO {
         try {
            
             //create SQL statement
-            String insert_users ="INSERT INTO alumni" + 
-                "(Name, password,Address, Email,CurrentJob, GraduateYear,  PhoneNo, PreviousJob, "
-                + "SalaryPrevious , SalaryCurrent, ,Status ) VALUES " +
-                "(?,?,?,?,?,?,?,?,?,?,?) ; ";           
+            String insert_users ="INSERT INTO alumni(Name, password,Address, Email,CurrentJob, GraduateYear,  PhoneNo, PreviousJob, SalaryPrevious , SalaryCurrent, ,Status ) " +
+                     " VALUES  (?,?,?,?,?,?,?,?,?,?,?) ; ";           
             
             //prepare statement
             psRegisterController = con.prepareStatement(insert_users);            
