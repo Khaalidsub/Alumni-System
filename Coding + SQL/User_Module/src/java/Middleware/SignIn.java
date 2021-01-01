@@ -1,59 +1,35 @@
 
 
-/**
+/*
  * @author Asus
  * @version 1.0
  * @created 30-Dec-2020 10:06:50 PM
  */
+
+package Middleware;
+
 public class SignIn {
+    
+    private String Email;
+    private String password;
 
-	private String ID;
-	private String password;
-	private SignInController m_SignInController;
+    public String getEmail() {
+        return Email;
+    }
 
-	public SignIn(){
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
 
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void finalize() throws Throwable {
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	}
+	
 
-	public void accessSignInScreen(){
-
-	}
-
-	public void dispSigned(){
-
-	}
-
-	public SignInController getSignInController(){
-		return m_SignInController;
-	}
-
-	/**
-	 * 
-	 * @param ID
-	 * @param password
-	 */
-	public String LoginAcc(String ID, String password){
-		return "";
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setSignInController(SignInController newVal){
-		m_SignInController = newVal;
-	}
-
-	public void userNotFound(){
-
-	}
-
-	public void wrongLogin(){
-
-	}
 
 }

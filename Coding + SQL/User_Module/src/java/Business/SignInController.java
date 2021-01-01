@@ -5,50 +5,66 @@
  * @version 1.0
  * @created 30-Dec-2020 10:06:52 PM
  */
-public class SignInController {
 
-	private Database m_Database;
-	private ManageAcc m_ManageAcc;
 
-	public SignInController(){
+package business;
 
-	}
+import java.io.IOException;
+import java.io.PrintWriter;
 
-	public void finalize() throws Throwable {
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-	}
+import java.sql.*;
+import jdbc.JdbcUtility;
 
-	public Database getDatabase(){
-		return m_Database;
-	}
 
-	public ManageAcc getManageAcc(){
-		return m_ManageAcc;
-	}
+@WebServlet (name="SignInController" , urlPatterns = {"/SignInController"} )
+public class SignInController extends HttpServlet{
+    
+    private JdbcUtility jdbcUtility;
+    
+    private Connection con;
+    
+    @Override
+    public void init() throws ServletException{
+        
+        String driver = "com.mysql.jdbc.Driver";
+        
+        String dbName = "alumni_account";
+        String url = "jdbc:mysql://localhost/" + dbName + "?";
+        String userName = "root";
+        String password = "";
+        Connection con = null;
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setDatabase(Database newVal){
-		m_Database = newVal;
-	}
+        jdbcUtility = new JdbcUtility(driver,
+                                      url,
+                                      userName,
+                                      password);
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setManageAcc(ManageAcc newVal){
-		m_ManageAcc = newVal;
-	}
-
-	/**
-	 * 
-	 * @param ID
-	 * @param password
-	 */
-	public String validateUser(String ID, String password){
-		return "";
-	}
-
+        jdbcUtility.jdbcConnect();
+        
+        //get JDC connection
+        con = jdbcUtility.jdbcGetConnection();
+        
+        //prepare the statement once only
+        //for the entire servlet lifecycle
+        jdbcUtility.prepareSQLStatementRegister();
+             
+    }
+    
+    @Override
+    
+    public void destroy(){
+        jdbcUtility.jdbcConClose();
+    }
+    
+    
+    
 }
+
+

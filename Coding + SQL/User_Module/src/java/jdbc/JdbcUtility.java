@@ -6,6 +6,7 @@
 package jdbc;
 
 import java.sql.*;
+import Middleware.SignIn;
 
 /**
  *
@@ -20,6 +21,7 @@ public class JdbcUtility {
     String password;
     
     PreparedStatement psRegisterController = null;
+    PreparedStatement psSignInController = null;
    
     public JdbcUtility(String driver,
                        String url,
@@ -82,7 +84,7 @@ public class JdbcUtility {
            
             //create SQL statement
             String insert_users ="INSERT INTO alumni" + 
-                "(Address, CurrentJob,Email, GraduateYear, Name, password, Phone, PreviousJob, "
+                "(Address, CurrentJob,Email, GraduateYear, Name, password, PhoneNo, PreviousJob, "
                 + "SalaryCurrent, SalaryPrevious,Status ) VALUES " +
                 "(?,?,?,?,?,?,?,?,?,?,?) ; ";           
             
@@ -96,6 +98,33 @@ public class JdbcUtility {
     
     public PreparedStatement getPsRegister(){
         return psRegisterController;
+    }
+    
+    public void prepareSQLStatementSignIn(){
+        
+        SignIn signIn = new SignIn();
+   
+        
+        try {
+           
+            //create SQL statement
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from alumni where email = ? and password = ? ")) {
+			preparedStatement.setString(1, SignIn.());
+			preparedStatement.setString(2, loginBean.getPassword());
+
+			System.out.println(preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+			status = rs.next();        
+            
+            //prepare statement
+            psRegisterController = con.prepareStatement(insert_users);            
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace ();
+        }
+        
+        }
+        
     }
     
    
