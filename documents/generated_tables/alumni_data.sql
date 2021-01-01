@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2021 at 05:29 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Jan 01, 2021 at 06:21 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `alumni`
+-- Database: `test`
 --
 
 -- --------------------------------------------------------
@@ -48,16 +48,16 @@ CREATE TABLE `alumni` (
 --
 
 INSERT INTO `alumni` (`AlumniID`, `Batchname`, `Alumniname`, `Alumnimatric`, `Gender`, `Alumnicitizenship`, `Edulevel`, `Coursename`, `Alumniemail`, `Phoneno`, `AlumniaddressID`, `Graduateyear`, `Title`) VALUES
-(1, '35', 'TAN HUI MIN', NULL, 'P', 'MALAYSIA', 'DIPLOMA', 'DIPLOMA SENI BINA', NULL, NULL, 'Aid001', NULL, 'MRS'),
-(2, '35', 'NUR LIYANA BINTI ENCHIK ARIS', NULL, 'P', NULL, 'DIPLOMA', 'DIPLOMA SENI BINA', NULL, NULL, 'Aid002', NULL, 'MRS'),
-(3, '35', 'NUR SYAZWANI BINTI MOHD KHAIRI', NULL, 'P', 'MALAYSIA', 'DIPLOMA', 'DIPLOMA SENI BINA', NULL, NULL, 'Aid003', NULL, 'MRS'),
-(4, '35', 'ONG TEE YAU', NULL, 'L', 'MALAYSIA', 'DIPLOMA', 'DIPLOMA SENI BINA', NULL, NULL, 'Aid004', NULL, 'MR'),
-(5, '35', 'PANG LAI KIN', NULL, 'P', 'MALAYSIA', 'DIPLOMA', 'DIPLOMA SENI BINA', NULL, NULL, 'Aid005', NULL, 'MRS'),
-(6, '35', 'RAJA MOHD ZULKARNAIN', NULL, 'L', 'SINGAPORE', 'DIPLOMA', 'DIPLOMA SENI BINA', NULL, NULL, 'Aid006', NULL, 'MR'),
-(7, '35', 'SAZLI BIN YAHAYA', NULL, 'L', 'MALAYSIA', 'DIPLOMA', 'DIPLOMA SENI BINA', NULL, NULL, 'Aid007', NULL, 'MRS'),
-(8, '35', 'THIAN SOO YING', NULL, 'P', 'MALAYSIAN', 'DIPLOMA', 'DIPLOMA SENI BINA', NULL, NULL, 'Aid008', NULL, 'MRS'),
-(9, '35', 'SITI SARAH BINTI MUKTATI', NULL, 'P', NULL, 'DIPLOMA ', 'DIPLOMA SENI BINA', NULL, NULL, 'Aid009', NULL, 'MRS'),
-(10, '35', 'NUR \'ATIKAH BINTI ROHAIZAN', NULL, 'P', 'MALAYSIA', 'DIPLOMA', 'DIPLOMA SENI BINA', NULL, NULL, 'Aid010', NULL, 'MRS');
+(1, '35', 'TAN HUI MIN', NULL, 'P', 'MALAYSIA', 'DIPLOMA', 'DIPLOMA SENI BINA', 'yali@salute.moscow', NULL, 'Aid001', NULL, 'MRS'),
+(2, '35', 'NUR LIYANA BINTI ENCHIK ARIS', NULL, 'P', NULL, 'DIPLOMA', 'DIPLOMA SENI BINA', 'ljo_oow@theoriginsprogram.net', NULL, 'Aid002', NULL, 'MRS'),
+(3, '35', 'NUR SYAZWANI BINTI MOHD KHAIRI', NULL, 'P', 'MALAYSIA', 'DIPLOMA', 'DIPLOMA SENI BINA', '6naseer.far@wditu.com', NULL, 'Aid003', NULL, 'MRS'),
+(4, '35', 'ONG TEE YAU', NULL, 'L', 'MALAYSIA', 'DIPLOMA', 'DIPLOMA SENI BINA', 'zfranci@vitaminc.news', NULL, 'Aid004', NULL, 'MR'),
+(5, '35', 'PANG LAI KIN', NULL, 'P', 'MALAYSIA', 'DIPLOMA', 'DIPLOMA SENI BINA', 'iahmadmahmoud612@usn.pw', NULL, 'Aid005', NULL, 'MRS'),
+(6, '35', 'RAJA MOHD ZULKARNAIN', NULL, 'L', 'SINGAPORE', 'DIPLOMA', 'DIPLOMA SENI BINA', '9macielbob@michiganpepsi.com', NULL, 'Aid006', NULL, 'MR'),
+(7, '35', 'SAZLI BIN YAHAYA', NULL, 'L', 'MALAYSIA', 'DIPLOMA', 'DIPLOMA SENI BINA', 'cworawitsamartb@usn.pw', NULL, 'Aid007', NULL, 'MRS'),
+(8, '35', 'THIAN SOO YING', NULL, 'P', 'MALAYSIAN', 'DIPLOMA', 'DIPLOMA SENI BINA', 'hyoun@culturesnacks.us', NULL, 'Aid008', NULL, 'MRS'),
+(9, '35', 'SITI SARAH BINTI MUKTATI', NULL, 'P', NULL, 'DIPLOMA ', 'DIPLOMA SENI BINA', 'ksimo.laasri.501d@lotomoneymaker.com', NULL, 'Aid009', NULL, 'MRS'),
+(10, '35', 'NUR \'ATIKAH BINTI ROHAIZAN', NULL, 'P', 'MALAYSIA', 'DIPLOMA', 'DIPLOMA SENI BINA', 'jhsha451t@arunachalnews.com', NULL, 'Aid010', NULL, 'MRS');
 
 -- --------------------------------------------------------
 
