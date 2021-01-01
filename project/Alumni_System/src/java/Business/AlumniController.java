@@ -20,6 +20,7 @@ import Middleware.Alumni;
 import Middleware.AlumniAddress;
 import Middleware.EduLevel;
 import Middleware.alumniTitle;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -55,10 +56,11 @@ public class AlumniController extends HttpServlet {
             }
 
             switch (command) {
-                case "ALUMNI-LIST":
+                case "ALUMNI-SEARCH":
+                    getAlumniList(request,response);
                     break;
 
-                case "ALUMNI-PROFILE":
+                case "MY-PROFILE":
                     break;
                 case "ALUMNI-INFO":
                     getAlumniInfo(request, response);
@@ -104,15 +106,23 @@ public class AlumniController extends HttpServlet {
             Alumni alumni = alumniDao.getAlumniInfo(request.getParameter("alumniEmail"));
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/alumni/alumniProfile.jsp");
-            request.setAttribute("alumni", alumni);
+            request.setAttribute("ALUMNI", alumni);
             dispatcher.forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
 
-    public Alumni[] getAlumniList() {
-        return null;
+    public void getAlumniList(HttpServletRequest request, HttpServletResponse response) {
+         try {
+            List<Alumni> alumnis = alumniDao.getAlumniList();
+            RequestDispatcher dispatcher;
+            dispatcher = request.getRequestDispatcher("/alumni/search_alumni.jsp");
+            request.setAttribute("ALUMNI_LIST", alumnis);
+            dispatcher.forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     /**
