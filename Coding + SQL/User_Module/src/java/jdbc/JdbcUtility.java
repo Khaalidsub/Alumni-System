@@ -76,7 +76,7 @@ public class JdbcUtility {
         
     }
     
-    public void prepareSQLStatementInsertStudent(){
+    public void prepareSQLStatementRegister(){
         
         try {
            
@@ -93,6 +93,12 @@ public class JdbcUtility {
             ex.printStackTrace ();
         }
     }
+    
+    public PreparedStatement getPsRegister(){
+        return psRegisterController;
+    }
+    
+   
     
     
     
