@@ -100,31 +100,33 @@ public class JdbcUtility {
         return psRegisterController;
     }
     
-    public void prepareSQLStatementSignIn(){
+    public boolean prepareSQLStatementSignIn(){
         
+        boolean status = false;
         SignIn signIn = new SignIn();
-   
         
-        try {
+        try {Connection connection = DriverManager.getConnection(url, userName, password);
            
             //create SQL statement
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from alumni where email = ? and password = ? ")) {
-			preparedStatement.setString(1, SignIn.());
-			preparedStatement.setString(2, loginBean.getPassword());
+            PreparedStatement preparedStatement;
+            preparedStatement = connection.prepareStatement("select * from alumni where email = ? and password = ? ");
+            {
+			preparedStatement.setString(1, signIn.getEmail());
+			preparedStatement.setString(2, signIn.getPassword());
 
 			System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 			status = rs.next();        
-            
-            //prepare statement
-            psRegisterController = con.prepareStatement(insert_users);            
+            }
         }
         catch (SQLException ex) {
             ex.printStackTrace ();
         }
-        
-        }
-        
+        return status; 
+    }
+    
+  public PreparedStatement getPsLogin(){
+        return psSignInController;
     }
     
    
