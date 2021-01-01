@@ -8,7 +8,7 @@ package Middleware;
  */
 public class Alumni {
 
-	private AlumniAddress address;
+
 	private String alumniCitizenship;
 	private String alumniEmail;
 	private String alumniMatric;
@@ -21,6 +21,41 @@ public class Alumni {
 	private int phoneNo;
 	private alumniTitle title;
 	private AlumniAddress m_AlumniAddress;
+
+    public Alumni(String alumniCitizenship, String alumniEmail, String alumniName, String batchName, EduLevel eduLevel, Gender gender, int graduateYear,alumniTitle title) {
+    
+        this.alumniCitizenship = alumniCitizenship;
+        this.alumniEmail = alumniEmail;
+   
+        this.alumniName = alumniName;
+        this.batchName = batchName;
+   
+        this.eduLevel = eduLevel;
+        this.gender = gender;
+        this.graduateYear = graduateYear;
+
+        this.title = title;
+   
+    }
+
+    public Alumni(String alumniCitizenship, String alumniEmail, String alumniMatric, String alumniName, String batchName, String courseName, EduLevel eduLevel, Gender gender, int graduateYear, int phoneNo, alumniTitle title, AlumniAddress m_AlumniAddress) {
+        this.alumniCitizenship = alumniCitizenship;
+        this.alumniEmail = alumniEmail;
+        this.alumniMatric = alumniMatric;
+        this.alumniName = alumniName;
+        this.batchName = batchName;
+        this.courseName = courseName;
+        this.eduLevel = eduLevel;
+        this.gender = gender;
+        this.graduateYear = graduateYear;
+        this.phoneNo = phoneNo;
+        this.title = title;
+        this.m_AlumniAddress = m_AlumniAddress;
+    }
+    
+    
+        
+        
 
 	public Alumni(){
 
