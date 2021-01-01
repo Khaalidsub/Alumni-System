@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -45,7 +47,7 @@
                         class="vector-g5WeGn"
                         src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-2@2x.svg"
                         />
-                    <div class="steven-rogers border-class-1 comfortaa-bold-black-30px">Steven Rogers</div>
+                    <div class="steven-rogers border-class-1 comfortaa-bold-black-30px">${alumni.alumniName}</div>
                 </div>
                 <div class="auto-flex3-Xa1OFb">
                     <div class="auto-flex-fCNQqZ">
@@ -55,9 +57,9 @@
                             src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/line-1@1x.svg"
                             />
                     </div>
-                    <div class="name-steven-rogers border-class-1 comfortaa-bold-black-20px">Name : Steven Rogers</div>
-                    <div class="name-steven-rogers6 border-class-1 comfortaa-bold-black-20px">Gender : Male</div>
-                    <div class="name-steven-rogers5 border-class-1 comfortaa-bold-black-20px">Citizenship: United States</div>
+                    <div class="name-steven-rogers border-class-1 comfortaa-bold-black-20px">Name : ${alumni.alumniName}</div>
+                    <div class="name-steven-rogers6 border-class-1 comfortaa-bold-black-20px">Gender : ${alumni.gender}</div>
+                    <div class="name-steven-rogers5 border-class-1 comfortaa-bold-black-20px">Citizenship:  ${alumni.alumniCitizenship}</div>
                     <div class="auto-flex1-fCNQqZ">
                         <div class="alumni-information border-class-1 comfortaa-bold-gray-20px">Alumni Information</div>
                         <img
@@ -65,9 +67,9 @@
                             src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/line-3@1x.svg"
                             />
                     </div>
-                    <div class="name-steven-rogers4 border-class-1 comfortaa-bold-black-20px">Graduate Year : 2010</div>
-                    <div class="name-steven-rogers3 border-class-1 comfortaa-bold-black-20px">Batch Name : Avengers</div>
-                    <div class="name-steven-rogers2 border-class-1 comfortaa-bold-black-20px">Education Level : Master</div>
+                    <div class="name-steven-rogers4 border-class-1 comfortaa-bold-black-20px">Graduate Year : ${alumni.graduateYear}</div>
+                    <div class="name-steven-rogers3 border-class-1 comfortaa-bold-black-20px">Batch Name :  ${alumni.batchName}</div>
+                    <div class="name-steven-rogers2 border-class-1 comfortaa-bold-black-20px">Education Level :  ${alumni.eduLevel}</div>
                     <div class="auto-flex2-fCNQqZ">
                         <div class="contact-information border-class-1 comfortaa-bold-gray-20px">Contact Information</div>
                         <img
@@ -75,7 +77,7 @@
                             src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/line-2@1x.svg"
                             />
                     </div>
-                    <div class="name-steven-rogers1 border-class-1 comfortaa-bold-black-20px">E-mail : stevenrogers85@mail.com</div>
+                    <div class="name-steven-rogers1 border-class-1 comfortaa-bold-black-20px">E-mail :  ${alumni.alumniEmail}</div>
                 </div>
             </div>
         </div>

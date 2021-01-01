@@ -61,71 +61,174 @@ public class Alumni {
 
 	}
 
-	public void finalize() throws Throwable {
+    /**
+     * @return the alumniCitizenship
+     */
+    public String getAlumniCitizenship() {
+        return alumniCitizenship;
+    }
 
-	}
-	/**
-	 * 
-	 * @param createdAlumni
-	 */
-	public void addAlumni(Alumni createdAlumni){
+    /**
+     * @param alumniCitizenship the alumniCitizenship to set
+     */
+    public void setAlumniCitizenship(String alumniCitizenship) {
+        this.alumniCitizenship = alumniCitizenship;
+    }
 
-	}
+    /**
+     * @return the alumniEmail
+     */
+    public String getAlumniEmail() {
+        return alumniEmail;
+    }
 
-	public AlumniAddress getAlumniAddress(){
-		return m_AlumniAddress;
-	}
+    /**
+     * @param alumniEmail the alumniEmail to set
+     */
+    public void setAlumniEmail(String alumniEmail) {
+        this.alumniEmail = alumniEmail;
+    }
 
-	/**
-	 * 
-	 * @param alumniEmail
-	 */
-	public Alumni getAlumniInfo(String alumniEmail){
-		return null;
-	}
+    /**
+     * @return the alumniMatric
+     */
+    public String getAlumniMatric() {
+        return alumniMatric;
+    }
 
-	public Alumni[] getAlumniList(){
-		return null;
-	}
+    /**
+     * @param alumniMatric the alumniMatric to set
+     */
+    public void setAlumniMatric(String alumniMatric) {
+        this.alumniMatric = alumniMatric;
+    }
 
-	/**
-	 * 
-	 * @param alumniEmail
-	 */
-	public Alumni getDetailedAlumniInfo(String alumniEmail){
-		return null;
-	}
+    /**
+     * @return the alumniName
+     */
+    public String getAlumniName() {
+        return alumniName;
+    }
 
-	/**
-	 * 
-	 * @param alumniName
-	 * @param query
-	 */
-	public Alumni[] getFilteredAlumni(String alumniName, String query){
-		return null;
-	}
+    /**
+     * @param alumniName the alumniName to set
+     */
+    public void setAlumniName(String alumniName) {
+        this.alumniName = alumniName;
+    }
 
-	/**
-	 * 
-	 * @param alumniName
-	 */
-	public Alumni[] getSearchedAlumni(String alumniName){
-		return null;
-	}
+    /**
+     * @return the batchName
+     */
+    public String getBatchName() {
+        return batchName;
+    }
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setAlumniAddress(AlumniAddress newVal){
-		m_AlumniAddress = newVal;
-	}
+    /**
+     * @param batchName the batchName to set
+     */
+    public void setBatchName(String batchName) {
+        this.batchName = batchName;
+    }
 
-	/**
-	 * 
-	 * @param alumni
-	 */
-	public void updateAlumniDetails(Alumni alumni){
+    /**
+     * @return the courseName
+     */
+    public String getCourseName() {
+        return courseName;
+    }
 
-	}
+    /**
+     * @param courseName the courseName to set
+     */
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    /**
+     * @return the eduLevel
+     */
+    public EduLevel getEduLevel() {
+        return eduLevel;
+    }
+
+    /**
+     * @param eduLevel the eduLevel to set
+     */
+    public void setEduLevel(EduLevel eduLevel) {
+        this.eduLevel = eduLevel;
+    }
+
+    /**
+     * @return the gender
+     */
+    public Gender getGender() {
+        return gender;
+    }
+
+    /**
+     * @param gender the gender to set
+     */
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    /**
+     * @return the graduateYear
+     */
+    public int getGraduateYear() {
+        return graduateYear;
+    }
+
+    /**
+     * @param graduateYear the graduateYear to set
+     */
+    public void setGraduateYear(int graduateYear) {
+        this.graduateYear = graduateYear;
+    }
+
+    /**
+     * @return the phoneNo
+     */
+    public int getPhoneNo() {
+        return phoneNo;
+    }
+
+    /**
+     * @param phoneNo the phoneNo to set
+     */
+    public void setPhoneNo(int phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    /**
+     * @return the title
+     */
+    public alumniTitle getTitle() {
+        return title;
+    }
+
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(alumniTitle title) {
+        this.title = title;
+    }
+
+    /**
+     * @return the m_AlumniAddress
+     */
+    public AlumniAddress getM_AlumniAddress() {
+        return m_AlumniAddress;
+    }
+
+    /**
+     * @param m_AlumniAddress the m_AlumniAddress to set
+     */
+    public void setM_AlumniAddress(AlumniAddress m_AlumniAddress) {
+        this.m_AlumniAddress = m_AlumniAddress;
+    }
+        
+        
+
 }//end Alumni

@@ -61,6 +61,7 @@ public class AlumniController extends HttpServlet {
                     break;
 
                 case "MY-PROFILE":
+                   getAlumniInfo(request, response);
                     break;
                 case "ALUMNI-INFO":
                     getAlumniInfo(request, response);
@@ -103,10 +104,11 @@ public class AlumniController extends HttpServlet {
     public void getAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
 
         try {
-            Alumni alumni = alumniDao.getAlumniInfo(request.getParameter("alumniEmail"));
+//            Alumni alumni = alumniDao.getAlumniInfo(request.getParameter("alumniEmail"));
+                     Alumni alumni = alumniDao.getAlumniInfo("6naseer.far@wditu.com");
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/alumni/alumniProfile.jsp");
-            request.setAttribute("ALUMNI", alumni);
+            request.setAttribute("alumni", alumni);
             dispatcher.forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,7 +131,7 @@ public class AlumniController extends HttpServlet {
      *
      * @param alumniEmail
      */
-    public Alumni getDetailedAlumniInfo(String alumniEmail) {
+    public Alumni getDetailedAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
         return null;
     }
 

@@ -28,7 +28,7 @@ import java.util.logging.Logger;
  */
 public class AlumniDAO {
 
-    private String url = "jdbc:mysql://localhost:3306/flying_wheel?useTimezone=true&serverTimezone=UTC";
+    private String url = "jdbc:mysql://localhost:3306/test?useTimezone=true&serverTimezone=UTC";
     private String use = "root";
     private String password = "";
 
@@ -51,7 +51,7 @@ public class AlumniDAO {
 
             myConn = DriverManager.getConnection(url, use, password);
             // create sql statement
-            String sql = "select * from alumni where email=?";
+            String sql = "select * from alumni where Alumniemail=?";
 
             // create prepared statement
             stmt = myConn.createStatement();
@@ -66,7 +66,7 @@ public class AlumniDAO {
             //check if user is found
             if (rs.next()) {
 
-                Alumni foundAlumni = new Alumni(rs.getString("alumniCitizenship"), rs.getString("alumniEmail"), rs.getString("alumniName"), rs.getString("batchName"), EduLevel.valueOf(rs.getString("eduLevel")), Gender.valueOf(rs.getString("gender")), rs.getInt("graduateYear"), alumniTitle.valueOf(rs.getString("alumniTitle")));
+                Alumni foundAlumni = new Alumni(rs.getString("Alumnicitizenship"), rs.getString("Alumniemail"), rs.getString("Alumniname"), rs.getString("Batchname"), EduLevel.valueOf(rs.getString("Edulevel")), Gender.valueOf(rs.getString("Gender")), rs.getInt("Graduateyear"), alumniTitle.valueOf(rs.getString("Title")));
                 return foundAlumni;
                 //if user is a customer
 
