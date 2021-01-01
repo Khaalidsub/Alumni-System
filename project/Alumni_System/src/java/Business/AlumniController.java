@@ -5,6 +5,7 @@
  */
 package Business;
 
+import DAO.AlumniDAO;
 import Middleware.Alumni;
 import Middleware.AlumniAddress;
 import java.io.IOException;
@@ -19,6 +20,10 @@ import Middleware.Alumni;
 import Middleware.AlumniAddress;
 import Middleware.EduLevel;
 import Middleware.alumniTitle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,92 +32,142 @@ import Middleware.alumniTitle;
 @WebServlet(name = "AlumniController", urlPatterns = {"/AlumniController"})
 public class AlumniController extends HttpServlet {
 
-private Alumni m_Alumni;
+    private AlumniDAO alumniDao;
 
-	public AlumniController(){
+    @Override
+    public void init() throws ServletException {
+        alumniDao = new AlumniDAO();
 
-	}
+    }
 
-	public void finalize() throws Throwable {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-	}
-	public Alumni getAlumni(){
-		return m_Alumni;
-	}
-
-	/**
-	 * 
-	 * @param alumniEmail
-	 */
-	public Alumni getAlumniInfo(String alumniEmail){
-		return null;
-	}
-
-	public Alumni[] getAlumniList(){
-		return null;
-	}
-
-	
-	/**
-	 * 
-	 * @param alumniEmail
-	 */
-	public Alumni getDetailedAlumniInfo(String alumniEmail){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param alumniName
-	 * @param query
-	 */
-	public Alumni[] getFilteredAlumniList(String alumniName, String query){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param alumniName
-	 */
-	public Alumni[] getSearchedAlumni(String alumniName){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setAlumni(Alumni newVal){
-		m_Alumni = newVal;
-	}
+        String command = request.getParameter("command");
 
 
+        try {
 
-	/**
-	 * 
-	 * @param address
-	 * @param alumniEmail
-	 * @param phoneNo
-	 * @param eduLevel
-	 * @param graduateYear
-	 * @param courseName
-	 */
-	public void updateAlumniInfo(AlumniAddress address, String alumniEmail, int phoneNo, EduLevel eduLevel, int graduateYear, String courseName){
+            // if the command is missing, then default to login
+            if (command == null) {
+                command = "ALUMNI-LIST";
+            }
 
-	}
+            switch (command) {
+                case "ALUMNI-LIST":
+                    break;
 
-	/**
-	 * 
-	 * @param address
-	 * @param eduLevel
-	 * @param phoneNumber
-	 * @param title
-	 * @param courseName
-	 * @param graudateYear
-	 */
-	public boolean validateFields(AlumniAddress address, EduLevel eduLevel, int phoneNumber, alumniTitle title, String courseName, int graudateYear){
-		return false;
-	}
+                case "ALUMNI-PROFILE":
+                    break;
+                case "ALUMNI-INFO":
+                    getAlumniInfo(request, response);
 
+                    break;
+
+            }
+
+        } catch (Exception exc) {
+            throw new ServletException(exc);
+        }
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            String command = request.getParameter("command");
+            // if the command is missing, then default to login
+
+//                switch (command) {
+//              
+//                        break;
+//
+//                }
+        } catch (Exception exc) {
+            throw new ServletException(exc);
+        }
+    }
+
+    public void finalize() throws Throwable {
+
+    }
+
+    /**
+     *
+     * @param alumniEmail
+     */
+    public void getAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
+
+        try {
+            Alumni alumni = alumniDao.getAlumniInfo(request.getParameter("alumniEmail"));
+            RequestDispatcher dispatcher;
+            dispatcher = request.getRequestDispatcher("/alumni/alumniProfile.jsp");
+            request.setAttribute("alumni", alumni);
+            dispatcher.forward(request, response);
+        } catch (ServletException ex) {
+            Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Alumni[] getAlumniList() {
+        return null;
+    }
+
+    /**
+     *
+     * @param alumniEmail
+     */
+    public Alumni getDetailedAlumniInfo(String alumniEmail) {
+        return null;
+    }
+
+    /**
+     *
+     * @param alumniName
+     * @param query
+     */
+    public Alumni[] getFilteredAlumniList(String alumniName, String query) {
+        return null;
+    }
+
+    /**
+     *
+     * @param alumniName
+     */
+    public Alumni[] getSearchedAlumni(String alumniName) {
+        return null;
+    }
+
+  
+
+    /**
+     *
+     * @param address
+     * @param alumniEmail
+     * @param phoneNo
+     * @param eduLevel
+     * @param graduateYear
+     * @param courseName
+     */
+    public void updateAlumniInfo(AlumniAddress address, String alumniEmail, int phoneNo, EduLevel eduLevel, int graduateYear, String courseName) {
+
+    }
+
+    /**
+     *
+     * @param address
+     * @param eduLevel
+     * @param phoneNumber
+     * @param title
+     * @param courseName
+     * @param graudateYear
+     */
+    public boolean validateFields(AlumniAddress address, EduLevel eduLevel, int phoneNumber, alumniTitle title, String courseName, int graudateYear) {
+        return false;
+    }
 
 }
