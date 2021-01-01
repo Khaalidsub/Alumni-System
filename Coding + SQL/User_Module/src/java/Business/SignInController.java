@@ -20,14 +20,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.sql.*;
-import jdbc.JdbcUtility;
+import jdbc.UserDAO;
 import Middleware.SignIn;
 
 
 @WebServlet (name="SignInController" , urlPatterns = {"/SignInController"} )
 public class SignInController extends HttpServlet{
     
-    private JdbcUtility jdbcUtility;
+    private UserDAO jdbcUtility;
     
     private Connection con;
     
@@ -42,7 +42,7 @@ public class SignInController extends HttpServlet{
         String password = "";
         Connection con = null;
 
-        jdbcUtility = new JdbcUtility(driver,
+        jdbcUtility = new UserDAO(driver,
                                       url,
                                       userName,
                                       password);
@@ -72,8 +72,9 @@ public class SignInController extends HttpServlet{
 		signIn.setEmail(Email);
 		signIn.setPassword(password);
 
+                /*
 		try {
-			if (loginDao.validate(loginBean)) {
+			if (UserDAO.validate(signIn)) {
 				//HttpSession session = request.getSession();
 				// session.setAttribute("username",username);
 				response.sendRedirect("loginsuccess.jsp");
@@ -85,6 +86,7 @@ public class SignInController extends HttpServlet{
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+                */
 	}
     
     

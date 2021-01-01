@@ -19,13 +19,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.sql.*;
-import jdbc.JdbcUtility;
+import jdbc.UserDAO;
 
 
 @WebServlet (name="RegisterController" , urlPatterns = {"/RegisterController"} )
 public class RegisterController extends HttpServlet{
     
-    private JdbcUtility jdbcUtility;
+    private UserDAO jdbcUtility;
     
     private Connection con;
     
@@ -40,7 +40,7 @@ public class RegisterController extends HttpServlet{
         String password = "";
         Connection con = null;
 
-        jdbcUtility = new JdbcUtility(driver,
+        jdbcUtility = new UserDAO(driver,
                                       url,
                                       userName,
                                       password);
@@ -67,31 +67,31 @@ public class RegisterController extends HttpServlet{
             throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
         
-        String Address = request.getParameter("Address");
-	 String CurrentJob = request.getParameter("CurrentJob");
-	 String Email = request.getParameter("Email");
-	 int GraduateYear = Integer.parseInt(request.getParameter("GraduateYear"));
-	 String Name = request.getParameter("Name");
-	 String password = request.getParameter("password");
-	 String Phone = request.getParameter("Phone");
+         String Name = request.getParameter("Name");
+         String password = request.getParameter("password");
+         String Address = request.getParameter("Address");
+         String Email = request.getParameter("Email");
+	 String CurrentJob = request.getParameter("CurrentJob");	 
+	 int GraduateYear = Integer.parseInt(request.getParameter("GraduateYear"));	 
+	 String PhoneNo = request.getParameter("PhoneNo");
 	 String PreviousJob = request.getParameter("PreviousJob");
-	 double SalaryCurrent = Double.parseDouble(request.getParameter("SalaryCurrent"));
-	 double SalaryPrevious = Double.parseDouble(request.getParameter("SalaryPrevious"));
+         double SalaryPrevious = Double.parseDouble(request.getParameter("SalaryPrevious"));
+	 double SalaryCurrent = Double.parseDouble(request.getParameter("SalaryCurrent"));	 
          String Status = request.getParameter("Status");
         
          try{
              PreparedStatement preparedStatement = jdbcUtility.getPsRegister();
              
-             preparedStatement.setString(1, Address);
-             preparedStatement.setString(2, CurrentJob);
-             preparedStatement.setString(3,Email);
-             preparedStatement.setInt(4,GraduateYear);
-             preparedStatement.setString(5,Name);
-             preparedStatement.setString(6,password);
-             preparedStatement.setString(7,Phone);
+             preparedStatement.setString(1,Name);           
+             preparedStatement.setString(2,password);
+             preparedStatement.setString(3, Address);
+             preparedStatement.setString(4,Email);
+             preparedStatement.setString(5, CurrentJob);            
+             preparedStatement.setInt(6,GraduateYear);
+             preparedStatement.setString(7,PhoneNo);
              preparedStatement.setString(8,PreviousJob);
-             preparedStatement.setDouble(9,SalaryCurrent);
-             preparedStatement.setDouble(10,SalaryPrevious);
+             preparedStatement.setDouble(9,SalaryPrevious);
+             preparedStatement.setDouble(10,SalaryCurrent);     
              preparedStatement.setString(11,Status);
              
              int insertStatus = 0;
@@ -121,7 +121,7 @@ public class RegisterController extends HttpServlet{
             PrintWriter out = response.getWriter();
             
             out.println("<script>");
-            out.println("    alert('Student insert failed');");
+            out.println("    alert('alumni insert failed sqlexception ');");
             //out.println("    window.location = '/RegisterController'");
             out.println("</script>");            
 	}
@@ -132,7 +132,7 @@ public class RegisterController extends HttpServlet{
             PrintWriter out = response.getWriter();
             
             out.println("<script>");
-            out.println("    alert('Student insert failed');");
+            out.println("    alert('alumni insert failed exception');");
             //out.println("    window.location = '/RegisterController'");
             out.println("</script>");
 	}    

@@ -6,13 +6,13 @@
 package jdbc;
 
 import java.sql.*;
-import Middleware.SignIn;
+//import Middleware.SignIn;
 
 /**
  *
  * @author muaz amir
  */
-public class JdbcUtility {
+public class UserDAO {
     
     Connection con = null;
     String driver;
@@ -23,7 +23,7 @@ public class JdbcUtility {
     PreparedStatement psRegisterController = null;
     PreparedStatement psSignInController = null;
    
-    public JdbcUtility(String driver,
+    public UserDAO(String driver,
                        String url,
                        String userName,
                        String password) {
@@ -84,8 +84,8 @@ public class JdbcUtility {
            
             //create SQL statement
             String insert_users ="INSERT INTO alumni" + 
-                "(Address, CurrentJob,Email, GraduateYear, Name, password, PhoneNo, PreviousJob, "
-                + "SalaryCurrent, SalaryPrevious,Status ) VALUES " +
+                "(Name, password,Address, Email,CurrentJob, GraduateYear,  PhoneNo, PreviousJob, "
+                + "SalaryPrevious , SalaryCurrent, ,Status ) VALUES " +
                 "(?,?,?,?,?,?,?,?,?,?,?) ; ";           
             
             //prepare statement
@@ -100,34 +100,29 @@ public class JdbcUtility {
         return psRegisterController;
     }
     
-    public boolean prepareSQLStatementSignIn(){
+    //LOGIN DAO
+    /*
+    public void prepareSQLStatementLogin(){
         
-        boolean status = false;
-        SignIn signIn = new SignIn();
-        
-        try {Connection connection = DriverManager.getConnection(url, userName, password);
+        try {
            
             //create SQL statement
-            PreparedStatement preparedStatement;
-            preparedStatement = connection.prepareStatement("select * from alumni where email = ? and password = ? ");
-            {
-			preparedStatement.setString(1, signIn.getEmail());
-			preparedStatement.setString(2, signIn.getPassword());
-
-			System.out.println(preparedStatement);
-			ResultSet rs = preparedStatement.executeQuery();
-			status = rs.next();        
-            }
+            //String select_users ="select * from alumni where email = "Email" and password = "password"";        
+            //Sign In Statement
+            //prepare statement
+            psSignInController = con.prepareStatement(select_users);            
         }
         catch (SQLException ex) {
             ex.printStackTrace ();
         }
-        return status; 
     }
     
-  public PreparedStatement getPsLogin(){
+    public PreparedStatement getPsLogin(){
         return psSignInController;
     }
+*/
+    
+    
     
    
     
