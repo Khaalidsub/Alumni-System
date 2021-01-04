@@ -103,7 +103,7 @@ public class RegisterController extends HttpServlet{
              if(insertStatus == 1){
                  out.println("<script>");
                  out.println("  alert('Register Success');");
-                 out.println("    window.location = '/RegisterController'");
+                 out.println("    window.location = '/UserModule/login.html'");
                  out.println("</script>");
          }
          }
@@ -121,18 +121,19 @@ public class RegisterController extends HttpServlet{
             
             out.println("<script>");
             out.println("    alert('alumni insert failed sqlexception ');");
-            out.println("    window.location = '/jdbclib/RegisterController'");
+            out.println("    window.location = '/UserModule/register.html'");
             out.println("</script>");            
 	}
 	catch (java.lang.Exception ex)
 	{
             ex.printStackTrace ();
             
+            
             PrintWriter out = response.getWriter();
             
             out.println("<script>");
             out.println("    alert('alumni insert failed exception');");
-            out.println("    window.location = '/jdbclib/RegisterController'");
+            out.println("    window.location = '/UserModule/register.html'");
             out.println("</script>");
 	}    
          

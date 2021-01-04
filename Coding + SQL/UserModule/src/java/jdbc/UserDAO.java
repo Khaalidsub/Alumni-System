@@ -6,7 +6,7 @@
 package jdbc;
 
 import java.sql.*;
-//import Middleware.SignIn;
+import Middleware.SignIn;
 
 /**
  *
@@ -31,6 +31,10 @@ public class UserDAO {
         this.url = url;
         this.userName = userName;
         this.password = password;
+    }
+
+    public UserDAO() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public  void jdbcConnect(){
@@ -111,26 +115,52 @@ public class UserDAO {
     }
     
     //LOGIN DAO
-    /*
-    public void prepareSQLStatementLogin(){
-        
-        try {
-           
-            //create SQL statement
-            //String select_users ="select * from alumni where email = "Email" and password = "password"";        
-            //Sign In Statement
-            //prepare statement
-            psSignInController = con.prepareStatement(select_users);            
-        }
-        catch (SQLException ex) {
-            ex.printStackTrace ();
-        }
-    }
     
-    public PreparedStatement getPsLogin(){
-        return psSignInController;
+    public void loadDriver(String driver)
+	{
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+	}
+    
+    public Connection getConnection()
+	{
+		Connection con = null;
+		try {
+			con = DriverManager.getConnection(url, userName, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return con;
+	}
+    
+    public boolean validateLogin(SignIn signIn){
+        
+        boolean LoginStatus = false;
+        
+        loadDriver(driver);
+        Connection con = getConnection();
+        
+        String sql = "select * from alumni where Email = ? and password = ?";
+        PreparedStatement ps;
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setString(1, signIn.getEmail());
+            ps.setString(2, signIn.getPassword());
+            ResultSet rs = ps.executeQuery();
+            LoginStatus = rs.next();
+            
+            
+        }catch(SQLException e){
+     		e.printStackTrace();
+        }
+        return LoginStatus;
     }
-*/
+
     
     
     
