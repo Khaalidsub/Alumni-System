@@ -37,7 +37,7 @@ public class AlumniController extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        alumniDao = new AlumniDAO();
+        alumniDao = AlumniDAO.getInstance();
 
     }
 

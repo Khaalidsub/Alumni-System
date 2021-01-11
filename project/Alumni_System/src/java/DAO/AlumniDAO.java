@@ -27,12 +27,31 @@ import java.util.logging.Logger;
  * @author SleepingLotus
  */
 public class AlumniDAO {
+    private static AlumniDAO instance;
 
     private String url = "jdbc:mysql://localhost:3306/test?useTimezone=true&serverTimezone=UTC";
     private String use = "root";
     private String password = "";
 
     private Alumni alumni;
+    
+    private AlumniDAO() {
+        try {
+            Thread.sleep(1000);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+   
+    }
+    
+    public static AlumniDAO getInstance(){
+        if(instance == null)
+        {
+            instance = new AlumniDAO();
+        }
+        return instance;
+    }
 
     /**
      *
