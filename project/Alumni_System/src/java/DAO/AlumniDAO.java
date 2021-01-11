@@ -109,7 +109,7 @@ public class AlumniDAO {
 
             //process resultset
             while (rs.next()) {
-                Alumni foundAlumni = new Alumni(rs.getString("alumniCitizenship"), rs.getString("alumniEmail"), rs.getString("alumniName"), rs.getString("batchName"), EduLevel.valueOf(rs.getString("eduLevel")), Gender.valueOf(rs.getString("gender")), rs.getInt("graduateYear"), alumniTitle.valueOf(rs.getString("alumniTitle")));
+                      Alumni foundAlumni = new Alumni(rs.getString("Alumnicitizenship"), rs.getString("Alumniemail"), rs.getString("Alumniname"), rs.getString("Batchname"), EduLevel.valueOf(rs.getString("Edulevel")), Gender.valueOf(rs.getString("Gender")), rs.getInt("Graduateyear"), alumniTitle.valueOf(rs.getString("Title")));
 
                 //list of all managers
                 alumnis.add(foundAlumni);

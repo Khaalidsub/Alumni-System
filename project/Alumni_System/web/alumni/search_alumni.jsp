@@ -1,9 +1,10 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link href="./view_profile.css" rel="stylesheet" />
+   <link href="./css/view_profile.css" rel="stylesheet" />
   </head>
   <body>
     <div class="search">
@@ -79,7 +80,10 @@
           />
         </div>
       </div>
-      <div class="overlap-group4">
+ 
+
+      <c:forEach var="tempAlumni" items="${ALUMNI_LIST}">
+                <div class="overlap-group-JUxu8l">
         <div class="overlap-group">
           <img
             class="vector-6QVaxv"
@@ -87,11 +91,11 @@
           />
         </div>
         <div class="auto-flex">
-          <div class="steven-rogers border-class-1 comfortaa-bold-black-22px">Steven Rogers</div>
+          <div class="steven-rogers border-class-1 comfortaa-bold-black-22px">${tempAlumni.alumniName}</div>
           <div class="auto-flex-mbTXrJ">
             <div class="utm-alumni border-class-1 comfortaa-bold-black-20px">UTM Alumni</div>
             <div class="graduation-year-20 border-class-1 comfortaa-regular-normal-black-16px">
-              Graduation year : 20**
+              Graduation year : ${tempAlumni.graduateYear}
             </div>
           </div>
         </div>
@@ -101,84 +105,10 @@
             class="rectangle-25"
             src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fede5adc6293ae5ee39b91f/img/rectangle-25@2x.svg"
           />
-          <div class="view border-class-1 comfortaa-bold-black-25px">VIEW</div>
+          <a href="AlumniController?command=ALUMNI-INFO&alumniEmail=${tempAlumni.alumniEmail}">  <div class="view border-class-1 comfortaa-bold-black-25px">VIEW</div></a>
         </div>
       </div>
-      <div class="overlap-group-JUxu8l">
-        <div class="overlap-group">
-          <img
-            class="vector-6QVaxv"
-            src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-4@2x.svg"
-          />
-        </div>
-        <div class="auto-flex">
-          <div class="steven-rogers border-class-1 comfortaa-bold-black-22px">Hermione Granger</div>
-          <div class="auto-flex-mbTXrJ">
-            <div class="utm-alumni border-class-1 comfortaa-bold-black-20px">UTM Alumni</div>
-            <div class="graduation-year-20 border-class-1 comfortaa-regular-normal-black-16px">
-              Graduation year : 20**
-            </div>
-          </div>
-        </div>
-        <div class="overlap-group-92K7kn">
-          <div class="button smart-layers-pointers"></div>
-          <img
-            class="rectangle-25"
-            src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fede5adc6293ae5ee39b91f/img/rectangle-25@2x.svg"
-          />
-          <div class="view border-class-1 comfortaa-bold-black-25px">VIEW</div>
-        </div>
-      </div>
-      <div class="overlap-group-JUxu8l">
-        <div class="overlap-group">
-          <img
-            class="vector-6QVaxv"
-            src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-4@2x.svg"
-          />
-        </div>
-        <div class="auto-flex">
-          <div class="steven-rogers border-class-1 comfortaa-bold-black-22px">Tadashi Hamada</div>
-          <div class="auto-flex-mbTXrJ">
-            <div class="utm-alumni border-class-1 comfortaa-bold-black-20px">UTM Alumni</div>
-            <div class="graduation-year-20 border-class-1 comfortaa-regular-normal-black-16px">
-              Graduation year : 20**
-            </div>
-          </div>
-        </div>
-        <div class="overlap-group-92K7kn">
-          <div class="button smart-layers-pointers"></div>
-          <img
-            class="rectangle-25"
-            src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fede5adc6293ae5ee39b91f/img/rectangle-25@2x.svg"
-          />
-          <div class="view border-class-1 comfortaa-bold-black-25px">VIEW</div>
-        </div>
-      </div>
-      <div class="overlap-group-JUxu8l">
-        <div class="overlap-group">
-          <img
-            class="vector-6QVaxv"
-            src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-4@2x.svg"
-          />
-        </div>
-        <div class="auto-flex">
-          <div class="steven-rogers border-class-1 comfortaa-bold-black-22px">Steven Rogers</div>
-          <div class="auto-flex-mbTXrJ">
-            <div class="utm-alumni border-class-1 comfortaa-bold-black-20px">UTM Alumni</div>
-            <div class="graduation-year-20 border-class-1 comfortaa-regular-normal-black-16px">
-              Graduation year : 20**
-            </div>
-          </div>
-        </div>
-        <div class="overlap-group-92K7kn">
-          <div class="button smart-layers-pointers"></div>
-          <img
-            class="rectangle-25"
-            src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fede5adc6293ae5ee39b91f/img/rectangle-25@2x.svg"
-          />
-          <div class="view border-class-1 comfortaa-bold-black-25px">VIEW</div>
-        </div>
-      </div>
+      </c:forEach> 
     </div>
   </div>
 </div>

@@ -104,8 +104,12 @@ public class AlumniController extends HttpServlet {
     public void getAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
 
         try {
-//            Alumni alumni = alumniDao.getAlumniInfo(request.getParameter("alumniEmail"));
-                     Alumni alumni = alumniDao.getAlumniInfo("6naseer.far@wditu.com");
+            Alumni alumni;
+            System.out.println(request.getParameter("alumniEmail"));
+            if(request.getParameter("alumniEmail")!=null){
+                alumni = alumniDao.getAlumniInfo(request.getParameter("alumniEmail"));
+            }else{
+            alumni = alumniDao.getAlumniInfo("6naseer.far@wditu.com");}
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/alumni/alumniProfile.jsp");
             request.setAttribute("alumni", alumni);
