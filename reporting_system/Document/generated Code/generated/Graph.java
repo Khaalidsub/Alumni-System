@@ -1,16 +1,12 @@
 package Middleware;
 
-import Application.GraphUI;
 
 /**
  * @author User
  * @version 1.0
- * @created 30-Dec-2020 12:58:45 PM
+ * @created 30-Dec-2020 11:16:48 PM
  */
 public class Graph {
-
-	public LogActivity m_LogActivity;
-	public GraphUI m_GraphUI;
 
 	public Graph(){
 
@@ -41,16 +37,6 @@ public class Graph {
 
 	}
 
-	/**
-	 * 
-	 * @param alumniName
-	 * @param alumniPassword
-	 * @param alumniID
-	 */
-	public Void generateAlumniInvolvementGraph(String alumniName, String alumniPassword, String alumniID){
-
-	}
-
 	public Void displayLatestGraph(){
 
 	}
@@ -63,19 +49,23 @@ public class Graph {
 
 	}
 
-	public Void generateInvolvementGraph(){
-
-	}
-
-	public Void generateEventGraph(){
-
-	}
-
 	public Void request Local/InternationalAlumniData(){
 
 	}
 
+	public void updateAlumniGraph(){
+
+	}
+
 	public Void requestQualifiedArchitectData(){
+
+	}
+
+	public void updateEventGraph(){
+
+	}
+
+	public void requestGraph(){
 
 	}
 

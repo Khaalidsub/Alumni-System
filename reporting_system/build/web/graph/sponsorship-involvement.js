@@ -14,7 +14,7 @@ var ctx = document.getElementById("sponsor");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Mar 11", "Mar asd2", "Mar 3", "Mar 4sad", "Mar ssadad5", "Mar 6", "MasadSr 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"],
+    labels: ["1970-1990", "1991-2000","2001-2010", "2011-2020"],
     datasets: [{
       label: "Sessions",
       lineTension: 0.3,
@@ -27,7 +27,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBackgroundColor: "rgba(2,117,216,1)",
       pointHitRadius: 50,
       pointBorderWidth: 2,
-      data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451],
+      data: [150,100,500,300],
     }],
   },
   options: {
@@ -46,7 +46,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 40000,
+          max: 1000,
           maxTicksLimit: 5
         },
         gridLines: {

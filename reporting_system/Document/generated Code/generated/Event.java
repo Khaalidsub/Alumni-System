@@ -4,14 +4,12 @@ package Middleware;
 /**
  * @author Afiq
  * @version 1.0
- * @created 30-Dec-2020 12:59:36 PM
+ * @created 30-Dec-2020 11:16:38 PM
  */
 public class Event {
 
 	private String eventName;
 	private int eventAlumniParticipant;
-	public LogActivity m_LogActivity;
-	public Graph m_Graph;
 
 	public Event(){
 
@@ -30,6 +28,10 @@ public class Event {
 	}
 
 	public Void displayLatestEventInvolvement(){
+
+	}
+
+	public void requestEvent(){
 
 	}
 
