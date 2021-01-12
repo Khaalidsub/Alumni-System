@@ -3,9 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule/web/home.jsp</file>
-            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule/src/java/Business/SignInController.java</file>
-            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule/web/home.html</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/web/home.jsp</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/web/login.jsp</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/Business/RegisterController.java</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/web/login.html</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/Business/AdminController.java</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/Middleware/SignIn.java</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/Business/AlumniController.java</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/Business/LogoutController.java</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/Business/SignInController.java</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/web/home.html</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/Middleware/User.java</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/UserModule2/src/java/jdbc/UserDAO.java</file>
         </group>
     </open-files>
 </project-private>

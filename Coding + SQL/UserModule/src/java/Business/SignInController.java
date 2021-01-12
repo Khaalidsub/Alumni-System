@@ -12,18 +12,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 import Middleware.SignIn;
 import java.sql.Connection;
+import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 import jdbc.UserDAO;
 /**
  *
  * @author Muaz Amir
  */
-@WebServlet(name = "SignInController", urlPatterns = {"/SignInController"})
+@WebServlet("/SignInController")
 public class SignInController extends HttpServlet {
+    
+   
 
     
       //  private Database m_Database;
@@ -72,33 +77,35 @@ public class SignInController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession(true);
           
         
         String email = request.getParameter("Email");
         String password = request.getParameter("password");
         
-        //session
-        session.setAttribute("email", email);
+       
+        
+        
+        try{
+           SignIn signIn = jdbcUtility.checkLogin(email, password);
+           String destPage = "login.jsp";
+           
+           if(signIn != null){
+                      HttpSession session = request.getSession();
+                      session.setAttribute("signIn", signIn);
+                      destPage ="home.jsp";
+           }
+           else{
+               String message = "Invalid email or password";
+               request.setAttribute("message", message);
+           }
+           
+            RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
+            dispatcher.forward(request, response);
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new ServletException(ex);
 
-        SignIn signIn = new SignIn();
-        signIn.setEmail(email);
-        signIn.setPassword(password);
-        
-        
-        if(jdbcUtility.validateLogin(signIn))
-        {
-            response.sendRedirect("home.jsp");
-        }
-        else{
-            PrintWriter out = response.getWriter();
-            
-            out.println("<script>");
-            out.println("    alert('Incorrect email or password');");
-            out.println("    window.location = '/UserModule/login.html'");
-            out.println("</script>");
-        }
-      
     }
 
+}
+    
 }

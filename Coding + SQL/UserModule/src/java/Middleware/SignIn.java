@@ -6,9 +6,22 @@ package Middleware;
  * @created 30-Dec-2020 10:06:50 PM
  */
 public class SignIn {
+
     
-      private String email;
+      
+       private String email;
 	private String password;
+        private String Name;
+        
+        
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+  
 
     public String getEmail() {
         return email;

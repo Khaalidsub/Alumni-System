@@ -7,7 +7,7 @@
  */
 public class AdminUI {
 
-	private Register m_Register;
+	//private Register m_Register;
 	private DeleteUser m_DeleteUser;
 
 	public AdminUI(){
@@ -30,9 +30,7 @@ public class AdminUI {
 		return m_DeleteUser;
 	}
 
-	public Register getRegister(){
-		return m_Register;
-	}
+	
 
 	public void notFound(){
 
@@ -66,9 +64,7 @@ public class AdminUI {
 	 * 
 	 * @param newVal
 	 */
-	public void setRegister(Register newVal){
-		m_Register = newVal;
-	}
+	
 
 	public void userDeleted(){
 

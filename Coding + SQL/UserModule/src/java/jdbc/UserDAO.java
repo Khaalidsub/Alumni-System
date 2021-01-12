@@ -37,6 +37,8 @@ public class UserDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    
+    
     public  void jdbcConnect(){
         
         try {
@@ -138,27 +140,37 @@ public class UserDAO {
 		return con;
 	}
     
-    public boolean validateLogin(SignIn signIn){
+    
+    public SignIn checkLogin(String email, String password)throws SQLException,
+            ClassNotFoundException {
         
-        boolean LoginStatus = false;
-        
+         
         loadDriver(driver);
         Connection con = getConnection();
         
         String sql = "select * from alumni where Email = ? and password = ?";
         PreparedStatement ps;
-        try{
+        
+
             ps = con.prepareStatement(sql);
-            ps.setString(1, signIn.getEmail());
-            ps.setString(2, signIn.getPassword());
-            ResultSet rs = ps.executeQuery();
-            LoginStatus = rs.next();
+            ps.setString(1, email);
+            ps.setString(2, password);
             
+            ResultSet result=ps.executeQuery();
             
-        }catch(SQLException e){
-     		e.printStackTrace();
-        }
-        return LoginStatus;
+            SignIn signIn = null;
+            
+            if(result.next()){
+                signIn = new SignIn();
+                signIn.setName(result.getString("Name"));
+                signIn.setEmail(email);
+            }
+            
+            con.close();
+            
+            return signIn;
+            
+        
     }
 
     

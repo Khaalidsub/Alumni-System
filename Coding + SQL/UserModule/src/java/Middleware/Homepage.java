@@ -7,8 +7,8 @@
  */
 public class Homepage {
 
-	private SignIn m_SignIn;
-	private Register m_Register;
+	//private SignIn m_SignIn;
+	//private Register m_Register;
 
 	public Homepage(){
 
@@ -18,13 +18,7 @@ public class Homepage {
 
 	}
 
-	public Register getRegister(){
-		return m_Register;
-	}
-
-	public SignIn getSignIn(){
-		return m_SignIn;
-	}
+	
 
 	public void onClickReg(){
 
@@ -34,20 +28,5 @@ public class Homepage {
 
 	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setRegister(Register newVal){
-		m_Register = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setSignIn(SignIn newVal){
-		m_SignIn = newVal;
-	}
 
 }

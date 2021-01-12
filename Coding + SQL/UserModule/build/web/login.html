@@ -1,40 +1,81 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>Login Page</title>
-     
-    </head>
-    
-    <body>
-        <div align ="center">
-        <h1>Alumni Login </h1>
-            <form  method="post" action="SignInController">
-                 <table style="width: 40%">
-            
-                    <tr>
-                     <td>Email</td>
-                     <td><input type="text" name="Email" /></td>
-                    </tr> 
-                    
-                    <tr>
-                      <td>Password</td>
-                      <td><input type="password" name="password" /></td>
-                    </tr>   
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       <title>Alumni Login System</title>
+
+      <!-- Bootstrap core CSS -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+
+      <style>
+         .bd-placeholder-img {
+           font-size: 1.125rem;
+           text-anchor: middle;
+           -webkit-user-select: none;
+           -moz-user-select: none;
+           -ms-user-select: none;
+           user-select: none;
+         }
+
+         @media (min-width: 768px) {
+           .bd-placeholder-img-lg {
+             font-size: 3.5rem;
+           }
+         }
+      </style>
+
+      <!-- Custom styles for this template -->
+      <link href="css/navbar-top-fixed.css" rel="stylesheet">
+   </head>
+
+   <body>
+
+      
+
+      <main role="main" class="container">
+
+       
+
+         <div class="row">
+             <div class="col"></div>
+                 
+            <div class="col-6">
+                
+               <div class="card shadow">
+                  <div class="card-body">
+                     <h2>Login</h2>
+                     <br>
+                     <form action="SignInController" method="post">
+                     <div class="form-floating sm-3">
+                         <label for="floatingInput">Email address</label>
+                         <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="Email">           
+                    </div>
                      
-                 </table>
-                <input type="submit" name="Submit" value="Submit" />
-            </form>
+                    <div class="form-floating">
+                        <label for="floatingPassword">Password</label>
+                      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">  
+                    </div>    
+                         <br>
+                         <button type="submit" class="btn btn-primary">Login</button> Dont have an account yet? 
+                           <a href="register.html"><button type="button" class="btn btn-danger" >Sign Up</button></a>
+                     </form>
+                  </div>
+               </div>
+               
+            </div>
+              <div class="col"></div>
+         </div>
+
+      </main>
+
+      <footer class="container">
+         <br />
         
-        <p>Not yet register?</p>
-        <a href="register.html">Click here to register</a>
-            
-       </div>    
-    </body>
-    
-    
+      </footer>
+      
+      <script src="js/jquery-3.5.1.min.js"></script>
+      <script src="js/popper.min.js"></script>      
+      <script src="js/bootstrap.min.js"></script>
+   </body>   
 </html>
