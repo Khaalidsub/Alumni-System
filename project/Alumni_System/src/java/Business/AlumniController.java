@@ -6,10 +6,7 @@
 package Business;
 
 import DAO.AlumniDAO;
-import Middleware.Alumni;
-import Middleware.AlumniAddress;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,11 +17,11 @@ import Middleware.Alumni;
 import Middleware.AlumniAddress;
 import Middleware.EduLevel;
 import Middleware.alumniTitle;
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.String;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -66,6 +63,12 @@ public class AlumniController extends HttpServlet {
                 case "ALUMNI-INFO":
                     getAlumniInfo(request, response);
 
+                case "INFO-DETAIL":
+                    getDetailedAlumniInfo(request, response);
+                    
+               /* case "EDIT-PROFILE":
+                    updateAlumniInfo(request, response);
+                   */ 
                     break;
 
             }
@@ -135,8 +138,25 @@ public class AlumniController extends HttpServlet {
      *
      * @param alumniEmail
      */
-    public Alumni getDetailedAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
-        return null;
+    public void getDetailedAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            Alumni alumni;
+            AlumniAddress alumniAddress;
+            System.out.println(request.getParameter("alumniAddressID"));
+            if(request.getParameter("alumniAddressID")!=null){
+                alumni = alumniDao.getDetailedAlumniInfo(request.getParameter("alumniAddressID"));
+                alumniAddress = alumniDao.getAlumniAddressInfo(request.getParameter("alumniAddressID"));
+            }else{
+            alumni = alumniDao.getDetailedAlumniInfo("Aid003");
+            alumniAddress = alumniDao.getAlumniAddressInfo("Aid003");}
+            RequestDispatcher dispatcher;
+            dispatcher = request.getRequestDispatcher("/alumni/alumniInfo.jsp");
+            request.setAttribute("alumni", alumni);
+            request.setAttribute("alumniAddress", alumniAddress);
+            dispatcher.forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     /**
@@ -167,9 +187,12 @@ public class AlumniController extends HttpServlet {
      * @param graduateYear
      * @param courseName
      */
-    public void updateAlumniInfo(AlumniAddress address, String alumniEmail, int phoneNo, EduLevel eduLevel, int graduateYear, String courseName) {
-
-    }
+  /*  public void updateAlumniInfo(HttpServletRequest request, HttpServletResponse response) throw Exception{
+        
+        Alumni alumni = new Alumni();
+        
+        
+    } */
 
     /**
      *

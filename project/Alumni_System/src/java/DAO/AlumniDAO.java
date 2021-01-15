@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 public class AlumniDAO {
     private static AlumniDAO instance;
 
-    private String url = "jdbc:mysql://localhost:3306/test?useTimezone=true&serverTimezone=UTC";
+    private String url = "jdbc:mysql://localhost:3306/alumni?useTimezone=true&serverTimezone=UTC";
     private String use = "root";
     private String password = "";
     
@@ -103,6 +103,8 @@ public class AlumniDAO {
 
     }
 
+    
+    
     public List<Alumni> getAlumniList() {
         List<Alumni> alumnis = new ArrayList<>();
 
@@ -147,10 +149,95 @@ public class AlumniDAO {
      *
      * @param alumniEmail
      */
-    public Alumni getDetailedAlumniInfo(String alumniEmail) {
+   public Alumni getDetailedAlumniInfo(String alumniAddressID){
+    System.out.println("hiii" + alumniAddressID);
+        Connection myConn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            // get a connection
+            Class.forName("com.mysql.jdbc.Driver");
+
+            myConn = DriverManager.getConnection(url, use, password);
+            // create sql statement
+            String sql = "SELECT * FROM alumni WHERE AlumniaddressID=? ";
+                    
+
+            //"select * from alumni where Alumniemail=? "
+            // create prepared statement
+            stmt = myConn.createStatement();
+
+            ps = myConn.prepareStatement(sql);
+            // set params
+            ps.setString(1, alumniAddressID);
+            
+            //execute query
+            rs = ps.executeQuery();
+
+            //check if user is found
+            if (rs.next()) {
+
+                Alumni foundAlumniInfo = new Alumni(rs.getString("Alumnicitizenship"), rs.getString("Alumniemail"), rs.getString("Alumnimatric"), rs.getString("Alumniname"), rs.getString("Batchname"), rs.getString("Coursename"), EduLevel.valueOf(rs.getString("Edulevel")), Gender.valueOf(rs.getString("Gender")), rs.getInt("Graduateyear"), rs.getInt("Phoneno"), alumniTitle.valueOf(rs.getString("Title")), rs.getString("AlumniaddressID"));
+                return foundAlumniInfo;
+                //if user is a customer
+
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // close JDBC objects
+            close(myConn, stmt, rs);
+        }
+
         return null;
     }
 
+   public AlumniAddress getAlumniAddressInfo(String alumniAddressID){
+    System.out.println("hiii" + alumniAddressID);
+        Connection myConn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            // get a connection
+            Class.forName("com.mysql.jdbc.Driver");
+
+            myConn = DriverManager.getConnection(url, use, password);
+            // create sql statement
+            String sql = "SELECT * FROM alumniaddress WHERE AlumniaddressID=? ";
+                    
+
+            //"select * from alumni where Alumniemail=? "
+            // create prepared statement
+            stmt = myConn.createStatement();
+
+            ps = myConn.prepareStatement(sql);
+            // set params
+            ps.setString(1, alumniAddressID);
+            
+            //execute query
+            rs = ps.executeQuery();
+
+            //check if user is found
+            if (rs.next()) {
+
+                AlumniAddress foundAlumniAddressInfo = new AlumniAddress(rs.getString("City"), rs.getString("Country"), rs.getString("Houseno"), rs.getString("Postalcode"), rs.getString("Region"), rs.getString("State"),  rs.getString("Streetname"));
+                return foundAlumniAddressInfo;
+                //if user is a customer
+
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // close JDBC objects
+            close(myConn, stmt, rs);
+        }
+
+        return null;
+    }
     /**
      *
      * @param alumniName
@@ -243,9 +330,12 @@ public class AlumniDAO {
     /**
      *
      * @param alumni
+     * @return 
      */
-    public void updateAlumniDetails(Alumni alumni) {
-
+    public Alumni updateAlumniDetails(Alumni alumni) {
+     
+     return null;
+       
     }
 
     //close connection

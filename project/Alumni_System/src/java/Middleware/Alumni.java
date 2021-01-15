@@ -8,19 +8,33 @@ package Middleware;
  */
 public class Alumni {
 
-
+    /**
+     * @return the alumniAddressID
+     */
+    public String getAlumniAddressID() {
+        return alumniAddressID;
+    }
+    
+    /**
+     * @param alumniAddressID the alumniAddressID to set
+     */
+   public void setAlumniAddressID(String alumniAddressID) {
+        this.alumniAddressID = alumniAddressID;
+    }
+      
 	private String alumniCitizenship;
 	private String alumniEmail;
 	private String alumniMatric;
 	private String alumniName;
 	private String batchName;
 	private String courseName;
+        private String alumniAddressID;
 	private EduLevel eduLevel;
 	private Gender gender;
 	private int graduateYear;
 	private int phoneNo;
 	private alumniTitle title;
-	private AlumniAddress m_AlumniAddress;
+	
 
     public Alumni(String alumniCitizenship, String alumniEmail, String alumniName, String batchName, EduLevel eduLevel, Gender gender, int graduateYear,alumniTitle title) {
     
@@ -38,7 +52,7 @@ public class Alumni {
    
     }
 
-    public Alumni(String alumniCitizenship, String alumniEmail, String alumniMatric, String alumniName, String batchName, String courseName, EduLevel eduLevel, Gender gender, int graduateYear, int phoneNo, alumniTitle title, AlumniAddress m_AlumniAddress) {
+    public Alumni(String alumniCitizenship, String alumniEmail, String alumniMatric, String alumniName, String batchName, String courseName, EduLevel eduLevel, Gender gender, int graduateYear, int phoneNo, alumniTitle title, String alumniAddressID) {
         this.alumniCitizenship = alumniCitizenship;
         this.alumniEmail = alumniEmail;
         this.alumniMatric = alumniMatric;
@@ -50,7 +64,7 @@ public class Alumni {
         this.graduateYear = graduateYear;
         this.phoneNo = phoneNo;
         this.title = title;
-        this.m_AlumniAddress = m_AlumniAddress;
+        this.alumniAddressID = alumniAddressID;
     }
     
     
@@ -215,19 +229,7 @@ public class Alumni {
         this.title = title;
     }
 
-    /**
-     * @return the m_AlumniAddress
-     */
-    public AlumniAddress getM_AlumniAddress() {
-        return m_AlumniAddress;
-    }
-
-    /**
-     * @param m_AlumniAddress the m_AlumniAddress to set
-     */
-    public void setM_AlumniAddress(AlumniAddress m_AlumniAddress) {
-        this.m_AlumniAddress = m_AlumniAddress;
-    }
+    
         
         
 
