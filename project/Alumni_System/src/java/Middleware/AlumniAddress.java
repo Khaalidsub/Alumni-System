@@ -124,9 +124,21 @@ public class AlumniAddress {
             this.state=state;
             this.streetName=streetName;
 	}
+        public AlumniAddress(){
+            
+        }
 
     @Override
 	public void finalize() throws Throwable {
 
 	}
+
+    @Override
+    public String toString() {
+        return "AlumniAddress{" + "city=" + city + ", country=" + country + ", houseNo=" + houseNo + ", postalCode=" + postalCode + ", region=" + region + ", state=" + state + ", streetName=" + streetName + '}';
+    }
+
+  
+        
+        
 }//end AlumniAddress

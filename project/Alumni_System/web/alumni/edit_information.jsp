@@ -44,7 +44,8 @@
   <div class="overlap-group-C61RwL">
       <form action="AlumniController" method="post">
           <input type="hidden" name="command" value="UPDATE-ALUMNI" />
-     
+       <input type="hidden" name="email" value="${alumni.alumniEmail}" />
+      
     <div class="auto-flex2-4eduM0">
       <div class="basic-information border-class-1 comfortaa-bold-gray-20px">Basic Information</div>
       <img
@@ -58,8 +59,8 @@
         <div class="citizenship border-class-1 comfortaa-bold-black-20px">Citizenship:</div>
         <div class="gender border-class-1 comfortaa-bold-black-20px">Gender:</div>
         <div class="postage-information border-class-1 comfortaa-bold-gray-20px">Postage Information</div>
-        <div class="address border-class-1 comfortaa-bold-black-20px">StreetName</div>
-         <div class="address border-class-1 comfortaa-bold-black-20px">HouseNo:</div>
+        <div class="postal-code border-class-1 comfortaa-bold-black-20px">StreetName</div>
+         <div class="postal-code border-class-1 comfortaa-bold-black-20px">HouseNo:</div>
         <div class="postal-code border-class-1 comfortaa-bold-black-20px">Postal Code:</div>
         <div class="state border-class-1 comfortaa-bold-black-20px">State:</div>
       </div>

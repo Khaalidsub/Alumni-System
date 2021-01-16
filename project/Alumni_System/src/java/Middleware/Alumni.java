@@ -29,6 +29,7 @@ public class Alumni {
 	private String batchName;
 	private String courseName;
         private String alumniAddressID;
+         private AlumniAddress alumniAddress;
 	private EduLevel eduLevel;
 	private Gender gender;
 	private int graduateYear;
@@ -74,6 +75,13 @@ public class Alumni {
 	public Alumni(){
 
 	}
+        
+        public void setAlumniAddress(AlumniAddress alumniAddress){
+            this.alumniAddress = alumniAddress;
+        }
+        public AlumniAddress getAlumniAddress(){
+            return alumniAddress;
+        }
 
     /**
      * @return the alumniCitizenship
