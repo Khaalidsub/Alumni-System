@@ -37,7 +37,7 @@
                         class="vector-a4vd0b"
                         src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector@2x.svg"
                         />
-                    <a href="AlumniController?command=INFO-DETAIL"><div class="view-information border-class-1 comfortaa-bold-haiti-20px">View information</div></a>
+                    <a href="AlumniController?command=INFO-DETAIL&alumniEmail=${alumni.alumniEmail}"><div class="view-information border-class-1 comfortaa-bold-haiti-20px">View information</div></a>
                     <img
                         class="vector-HIQFF0"
                         src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-1@2x.svg"

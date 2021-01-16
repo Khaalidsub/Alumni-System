@@ -149,8 +149,8 @@ public class AlumniDAO {
      *
      * @param alumniEmail
      */
-   public Alumni getDetailedAlumniInfo(String alumniAddressID){
-    System.out.println("hiii" + alumniAddressID);
+   public Alumni getDetailedAlumniInfo(String alumniEmail){
+    System.out.println("hiii" + alumniEmail);
         Connection myConn = null;
         Statement stmt = null;
         PreparedStatement ps = null;
@@ -161,7 +161,7 @@ public class AlumniDAO {
 
             myConn = DriverManager.getConnection(url, use, password);
             // create sql statement
-            String sql = "SELECT * FROM alumni WHERE AlumniaddressID=? ";
+            String sql = "SELECT * FROM alumni WHERE Alumniemail=? ";
                     
 
             //"select * from alumni where Alumniemail=? "
@@ -170,7 +170,7 @@ public class AlumniDAO {
 
             ps = myConn.prepareStatement(sql);
             // set params
-            ps.setString(1, alumniAddressID);
+            ps.setString(1, alumniEmail);
             
             //execute query
             rs = ps.executeQuery();

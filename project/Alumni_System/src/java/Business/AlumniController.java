@@ -161,13 +161,14 @@ public class AlumniController extends HttpServlet {
         try {
             Alumni alumni;
             AlumniAddress alumniAddress;
-            System.out.println(request.getParameter("alumniAddressID"));
-            if(request.getParameter("alumniAddressID")!=null){
-                alumni = alumniDao.getDetailedAlumniInfo(request.getParameter("alumniAddressID"));
-                alumniAddress = alumniDao.getAlumniAddressInfo(request.getParameter("alumniAddressID"));
+            System.out.println(request.getParameter("alumniEmail"));
+            if(request.getParameter("alumniEmail")!=null){
+                alumni = alumniDao.getDetailedAlumniInfo(request.getParameter("alumniEmail"));
+                alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
             }else{
-            alumni = alumniDao.getDetailedAlumniInfo("Aid003");
-            alumniAddress = alumniDao.getAlumniAddressInfo("Aid003");}
+            alumni = alumniDao.getDetailedAlumniInfo("6naseer.far@wditu.com");
+            alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
+            }
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/alumni/alumniInfo.jsp");
             request.setAttribute("alumni", alumni);
