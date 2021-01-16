@@ -44,15 +44,7 @@
         src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5ff3fa5c86d30561b87039d0/img/vector-2@2x.svg"
       />
     </div>
-    <div class="group-17">
-      <div class="group-14">
-        <img
-          class="vector-Cr3UtD"
-          src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5ff3fa5c86d30561b87039d0/img/vector-1@2x.svg"
-        />
-        <a href="AlumniController?command=EDIT-PROFILE"><div class="edit border-class-1 comfortaa-bold-black-20px">Edit</div></a>
-      </div>
-    </div>
+    
   </div>
   <div class="overlap-group-C61RwL">
     <div class="auto-flex6-4eduM0">

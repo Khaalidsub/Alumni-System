@@ -66,9 +66,9 @@ public class AlumniController extends HttpServlet {
                 case "INFO-DETAIL":
                     getDetailedAlumniInfo(request, response);
                     
-               /* case "EDIT-PROFILE":
-                    updateAlumniInfo(request, response);
-                   */ 
+               case "EDIT-PROFILE":
+                    updateAlumniInfoPage(request, response);
+                   
                     break;
 
             }
@@ -104,6 +104,7 @@ public class AlumniController extends HttpServlet {
      *
      * @param alumniEmail
      */
+
     public void getAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
 
         try {
@@ -121,13 +122,31 @@ public class AlumniController extends HttpServlet {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
-
     public void getAlumniList(HttpServletRequest request, HttpServletResponse response) {
          try {
             List<Alumni> alumnis = alumniDao.getAlumniList();
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/alumni/search_alumni.jsp");
             request.setAttribute("ALUMNI_LIST", alumnis);
+            dispatcher.forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    
+        public void updateAlumniInfoPage(HttpServletRequest request, HttpServletResponse response) {
+
+        try {
+            Alumni alumni;
+            System.out.println(request.getParameter("alumniEmail"));
+            if(request.getParameter("alumniEmail")!=null){
+                alumni = alumniDao.getAlumniInfo(request.getParameter("alumniEmail"));
+            }else{
+            alumni = alumniDao.getAlumniInfo("6naseer.far@wditu.com");}
+            RequestDispatcher dispatcher;
+            dispatcher = request.getRequestDispatcher("/alumni/edit_information.jsp");
+            request.setAttribute("alumni", alumni);
             dispatcher.forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
