@@ -42,7 +42,7 @@
                         class="vector-HIQFF0"
                         src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-1@2x.svg"
                         />
-                   <div class="edit-information border-class-1 comfortaa-bold-black-20px">Edit information</div>
+                   <a  href="AlumniController?command=EDIT-PROFILE&alumniEmail=${alumni.alumniEmail}" class="edit-information border-class-1 comfortaa-bold-black-20px">Edit information</a>
                     <img
                         class="vector-g5WeGn"
                         src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-2@2x.svg"
