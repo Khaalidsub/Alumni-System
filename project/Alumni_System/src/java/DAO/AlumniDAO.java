@@ -253,7 +253,7 @@ public class AlumniDAO {
             myConn = DriverManager.getConnection(url, use, password);
             // create sql statement
             //check if email exists
-            String sql = "SELECT * FROM `alumni` WHERE  " + query + "=" + alumniName;
+            String sql = "SELECT * FROM alumni WHERE  " + query + "=" + alumniName;
 
             // create prepared statement
             stmt = myConn.createStatement();
@@ -297,12 +297,14 @@ public class AlumniDAO {
             myConn = DriverManager.getConnection(url, use, password);
             // create sql statement
             //check if email exists
-            String sql = "SELECT * FROM `alumni` WHERE  alumniName=" + alumniName;
+            String sql = "SELECT * FROM `alumni` WHERE Alumniname like '%alumniName%'";
 
             // create prepared statement
             stmt = myConn.createStatement();
 
             ps = myConn.prepareStatement(sql);
+            // set params
+            ps.setString(1, alumniName);
 
             //execute query
             rs = ps.executeQuery();

@@ -17,7 +17,7 @@ import Middleware.Alumni;
 import Middleware.AlumniAddress;
 import Middleware.EduLevel;
 import Middleware.alumniTitle;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.String;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -93,6 +93,9 @@ public class AlumniController extends HttpServlet {
             switch (command) {
                 case "UPDATE-ALUMNI":
                     updateAlumniInfo(request, response);
+                    
+                case "SEARCH-ALUMNI":
+                    getSearchedAlumni(request, response);
                     break;
 
             }
@@ -248,8 +251,20 @@ public class AlumniController extends HttpServlet {
      *
      * @param alumniName
      */
-    public Alumni[] getSearchedAlumni(String alumniName) {
-        return null;
+    public void getSearchedAlumni(HttpServletRequest request, HttpServletResponse response) {
+      List<Alumni> alumnis = new ArrayList<>();
+      
+        
+       try {
+           alumnis = alumniDao.getSearchedAlumni(request.getParameter("alumniName"));
+            RequestDispatcher dispatcher;
+            dispatcher = request.getRequestDispatcher("/alumni/search_byname.jsp");
+            request.setAttribute("ALUMNI_SEARCHLIST", alumnis);
+            dispatcher.forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
     }
 
     /**
