@@ -38,7 +38,7 @@
     />
     <a href="index.html"><div class="home border-class-1 comfortaa-bold-white-25px">Home</div></a>
     <a href="AlumniController?command=MY-PROFILE"><div class="my-profile border-class-1 comfortaa-bold-white-25px">My Profile</div></a>
-    <a href="AlumniController?command=ALUMNI-SEARCH"><div class="search border-class-1 comfortaa-bold-white-25px">Search</div></a>
+    <a href="AlumniController?command=ALUMNI-SEARCH"><div class="search border-class-1 comfortaa-bold-white-25px">Connect</div></a>
   </div>
   <div class="auto-flex-C61RwL">
     <div class="overlap-group1-fhuxN3">

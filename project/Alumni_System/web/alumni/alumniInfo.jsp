@@ -32,7 +32,7 @@
             <a class="nav-link" href="index.html">Home</a>
         </li>
         <li class="nav-item"><a class="nav-link" href="AlumniController?command=MY-PROFILE">My Profile</a></li>
-        <li class="nav-item"><a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Search</a></li>
+        <li class="nav-item"><a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Connect</a></li>
         <li class="nav-item"><a class="nav-link" href="AlumniController?command=EDIT-PROFILE">Edit</a></li>
     </ul>
         
