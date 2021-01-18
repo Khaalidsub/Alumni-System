@@ -43,7 +43,8 @@
       
    
 
-               <form action="AlumniController" method="post"><input type="hidden" name="command" value="UPDATE-ALUMNI" />
+               <form action="AlumniController" method="post">
+                   <input type="hidden" name="command" value="UPDATE-ALUMNI" />
        <input type="hidden" name="email" value="${alumni.alumniEmail}" />
       
       <h3>Basic Information</h3>
@@ -70,7 +71,7 @@
          <input type="text" name="houseNo" value="${alumniAddress.houseNo}" />
          <br /><br />
         <label for="postalCode" class="mr-sm-2">Postal Code:</label>
-        <input type="number" name="postalCode" value=" ${alumniAddress.postalCode}" />
+        <input type="number" name="postalCode" value="${alumniAddress.postalCode}" />
         <br /><br />
         <label for="state" class="mr-sm-2">State:</label>
         <input type="text" name="state" value="${alumniAddress.state}" /> 
@@ -123,7 +124,7 @@
      
      <br />
       <label for="phone" class="mr-sm-2">Phone No: </label>
-      <input type="phone" name="phone" value="${alumni.phoneNo}" />
+      <input type="number" name="phone" value="${alumni.phoneNo}" />
  <br /><br />
       <button type="submit" class="btn btn-secondary">Save</button>
      

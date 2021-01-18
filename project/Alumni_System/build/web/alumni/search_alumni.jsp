@@ -37,6 +37,7 @@
                 <input type="hidden" name="command" value="SEARCH-ALUMNI" />
                 <input type="text" name="alumniName" placeholder="Search for alumni" class="search-for-alumni border-class-1 comfortaa-regular-normal-chicago-20px">
                 <button type="submit"><i class="fa fa-search"></i></button>
+                
         </div>   
   </nav>
   <div class="container" style="margin-top:30px">
@@ -83,6 +84,11 @@
              <a class="dropdown-item" href="#">Batch</a>
    
           </div>
+      
+        </div>
+             <div>
+             <input type="text" name="alumniName" placeholder="Search for alumni" class="">
+                <button type="submit"><i class="fa fa-search"></i></button>
         </div>
   </div>
 

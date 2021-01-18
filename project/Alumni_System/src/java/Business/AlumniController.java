@@ -124,7 +124,7 @@ public class AlumniController extends HttpServlet {
         String phone = request.getParameter("phone");
         
        
-       
+               try {
         Alumni alumni =alumniDao.getDetailedAlumniInfo(request.getParameter("email"));
        
         AlumniAddress alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
@@ -143,11 +143,11 @@ public class AlumniController extends HttpServlet {
         
         alumni.setAlumniAddress(alumniAddress);
           System.out.println("Business.AlumniController.updateAlumniInfo() : " + alumniAddress);
-        try {
+
             
             alumniDao.updateAlumniDetails(alumni);
             request.setAttribute("alumniEmail", alumni.getAlumniEmail());
-            getDetailedAlumniInfo(request,response);
+            getAlumniInfo(request,response);
         } catch (Exception e) {
             e.printStackTrace();
         }
