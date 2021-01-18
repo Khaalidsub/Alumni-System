@@ -29,7 +29,7 @@
             <a class="nav-link" href="index.html">Home</a>
         </li>
         <li class="nav-item"><a class="nav-link" href="AlumniController?command=MY-PROFILE">My Profile</a></li>
-        <li class="nav-item"><a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Search</a></li>
+        <li class="nav-item"><a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Connect</a></li>
              
     </ul>
       <div class="search-container">
@@ -42,6 +42,23 @@
   </nav>
   <div class="container" style="margin-top:30px">
   <div class="row">  
+            <div class="col-sm-2">
+        <div class="filter-text">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Filter Search</button>
+      
+          <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="#">Course</a>
+              <a class="dropdown-item" href="#">Graduation Year</a>
+             <a class="dropdown-item" href="#">Batch</a>
+   
+          </div>
+      
+        </div>
+<!--             <div>
+             <input type="text" name="alumniName" placeholder="Search for alumni" class="">
+                <button type="submit"><i class="fa fa-search"></i></button>
+        </div>-->
+  </div>
     <div class="col-sm-8">
             
 <table class="table">
@@ -74,23 +91,7 @@
       </table>
             </div>
                 
-      <div class="col-sm-4">
-        <div class="filter-text">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Filter Search</button>
-      
-          <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="#">Course</a>
-              <a class="dropdown-item" href="#">Graduation Year</a>
-             <a class="dropdown-item" href="#">Batch</a>
-   
-          </div>
-      
-        </div>
-             <div>
-             <input type="text" name="alumniName" placeholder="Search for alumni" class="">
-                <button type="submit"><i class="fa fa-search"></i></button>
-        </div>
-  </div>
+
 
   </body>
 </html>

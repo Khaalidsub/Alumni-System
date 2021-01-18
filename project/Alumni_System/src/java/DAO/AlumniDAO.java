@@ -297,24 +297,26 @@ public class AlumniDAO {
             myConn = DriverManager.getConnection(url, use, password);
             // create sql statement
             //check if email exists
-            String sql = "SELECT * FROM `alumni` WHERE Alumniname like '%alumniName%'";
+            String sql = "SELECT * FROM `alumni` WHERE Alumniname LIKE '%"+alumniName+"%'";
 
             // create prepared statement
             stmt = myConn.createStatement();
 
-            ps = myConn.prepareStatement(sql);
-            // set params
-            ps.setString(1, alumniName);
+          
+  
 
             //execute query
-            rs = ps.executeQuery();
+            rs = myConn.prepareStatement(sql).executeQuery();
+         
 
             //process resultset
             while (rs.next()) {
-                Alumni foundAlumni = new Alumni(rs.getString("alumniCitizenship"), rs.getString("alumniEmail"), rs.getString("alumniName"), rs.getString("batchName"), EduLevel.valueOf(rs.getString("eduLevel")), Gender.valueOf(rs.getString("gender")), rs.getInt("graduateYear"), alumniTitle.valueOf(rs.getString("alumniTitle")));
+              
 
+  Alumni foundAlumniInfo = new Alumni(rs.getString("Alumnicitizenship"), rs.getString("Alumniemail"), rs.getString("Alumnimatric"), rs.getString("Alumniname"), rs.getString("Batchname"), rs.getString("Coursename"), EduLevel.valueOf(rs.getString("Edulevel")), Gender.valueOf(rs.getString("Gender")), rs.getInt("Graduateyear"), rs.getInt("Phoneno"), alumniTitle.valueOf(rs.getString("Title")), rs.getString("AlumniaddressID"));
                 //list of all managers
-                alumnis.add(foundAlumni);
+               
+                alumnis.add(foundAlumniInfo);
             }
         } catch (Exception ex) {
             Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);

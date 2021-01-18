@@ -182,6 +182,7 @@ public class AlumniController extends HttpServlet {
             List<Alumni> alumnis = alumniDao.getAlumniList();
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/alumni/search_alumni.jsp");
+            System.out.println(alumnis.get(0).toString());
             request.setAttribute("ALUMNI_LIST", alumnis);
             dispatcher.forward(request, response);
         } catch (Exception ex) {
@@ -258,8 +259,8 @@ public class AlumniController extends HttpServlet {
        try {
            alumnis = alumniDao.getSearchedAlumni(request.getParameter("alumniName"));
             RequestDispatcher dispatcher;
-            dispatcher = request.getRequestDispatcher("/alumni/search_byname.jsp");
-            request.setAttribute("ALUMNI_SEARCHLIST", alumnis);
+            dispatcher = request.getRequestDispatcher("/alumni/search_alumni.jsp");
+            request.setAttribute("ALUMNI_LIST", alumnis);
             dispatcher.forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
