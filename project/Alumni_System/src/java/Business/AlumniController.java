@@ -93,11 +93,13 @@ public class AlumniController extends HttpServlet {
             switch (command) {
                 case "UPDATE-ALUMNI":
                     updateAlumniInfo(request, response);
-                    
+
                 case "SEARCH-ALUMNI":
                     getSearchedAlumni(request, response);
                     break;
-
+                case "FILTER-ALUMNI":
+                    getFilteredAlumniList(request, response);
+                    break;
             }
 
         } catch (Exception exc) {
@@ -110,8 +112,7 @@ public class AlumniController extends HttpServlet {
     }
 
     public void updateAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
-        
-        
+
         String streetName = request.getParameter("streetName");
         String houseNo = request.getParameter("houseNo");
         String postalCode = request.getParameter("postalCode");
@@ -122,36 +123,34 @@ public class AlumniController extends HttpServlet {
         String title = request.getParameter("title");
         String graduateYear = request.getParameter("graduateYear");
         String phone = request.getParameter("phone");
-        
-       
-               try {
-        Alumni alumni =alumniDao.getDetailedAlumniInfo(request.getParameter("email"));
-       
-        AlumniAddress alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
-        alumni.setPhoneNo(Integer.valueOf(phone));
-        alumni.setTitle(alumniTitle.valueOf(title));
-        alumni.setGraduateYear(Integer.valueOf(graduateYear));
-        alumni.setAlumniEmail(request.getParameter("email"));
-        
-        alumniAddress.setCity(city);
-        alumniAddress.setCountry(country);
-        alumniAddress.setHouseNo(houseNo);
-        alumniAddress.setRegion(region);
-        alumniAddress.setState(state);
-        alumniAddress.setPostalCode(postalCode);
-        alumniAddress.setStreetName(streetName);
-        
-        alumni.setAlumniAddress(alumniAddress);
-          System.out.println("Business.AlumniController.updateAlumniInfo() : " + alumniAddress);
 
-            
+        try {
+            Alumni alumni = alumniDao.getDetailedAlumniInfo(request.getParameter("email"));
+
+            AlumniAddress alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
+            alumni.setPhoneNo(Integer.valueOf(phone));
+            alumni.setTitle(alumniTitle.valueOf(title));
+            alumni.setGraduateYear(Integer.valueOf(graduateYear));
+            alumni.setAlumniEmail(request.getParameter("email"));
+
+            alumniAddress.setCity(city);
+            alumniAddress.setCountry(country);
+            alumniAddress.setHouseNo(houseNo);
+            alumniAddress.setRegion(region);
+            alumniAddress.setState(state);
+            alumniAddress.setPostalCode(postalCode);
+            alumniAddress.setStreetName(streetName);
+
+            alumni.setAlumniAddress(alumniAddress);
+            System.out.println("Business.AlumniController.updateAlumniInfo() : " + alumniAddress);
+
             alumniDao.updateAlumniDetails(alumni);
             request.setAttribute("alumniEmail", alumni.getAlumniEmail());
-            getAlumniInfo(request,response);
+            getAlumniInfo(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 
     /**
@@ -244,8 +243,21 @@ public class AlumniController extends HttpServlet {
      * @param alumniName
      * @param query
      */
-    public Alumni[] getFilteredAlumniList(String alumniName, String query) {
-        return null;
+    public void getFilteredAlumniList(HttpServletRequest request, HttpServletResponse response) {
+        List<Alumni> alumnis = new ArrayList<>();
+        try {
+            String alumniName = request.getParameter("alumniName");
+            String query = request.getParameter("filter");
+            String queryValue = request.getParameter(query+"_input");
+      
+            alumnis = alumniDao.getFilteredAlumni(alumniName,query,queryValue);
+            RequestDispatcher dispatcher;
+            dispatcher = request.getRequestDispatcher("/alumni/search_alumni.jsp");
+            request.setAttribute("ALUMNI_LIST", alumnis);
+            dispatcher.forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -253,19 +265,18 @@ public class AlumniController extends HttpServlet {
      * @param alumniName
      */
     public void getSearchedAlumni(HttpServletRequest request, HttpServletResponse response) {
-      List<Alumni> alumnis = new ArrayList<>();
-      
-        
-       try {
-           alumnis = alumniDao.getSearchedAlumni(request.getParameter("alumniName"));
+        List<Alumni> alumnis = new ArrayList<>();
+
+        try {
+            alumnis = alumniDao.getSearchedAlumni(request.getParameter("alumniName"));
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/alumni/search_alumni.jsp");
             request.setAttribute("ALUMNI_LIST", alumnis);
             dispatcher.forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
+        }
+
     }
 
     /**
