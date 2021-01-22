@@ -90,8 +90,8 @@ public class UserDAO {
         try {
            
             //create SQL statement
-            String insert_users ="INSERT INTO alumni(Name, password,Address, Email,CurrentJob, GraduateYear,  PhoneNo, PreviousJob, SalaryPrevious , SalaryCurrent ,Status ) " +
-                     " VALUES  (?,?,?,?,?,?,?,?,?,?,?) ";           
+              String insert_users ="INSERT INTO alumniUser(Name, password,Address, Email,CurrentJob, qualification,GraduateYear,  PhoneNo, PreviousJob, SalaryPrevious , SalaryCurrent ,Status ) " +
+                     " VALUES  (?,?,?,?,?,?,?,?,?,?,?,?) ";            
             
             //prepare statement
             psRegisterController = con.prepareStatement(insert_users);            
@@ -149,7 +149,7 @@ public class UserDAO {
         loadDriver(driver);
         Connection con = getConnection();
         
-        String sql = "select * from alumni where Email = ? and password = ?";
+        String sql = "select * from alumniUser where Email = ? and password = ?";
         PreparedStatement ps;
         
 

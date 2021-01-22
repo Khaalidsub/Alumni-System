@@ -49,46 +49,84 @@
                      <form action="RegisterController" method="post">
                          
                          
-                     <div class="form-floating">
+                        <div class="form-floating">
                          <label for="floatingInput">Name</label>
                          <input type="text" class="form-control" id="floatingInput" placeholder="Full Name" name="Name" required>           
-                    </div>
+                        </div>
                      
-                     <div class="form-floating">
+                        <div class="form-floating">
                         <label for="floatingPassword">Password</label>
                         <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>  
-                    </div>
+                        </div>
                          
-                        <div class="form-floating">
+                         <div class="form-floating">
                          <label for="floatingInput">Address</label>
                          <input type="text" class="form-control" id="floatingInput" placeholder="Address" name="Address">           
-                        </div>
+                         </div>
                     
-                      <div class="form-floating">
+                         <div class="form-floating">
                          <label for="floatingInput">Email address</label>
                          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="Email" required>           
-                      </div>
+                         </div>
+                         
+                         <div class="form-floating">
+                         <label for="floatingInput">Phone No.</label>
+                         <input type="text" class="form-control" id="floatingInput" placeholder="ex : 012345679" name="PhoneNo" required>           
+                         </div>
+                         
+                         <div class="form-floating">
+                         <label for="floatingInput">Previous Job</label>
+                         <input type="text" class="form-control" id="floatingInput" placeholder="ex : Janitor" name="PreviousJob">           
+                         </div>
                          
                          <div class="form-floating">
                          <label for="floatingInput">Current Job</label>
                          <input type="text" class="form-control" id="floatingInput" placeholder="Engineer" name="CurrentJob">           
-                        </div>
+                         </div>
                          
-                          <div class="form-floating">
-                         <label for="floatingInput">Graduate Year</label>
-                         <input type="text" class="form-control" id="floatingInput" placeholder="ex : 2015" name="GraduateYear">           
-                        </div>
-                         
-                          <div class="form-floating">
-                         <label for="floatingInput">Phone No.</label>
-                         <input type="text" class="form-control" id="floatingInput" placeholder="ex : 012345679" name="PhoneNo" required>           
-                        </div>
-                         
-                          <div class="form-floating">
-                         <label for="floatingInput">Previous Job</label>
-                         <input type="text" class="form-control" id="floatingInput" placeholder="ex : Janitor" name="PreviousJob">           
-                        </div>
-                         
+                         <br>
+                         <label for="floatingInput">Qualification</label><br>
+                         <div class="custom-control custom-radio custom-control-inline">
+                             <input type="radio" id="customRadioInline1" name="qualification" class="custom-control-input" value="Qualified">
+                            <label class="custom-control-label" for="customRadioInline1">Qualified</label>
+                          </div>
+                          <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline2" name="qualification" class="custom-control-input" value="Unqualified">
+                            <label class="custom-control-label" for="customRadioInline2">Unqualified</label>
+                          </div>
+                         <br><br>
+                            
+                         <label for="floatingInput">Graduate </label><br>
+                             <div class="form-row align-items-center">
+                                <div class="col-auto my-1">
+                                  <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Graduate Year</label>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="GraduateYear">
+                                    <option selected>Choose Graduate Year</option>
+                                    <option value="2000">2000</option>
+                                    <option value="2001">2001</option>
+                                    <option value="2002">2002</option>
+                                    <option value="2003">2003</option>
+                                    <option value="2004">2004</option>
+                                    <option value="2005">2005</option>
+                                    <option value="2006">2006</option>
+                                    <option value="2007">2007</option>
+                                    <option value="2008">2008</option>
+                                    <option value="2009">2009</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                  </select>
+                                </div>
+                             </div> 
+
                           <div class="form-floating">
                          <label for="floatingInput">Previous Salary</label>
                          <input type="text" class="form-control" id="floatingInput" placeholder="RMxxxx" name="SalaryPrevious">           
@@ -102,7 +140,7 @@
                           <div class="form-floating">
                          <label for="floatingInput">Status</label>
                          <input type="text" class="form-control" id="floatingInput" placeholder="Status" name="Status">           
-                        </div>
+                         </div>
 
                          <br>
                      <button type="submit" class="btn btn-primary">Register</button>   Already has an account? 
