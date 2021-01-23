@@ -22,7 +22,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="adminHome.jsp">Homepage</a>
                         <a class="dropdown-item" href="insertLogActivity.html">Edit Activity Log</a>
-                        <a class="dropdown-item" href="logActivity.jsp">View Activity Log</a>
+                        <a class="dropdown-item" href="logActivityAdmin.jsp">View Activity Log</a>
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>

@@ -25,7 +25,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="adminHome.jsp">Homepage</a>
                         <a class="dropdown-item" href="insertLogActivity.html">Edit Activity Log</a>
-                        <a class="dropdown-item" href="logActivity.jsp">View Activity Log</a>
+                        <a class="dropdown-item" href="logActivityAdmin.jsp">View Activity Log</a>
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>
@@ -43,16 +43,16 @@
                             </a>
                            
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="chartsAdmin.html">
+                            <a class="nav-link" href="chartsAdmin.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
                             </a>
-                            <a class="nav-link" href="sponsor.jsp">
+                            <a class="nav-link" href="sponsorAdmin.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Sponsor
                             </a>
                             
-                            <a class="nav-link" href="event.jsp">
+                            <a class="nav-link" href="eventAdmin.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Event
                             </a>

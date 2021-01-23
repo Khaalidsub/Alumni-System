@@ -24,9 +24,8 @@
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="home.jsp">Homepage</a>
-                        <a class="dropdown-item" href="logActivity.jsp">View Activity Log</a>
+                        <a class="dropdown-item" href="logActivityAlumni.jsp">View Activity Log</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="LogoutController">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -43,16 +42,16 @@
                             </a>
                            
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="chartsAdmin.html">
+                            <a class="nav-link" href="chartsAlumni.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
                             </a>
-                            <a class="nav-link" href="sponsor.jsp">
+                            <a class="nav-link" href="sponsorAlumni.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Sponsor
                             </a>
                             
-                            <a class="nav-link" href="event.jsp">
+                            <a class="nav-link" href="eventAlumni.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Event
                             </a>
