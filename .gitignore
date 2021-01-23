@@ -4,3 +4,5 @@
 /sample_project/Flying_Wheel/nbproject/private/
 /integratedsystem/build/
 /integratedsystem/nbproject/private/
+project/Alumni_System/build/web/WEB-INF/lib/javax.servlet.jsp.jstl-1.2.1.jar
+*.jar
