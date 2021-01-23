@@ -306,5 +306,78 @@ public class AlumniController extends HttpServlet {
     public boolean validateFields(AlumniAddress address, EduLevel eduLevel, int phoneNumber, alumniTitle title, String courseName, int graudateYear) {
         return false;
     }
+    
+     public void validateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+         
+         String command = request.getParameter("command");
+        String userType = request.getSession("userType");
+       int register = request.getSession("login");
+         
+         if (userType == "UTM_Alumni"){
+             
+             if (login == 1){
+               
+                if (register == 1){
+                try {
 
+            
+            if (command == null) {
+                command = "ALUMNI-INFO";
+            }
+
+            switch (command) {
+                case "UPDATE-ALUMNI":
+                    updateAlumniInfo(request, response);
+
+                case "SEARCH-ALUMNI":
+                    getSearchedAlumni(request, response);
+                    break;
+                case "FILTER-ALUMNI":
+                    getFilteredAlumniList(request, response);
+                    
+                case "INFO-DETAIL":
+                    getDetailedAlumniInfo(request, response);
+                    
+                case "ALUMNI-INFO":
+                    getAlumniInfo(request, response);
+                    
+                    break;
+            }
+
+        } catch (Exception exc) {
+            throw new ServletException(exc);
+        }
+        }
+                 else {
+                    try {
+            if (command == null) {
+                command = "ALUMNI-INFO";
+            }
+
+            switch (command) {
+                
+
+                case "SEARCH-ALUMNI":
+                    getSearchedAlumni(request, response);
+                    break;
+                case "FILTER-ALUMNI":
+                    getFilteredAlumniList(request, response);
+                    
+                case "INFO-DETAIL":
+                    getDetailedAlumniInfo(request, response);
+                    
+                case "ALUMNI-INFO":
+                    getAlumniInfo(request, response);
+                    
+                    break;
+            }
+
+        } catch (Exception exc) {
+            throw new ServletException(exc);
+        }
+            }   
+            } else {   getDetailedAlumniInfo(request, response);}  
+             
+        } else { getDetailedAlumniInfo(request, response);}     
+    }
 }
