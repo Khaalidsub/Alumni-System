@@ -1,3 +1,12 @@
+<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
+<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<c:set value="2014-02-26 18:27:24" var="dateString" />
+<fmt:parseDate value="${dateString}" var="dateObject"
+                pattern="yyyy-MM-dd HH:mm:ss" />
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,7 +21,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
-
+        <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
+         url = "jdbc:mysql://localhost/sdadatabase"
+         user = "root"  password = ""/>
+         <sql:query dataSource = "${snapshot}" var = "result">
+            SELECT * from logactivity;
+         </sql:query>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="reportHomeAdmin.jsp">Report</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
@@ -23,10 +37,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="reportHomeUser.jsp">Homepage</a>
                         <a class="dropdown-item" href="logActivity.jsp">View Activity Log</a>
+                        <a class="dropdown-item" href="insertLogActivity.html">Edit Activity Log</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="LogoutController">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -37,7 +50,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="reportHomeUser.jsp">
+                            <a class="nav-link" href="reportHomeAdmin.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -47,21 +60,20 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
                             </a>
-                            <a class="nav-link" href="sponsor.jsp">
+                             <a class="nav-link" href="sponsorAdmin.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Sponsor
                             </a>
                             
-                            <a class="nav-link" href="event.jsp">
+                            <a class="nav-link" href="eventAdmin.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Event
                             </a>
-                            
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        ${signIn.getName()}
+                        User
                     </div>
                 </nav>
             </div>
@@ -73,39 +85,56 @@
                     
                         <h1 class="mt-4">Sekolah Senibina Skudai</h1>
                         <ol class="breadcrumb mb-4">
-                            <li>Dashboard </li>
+                            <li>Log Activity </li>
                         </ol>
+                                       
+                        <div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100 ver1 m-b-110">
+					<div class="table100-head">
+						<table>
+							<thead>
+                                                            
+								<tr class="row100 head">
+									<th class="cell100 column1">Name</th>
+									<th class="cell100 column2">Event </th>
+									<th class="cell100 column3">Sponsorship </th>
+									<th class="cell100 column4">Qualification</th>
+									<th class="cell100 column5">Nationality</th>
+                                                                        <th class="cell100 column5">Date Edited</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+
+					<div class="table100-body js-pscroll">
+                                                                                              
+                                                                                    
+                                                                                
+						<table>
+							<tbody>
+								
+                                                                                <c:forEach var = "row" items = "${result.rows}">
+                                                                               <tr class="row100 body">
+                                                                               <td class="cell100 column1"><c:out value="${row.name}" /></td>
+                                                                                <td class="cell100 column2"><c:out value="${row.eventName}" /></td>
+                                                                                <td class="cell100 column3"><c:out value="${row.sponsorship}" /></td>
+                                                                                <td class="cell100 column4"><c:out value="${row.qualified}" /></td>
+                                                                                <td class="cell100 column5"><c:out value="${row.nationality}" /></td>
+                                                                                <td class="cell100 column5"><br><c:out value="${row.addeddate}" /></td>
+                                                                                </tr>
+                                                                                </c:forEach>
+									
+								
+
+							</tbody>
+						</table>
+					</div>
+				</div>
                         
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                Alumni Location
-                            </div>
-                            <br><div class="utm"><a href="https://padlet.com/aimrashid/rwlawel3t6k2z4z9"><img src="pic/map.png" width="600" height="200"></a> </div> <br>
-                            <div class="card-footer small text-muted">Viewed on <?php echo date("H:i:sa") . " " .date("Y/m/d") ?></div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area mr-1"></i>
-                                        Qualified Architect
-                                    </div>
-                                    <div class="card-body"><canvas id="myPieChart" width="100" height="40"></canvas></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar mr-1"></i>
-                                        Alumni Event Involvement
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
-                      
+                        
+                        
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -126,11 +155,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="graph/qualified-architect.js"></script>
-        <script src="graph/local-international.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
     </body>
 </html>
-

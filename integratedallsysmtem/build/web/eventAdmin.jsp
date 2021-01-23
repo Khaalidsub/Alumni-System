@@ -43,7 +43,7 @@
             
             
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="reportingHomeAdmin.html">Report</a>
+            <a class="navbar-brand" href="reportHomeAdmin.jsp">Report</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             </form>
@@ -52,11 +52,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="logActivity.jsp">View Activity Log</a>
+                        <a class="dropdown-item" href="logActivityAdmin.jsp">View Activity Log</a>
                         <a class="dropdown-item" href="insertLogActivity.html">Edit Activity Log</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -67,22 +65,22 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="reportingHomeAdmin.html">
+                            <a class="nav-link" href="reportHomeAdmin.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
                            
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
+                            <a class="nav-link" href="chartsAdmin.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
                             </a>
-                             <a class="nav-link" href="sponsor.jsp">
+                             <a class="nav-link" href="sponsorAdmin.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Sponsor
                             </a>
                             
-                            <a class="nav-link" href="event.jsp">
+                            <a class="nav-link" href="eventAdmin.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Event
                             </a>
@@ -90,7 +88,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        User
+                        ${admin.getAdminName()}
                     </div>
                 </nav>
             </div>

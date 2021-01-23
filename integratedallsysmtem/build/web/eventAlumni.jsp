@@ -2,10 +2,9 @@
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<c:set value="2014-02-26 18:27:24" var="dateString" />
-<fmt:parseDate value="${dateString}" var="dateObject"
-                pattern="yyyy-MM-dd HH:mm:ss" />
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,10 +24,26 @@
          url = "jdbc:mysql://localhost/sdadatabase"
          user = "root"  password = ""/>
          <sql:query dataSource = "${snapshot}" var = "result">
-            SELECT * from logactivity;
+            SELECT * from event;
          </sql:query>
+                  <sql:query dataSource = "${snapshot}" var = "res">
+            SELECT COUNT(eventName) AS Cabaran FROM logactivity
+            WHERE eventName='Cabaran Mahasiswa Norma Baharu';
+</sql:query>
+                 
+                  <sql:query dataSource = "${snapshot}" var = "resa">
+            SELECT COUNT(eventName) AS Virtual FROM logactivity
+            WHERE eventName='Virtual Streaming Workshop';
+</sql:query>
+                 
+                  <sql:query dataSource = "${snapshot}" var = "resu">
+            SELECT COUNT(eventName) AS COMPFAIR21 FROM logactivity
+            WHERE eventName='COMPFAIR21';
+</sql:query>
+            
+            
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="reportingHomeAdmin.html">Report</a>
+            <a class="navbar-brand" href="reportHomeAlumni.jsp">Report</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             </form>
@@ -37,11 +52,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="logActivity.jsp">View Activity Log</a>
-                        <a class="dropdown-item" href="insertLogActivity.html">Edit Activity Log</a>
+                        <a class="dropdown-item" href="logActivityAlumni.jsp">View Activity Log</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -52,22 +64,22 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="reportingHomeAdmin.html">
+                            <a class="nav-link" href="reportHomeAlumni.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
                            
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
+                            <a class="nav-link" href="chartsAlumni.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
                             </a>
-                             <a class="nav-link" href="sponsor.jsp">
+                             <a class="nav-link" href="sponsorAlumni.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Sponsor
                             </a>
                             
-                            <a class="nav-link" href="event.jsp">
+                            <a class="nav-link" href="eventAlumni.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Event
                             </a>
@@ -75,7 +87,7 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        User
+                        ${signIn.getName()}
                     </div>
                 </nav>
             </div>
@@ -87,7 +99,7 @@
                     
                         <h1 class="mt-4">Sekolah Senibina Skudai</h1>
                         <ol class="breadcrumb mb-4">
-                            <li>Log Activity </li>
+                            <li>Event </li>
                         </ol>
                                        
                         <div class="limiter">
@@ -100,14 +112,16 @@
                                                             
 								<tr class="row100 head">
 									<th class="cell100 column1">Name</th>
-									<th class="cell100 column2">Event </th>
-									<th class="cell100 column3">Sponsorship </th>
-									<th class="cell100 column4">Qualification</th>
-									<th class="cell100 column5">Nationality</th>
-                                                                        <th class="cell100 column5">Date Edited</th>
+									<th class="cell100 column2">Date </th>
+									<th class="cell100 column3">Time </th>
+									<th class="cell100 column4">Venue</th>
+									<th class="cell100 column5">Fee</th>
+                                                                        <th class="cell100 column7">Link</th>
 								</tr>
 							</thead>
 						</table>
+                                            
+                                            
 					</div>
 
 					<div class="table100-body js-pscroll">
@@ -119,12 +133,12 @@
 								
                                                                                 <c:forEach var = "row" items = "${result.rows}">
                                                                                <tr class="row100 body">
-                                                                               <td class="cell100 column1"><c:out value="${row.name}" /></td>
-                                                                                <td class="cell100 column2"><c:out value="${row.eventName}" /></td>
-                                                                                <td class="cell100 column3"><c:out value="${row.sponsorship}" /></td>
-                                                                                <td class="cell100 column4"><c:out value="${row.qualified}" /></td>
-                                                                                <td class="cell100 column5"><c:out value="${row.nationality}" /></td>
-                                                                                <td class="cell100 column5"><br><c:out value="${row.addeddate}" /></td>
+                                                                               <td class="cell100 column1"><c:out value="${row.eventName}" /></td>
+                                                                                <td class="cell100 column2"><c:out value="${row.date}" /></td>
+                                                                                <td class="cell100 column3"><c:out value="${row.time}" /></td>
+                                                                                <td class="cell100 column4"><c:out value="${row.venue}" /></td>
+                                                                                <td class="cell100 column5"><c:out value="${row.fee}" /></td>
+                                                                                <td class="cell100 column5"><input type="button" onclick="location.href='https://google.com';" value="Here" /></td>
                                                                                 </tr>
                                                                                 </c:forEach>
 									
@@ -134,8 +148,65 @@
 						</table>
 					</div>
 				</div>
-                        
-                        
+                            <br>
+                            <br>
+                            <br>
+                        			<div class="wrap-table100">
+				<div class="table100 ver1 m-b-110">
+					<div class="table100-head">
+						<table>
+							<thead>
+                                                            
+								<tr class="row100 head">
+									<th class="cell100 column1">Name</th>
+									<th class="cell100 column2">Number of Participant </th>
+								</tr>
+							</thead>
+						</table>
+                                            
+                                            
+					</div>
+
+					<div class="table100-body js-pscroll">
+                                                                                              
+                                                                                    
+                                                                                
+						<table>
+							<tbody>
+								
+                                                                                
+                                                                               <tr class="row100 body">
+                                                                                   
+                                                                               <td class="cell100 column1"><c:out value="Cabaran Mahasiswa Norma Baharu" /></td>
+                                                                               <c:forEach var = "te" items = "${res.rows}">
+                                                                                <td class="cell100 column2"><c:out value="${te.Cabaran}" /></td>
+                                                                                 </c:forEach>
+                                                                              
+                                                                                </tr>
+                                                                                <tr class="row100 body">
+                                                                                   
+                                                                               <td class="cell100 column1"><c:out value="Virtual Streaming Workshop" /></td>
+                                                                               <c:forEach var = "ta" items = "${resu.rows}">
+                                                                                <td class="cell100 column2"><c:out value="${ta.Virtual}" /></td>
+                                                                                 </c:forEach>
+                                                                              
+                                                                                </tr>
+                                                                                 <tr class="row100 body">
+                                                                                   
+                                                                               <td class="cell100 column1"><c:out value="COMPFAIR21" /></td>
+                                                                               <c:forEach var = "tu" items = "${resa.rows}">
+                                                                                <td class="cell100 column2"><c:out value="${tu.COMPFAIR21}" /></td>
+                                                                                 </c:forEach>
+                                                                              
+                                                                                </tr>
+                                                                                
+									
+								
+
+							</tbody>
+						</table>
+					</div>
+				</div>
                         
                     </div>
                 </main>
