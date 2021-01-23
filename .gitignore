@@ -14,3 +14,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+integratedallsysmtem/nbproject/project.xml
+*.properties
+*.xml
+*.class
