@@ -21,7 +21,7 @@
          url = "jdbc:mysql://localhost/sdadatabase"
          user = "root"  password = ""/>
          <sql:query dataSource = "${snapshot}" var = "result">
-            SELECT * from logactivity;
+            SELECT * from funding;
          </sql:query>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="reportHomeAlumni.html">Report</a>
@@ -93,11 +93,9 @@
 							<thead>
                                                             
 								<tr class="row100 head">
-									<th class="cell100 column1">Name</th>
-									<th class="cell100 column2">Event </th>
-									<th class="cell100 column3">Sponsorship </th>
-									<th class="cell100 column4">Qualification</th>
-									<th class="cell100 column5">Nationality</th>
+									<th class="cell100 column1"> ID</th>
+									<th class="cell100 column2">Sponsor Name </th>
+									<th class="cell100 column3">Sponsor Date </th>
 								</tr>
 							</thead>
 						</table>
@@ -112,11 +110,9 @@
 								
                                                                                 <c:forEach var = "row" items = "${result.rows}">
                                                                                <tr class="row100 body">
-                                                                               <td class="cell100 column1"><c:out value="${row.name}" /></td>
-                                                                                <td class="cell100 column2"><c:out value="${row.eventName}" /></td>
-                                                                                <td class="cell100 column3"><c:out value="${row.sponsorship}" /></td>
-                                                                                <td class="cell100 column4"><c:out value="${row.qualified}" /></td>
-                                                                                <td class="cell100 column5"><c:out value="${row.nationality}" /></td>
+                                                                               <td class="cell100 column1"><c:out value="${row.fundingID}" /></td>
+                                                                                <td class="cell100 column2"><c:out value="${row.fundingName}" /></td>
+                                                                                <td class="cell100 column3"><c:out value="${row.date}" /></td>
                                                                                 </tr>
                                                                                 </c:forEach>
 									
