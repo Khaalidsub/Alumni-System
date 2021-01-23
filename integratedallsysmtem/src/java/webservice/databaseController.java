@@ -43,12 +43,11 @@ public class databaseController extends HttpServlet{
     {
 
       
-        String driver = "com.mysql.jdbc.Driver";
-        
-        String dbName = "E70UeYfD5B";
-        String url = "jdbc:mysql://remotemysql.com:3306/" + dbName + "?sslmode=require";
-        String userName = "E70UeYfD5B";
-        String password = "z4TSaywGt9";
+        String driver = "com.mysql.jdbc.Driver"; 
+        String dbName = "sdadatabase";
+        String url = "jdbc:mysql://localhost/" + dbName + "?";
+        String userName = "root";
+        String password = "";
         
 
         jdbcUtility = new UserDAO(driver,
@@ -61,7 +60,7 @@ public class databaseController extends HttpServlet{
         //get JDC connection
         con = jdbcUtility.jdbcGetConnection();
         
-        String query = "Select * from alumni";
+        String query = "Select * from alumniuser";
         HttpSession session =  request.getSession();
         
        ArrayList<database> dbb=new ArrayList<database>();
@@ -75,6 +74,7 @@ public class databaseController extends HttpServlet{
            
             db.setAddress(rs.getString("Address"));
             db.setCurrentJob(rs.getString("CurrentJob"));
+            db.setQualification(rs.getString("qualification"));
             db.setEmail(rs.getString("Email"));
             db.setGraduateYear(rs.getInt("GraduateYear"));
             db.setName(rs.getString("Name"));

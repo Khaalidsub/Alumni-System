@@ -11,8 +11,9 @@ package webservice;
  */
 public class database {
     
-         private String Address;
+      private String Address;
 	private String CurrentJob;
+        private String qualification;
 	private String Email;
 	private int GraduateYear;
 	private String Name;
@@ -28,6 +29,21 @@ public class database {
 	private String AdminName;
         private String AdminPassword;
 
+
+    /**
+     * @return the qualification
+     */
+    public String getQualification() {
+        return qualification;
+    }
+
+    /**
+     * @param qualification the qualification to set
+     */
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
+    }
+     
     /**
      * @return the Address
      */
