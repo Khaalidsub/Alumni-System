@@ -33,6 +33,7 @@ import jdbc.UserDAO;
 
 public class databaseController extends HttpServlet{
     
+    
     private UserDAO jdbcUtility;
     private Connection con;
     
@@ -64,14 +65,14 @@ public class databaseController extends HttpServlet{
         HttpSession session =  request.getSession();
         
        ArrayList<database> dbb=new ArrayList<database>();
-        database db = new database();
+        
         try{
                Statement st=con.createStatement();
                ResultSet rs=st.executeQuery(query);
                
                while(rs.next())
         {
-           
+           database db = new database();
             db.setAddress(rs.getString("Address"));
             db.setCurrentJob(rs.getString("CurrentJob"));
             db.setQualification(rs.getString("qualification"));
@@ -112,7 +113,9 @@ public class databaseController extends HttpServlet{
                 } 
      
             }
-             return dbb;    
+          
+             return dbb ;   
+             
     }
     
   @Override
@@ -124,11 +127,13 @@ public class databaseController extends HttpServlet{
                 Gson gson = new Gson();
                 String jsonString = gson.toJson(db);
 
-                out.println(jsonString);
+                out.println(jsonString );
+                
 
                 out.close();
             }
         }
+
     
       
 }
