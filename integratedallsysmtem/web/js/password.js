@@ -19,6 +19,9 @@ myInput.onblur = function() {
 
 // When the user starts to type something inside the password field
 myInput.onkeyup = function() {
+
+
+
   // Validate lowercase letters
   var lowerCaseLetters = /[a-z]/g;
   if(myInput.value.match(lowerCaseLetters)) {

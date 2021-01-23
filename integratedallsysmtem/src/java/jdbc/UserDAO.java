@@ -90,7 +90,7 @@ public class UserDAO {
         try {
            
             //create SQL statement
-              String insert_users ="INSERT INTO alumniuser(Name, password,Address, Email,CurrentJob, qualification,GraduateYear,  PhoneNo, PreviousJob, SalaryPrevious , SalaryCurrent ,Status ) " +
+              String insert_users ="INSERT INTO alumniuser(Name, password, Address, Email,CurrentJob, qualification,GraduateYear,  PhoneNo, PreviousJob, SalaryPrevious , SalaryCurrent ,Status ) " +
                      " VALUES  (?,?,?,?,?,?,?,?,?,?,?,?) ";            
             
             //prepare statement
