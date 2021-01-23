@@ -65,6 +65,7 @@ public class databaseController extends HttpServlet{
         HttpSession session =  request.getSession();
         
        ArrayList<database> dbb=new ArrayList<database>();
+       //before this it here
         
         try{
                Statement st=con.createStatement();

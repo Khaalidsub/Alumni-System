@@ -39,7 +39,7 @@ private static final long serialVersionUID = 1L;
         
         HttpSession session = request.getSession(false);
         if (session != null) {
-            session.removeAttribute("user");
+            session.removeAttribute("signIn");
              
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);

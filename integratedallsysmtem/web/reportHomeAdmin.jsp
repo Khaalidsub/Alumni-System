@@ -27,7 +27,7 @@
                         <a class="dropdown-item" href="insertLogActivity.html">Edit Activity Log</a>
                         <a class="dropdown-item" href="logActivity.jsp">View Activity Log</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="LogoutController">Logout</a>
                     </div>
                 </li>
             </ul>
