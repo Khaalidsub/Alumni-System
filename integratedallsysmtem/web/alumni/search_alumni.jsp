@@ -14,32 +14,50 @@
         <link href="./css/view_profile.css" rel="stylesheet" />
     </head>
     <body>
-        <div class="jumbotron" style="margin-bottom:0">
+      
 
-            <img class="logo" src="image/LOGO-UTM.png" alt="LOGO UTM" />
+     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 
-            <h1>Alumni of Seni Bina</h1>
+            <div class="container">
 
-        </div> 
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="javascript:;">Home</a>
+                    </li>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AlumniController?command=MY-PROFILE">MyProfile</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="reportHomeUser.jsp">Report</a>
+                    </li>
 
-        <nav class="navbar navbar-expand-sm bg-light">
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Connect</a>
+                    </li>
+                </ul>
 
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="AlumniController?command=MY-PROFILE">My Profile</a></li>
-                <li class="nav-item"><a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Connect</a></li>
+                <ul class="navbar-nav">
 
-            </ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="h#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${signIn.getName()}</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown07">
+                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="LogoutController">Logout</a>
+                        </div>
+                    </li>                  
+                </ul>
+            </div>
+
+        </nav>    
             <div class="search-container">
                 <form action="AlumniController" method="post">
                     <input type="hidden" name="command" value="SEARCH-ALUMNI" />
                     <input type="text" value="${param.alumniName}" name="alumniName" placeholder="Search for alumni" class="search-for-alumni border-class-1 comfortaa-regular-normal-chicago-20px">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
-            </div>   
-        </nav>
+            </div> 
         <div class="container" style="margin-top:30px">
             <div class="row">  
                 <div class="col-sm-2">
