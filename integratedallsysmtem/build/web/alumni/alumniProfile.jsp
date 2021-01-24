@@ -54,6 +54,7 @@
         </nav>    
                         <div class="container" style="margin-top: 100px">
             <div class="row">
+                
                 <div class="col-sm-4">
 
                     <img
@@ -62,6 +63,8 @@
                         /> <br /><br /><br />
                     <div>${alumni.alumniName}</div>
                     <br /><br />
+   
+                        <c:if test="${param.command eq 'MY-PROFILE'}">
                     <img
                         class="vector-HIQFF0"
                         src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-1@2x.svg"
@@ -73,7 +76,8 @@
                         src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-2@2x.svg"
                         />
                     <a  href="AlumniController?command=EDIT-PROFILE&alumniEmail=${alumni.alumniEmail}">   Edit information</a>
-
+                   </c:if>
+            
 
                 </div>
 
