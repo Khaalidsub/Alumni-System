@@ -16,12 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 import Middleware.Alumni;
 import Middleware.AlumniAddress;
 import Middleware.EduLevel;
+import Middleware.SignIn;
 import Middleware.alumniTitle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,6 +46,10 @@ public class AlumniController extends HttpServlet {
 
         String command = request.getParameter("command");
 
+        HttpSession session = request.getSession();
+        SignIn signIn = (SignIn) session.getAttribute("signIn");
+        System.out.println("session exists : " + signIn.getEmail());
+        request.setAttribute("signEmail", signIn.getEmail());
         try {
 
             // if the command is missing, then default to login
@@ -158,15 +164,20 @@ public class AlumniController extends HttpServlet {
      * @param alumniEmail
      */
     public void getAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
-
+        HttpSession session = request.getSession();
+        SignIn signIn = (SignIn) session.getAttribute("signIn");
         try {
             Alumni alumni;
-            System.out.println(request.getParameter("alumniEmail"));
+            System.out.println("session"+signIn.getEmail() != null);
             if (request.getParameter("alumniEmail") != null) {
                 alumni = alumniDao.getAlumniInfo(request.getParameter("alumniEmail"));
+            } else if (signIn != null) {
+                alumni = alumniDao.getAlumniInfo(signIn.getEmail());
             } else {
                 alumni = alumniDao.getAlumniInfo("6naseer.far@wditu.com");
             }
+          
+
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/alumni/alumniProfile.jsp");
             request.setAttribute("alumni", alumni);
@@ -248,9 +259,9 @@ public class AlumniController extends HttpServlet {
         try {
             String alumniName = request.getParameter("alumniName");
             String query = request.getParameter("filter");
-            String queryValue = request.getParameter(query+"_input");
-      
-            alumnis = alumniDao.getFilteredAlumni(alumniName,query,queryValue);
+            String queryValue = request.getParameter(query + "_input");
+
+            alumnis = alumniDao.getFilteredAlumni(alumniName, query, queryValue);
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/alumni/search_alumni.jsp");
             request.setAttribute("ALUMNI_LIST", alumnis);
@@ -306,9 +317,9 @@ public class AlumniController extends HttpServlet {
     public boolean validateFields(AlumniAddress address, EduLevel eduLevel, int phoneNumber, alumniTitle title, String courseName, int graudateYear) {
         return false;
     }
-    
-     public void validateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-         
+
+    public void validateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+
 //         String command = request.getParameter("command");
 //        String userType = request.getSession("userType");
 ////       int register = request.getSession("login");
