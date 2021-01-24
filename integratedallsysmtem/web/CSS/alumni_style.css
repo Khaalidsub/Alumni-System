@@ -1,0 +1,101 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+.jumbotron {
+    background-color: #4682B4;
+}
+
+.jumbotron h1{
+    color: white;
+    text-align: left;
+    font-size: 250%;
+    margin: 0;
+    
+}
+
+.navbar {
+  background-color: blue; 
+  
+}
+
+
+.navbar a {
+    padding: 20px;
+    color: lightslategray;
+   
+}
+
+.navbar a:hover {
+    background-color: lightskyblue;
+}
+
+.navbar a:active {
+   background-color: lightskyblue; 
+}
+
+.container a {
+    color: black;
+    margin-left: 20px;
+    font-size: 150%;
+}
+
+.container a:hover{
+    background-color: lightgray;
+}
+
+.logo {
+    float: right;
+    margin: auto;
+    padding: 0px 20px;
+    height: 70px;
+    width: 250px
+}
+
+
+.search-container {
+    margin-left: 1000px;
+    float: right;
+}
+
+.search-container input[type=text] {
+  
+    padding: 6px;
+  margin-top: 10px;
+  font-size: 17px;
+  border: none;
+}
+
+.search-container button {
+  float: right;
+  padding: 4px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #ccc;
+}
+
+edit{
+    margin-left: 1000px;
+    float: right;
+}
+
+.profile-pic{
+ float: right; 
+}
+
+.col-sm-12 {
+    background-color: lightgrey;
+    padding: 30px;
+}
+
+.col-sm-12 h3 {
+    font-weight: 500;
+}
+
+
+
