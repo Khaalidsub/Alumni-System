@@ -6,6 +6,7 @@
 package webservice;
 import jdbc.AlumniDAO;
 import Middleware.Alumni;
+import com.google.gson.Gson;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -21,9 +22,11 @@ public class mobileAPI {
     @GET
     @Path("/getdata") // this path is used to identify method
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Alumni> getDatainJSON(){
+    public String getDatainJSON(){
          AlumniDAO a = AlumniDAO.getInstance();
-        return a.getAlumniList();
+          Gson gson = new Gson();
+         
+        return gson.toJson(a.getAlumniList());
        
     }
 }
