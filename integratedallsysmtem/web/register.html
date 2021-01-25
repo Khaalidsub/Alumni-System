@@ -44,7 +44,7 @@
          <div class="row">
              <div class="col"></div>
                  
-            <div class="col-6">
+            <div class="col-md-6">
 
                <div class="card shadow">
                   <div class="card-body">
@@ -52,6 +52,11 @@
                      <br>
                      <form action="RegisterController" method="post">
                          
+                         <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Title (Mr. , Mrs.)" name="title">
+                            <span class="input-group-text">Name</span>
+                            <input type="text" class="form-control" placeholder="Full Name" name="Name" required>
+                          </div>
                          
                          <div class="form-floating">
                          <label for="floatingInput">Name</label>
@@ -65,17 +70,24 @@
                                placeholder="Password" name="password" required>  
                         </div>
                          
-                         <div class="alert alert-danger" id="message" role="alert">
-                            <h3>Password must contain the following:</h3>
-                            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                            <p id="number" class="invalid">A <b>number</b></p>
-                            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                         <div class="form-floating">
+                         <label for="floatingInput">Matrics No.</label>
+                         <input type="text" class="form-control" id="floatingInput" placeholder="ex : A15FA0142" name="matrics">           
+                         </div>
+                         
+                         <label for="floatingInput">Gender</label><br>
+                         <div class="custom-control custom-radio custom-control-inline">
+                             <input type="radio" id="customRadioInline1" name="gender" class="custom-control-input" value="Male">
+                            <label class="custom-control-label" for="customRadioInline1">Male</label>
+                          </div>
+                          <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline2" name="gender" class="custom-control-input" value="Female">
+                            <label class="custom-control-label" for="customRadioInline2">Female</label>
                           </div>
                          
                          <div class="form-floating">
-                         <label for="floatingInput">Address</label>
-                         <input type="text" class="form-control" id="floatingInput" placeholder="Address" name="Address">           
+                         <label for="floatingInput">Citizenship</label>
+                         <input type="text" class="form-control" id="floatingInput" placeholder="Malaysia" name="citizenship">           
                          </div>
                     
                          <div class="form-floating">
@@ -85,30 +97,24 @@
                          
                          <div class="form-floating">
                          <label for="floatingInput">Phone No.</label>
-                         <input type="text" class="form-control" id="floatingInput" placeholder="ex : 012345679" name="PhoneNo" required>           
+                         <input type="text" class="form-control" id="floatingInput" placeholder="012345679" name="PhoneNo" required>           
                          </div>
                          
-                         <div class="form-floating">
-                         <label for="floatingInput">Previous Job</label>
-                         <input type="text" class="form-control" id="floatingInput" placeholder="ex : Janitor" name="PreviousJob">           
-                         </div>
+                         <label for="floatingInput">Education Level</label><br>
+                             <div class="form-row align-items-center">
+                                <div class="col-auto my-1">   
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="GraduateYear">
+                                    <option selected>Choose Education Level</option>
+                                    <option value="Foundation">Foundation</option>
+                                    <option value="Diploma">Diploma</option>
+                                    <option value="Degree">Degree</option>
+                                    <option value="Master">Master</option>
+                                    <option value="2003">Phd.</option>
+                                  </select>
+                                </div>
+                             </div> 
                          
-                         <div class="form-floating">
-                         <label for="floatingInput">Current Job</label>
-                         <input type="text" class="form-control" id="floatingInput" placeholder="Engineer" name="CurrentJob">           
-                         </div>
                          
-                         <br>
-                         <label for="floatingInput">Qualification</label><br>
-                         <div class="custom-control custom-radio custom-control-inline">
-                             <input type="radio" id="customRadioInline1" name="qualification" class="custom-control-input" value="Qualified">
-                            <label class="custom-control-label" for="customRadioInline1">Qualified</label>
-                          </div>
-                          <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline2" name="qualification" class="custom-control-input" value="Unqualified">
-                            <label class="custom-control-label" for="customRadioInline2">Unqualified</label>
-                          </div>
-                         <br><br>
                             
                          <label for="floatingInput">Graduate </label><br>
                              <div class="form-row align-items-center">
@@ -141,21 +147,7 @@
                                 </div>
                              </div> 
 
-                          <div class="form-floating">
-                         <label for="floatingInput">Previous Salary</label>
-                         <input type="text" class="form-control" id="floatingInput" placeholder="RMxxxx" name="SalaryPrevious">           
-                          </div>
                          
-                          <div class="form-floating">
-                         <label for="floatingInput">Current Salary</label>
-                         <input type="text" class="form-control" id="floatingInput" placeholder="xxxx" name="SalaryCurrent">           
-                        </div>
-                         
-                          <div class="form-floating">
-                         <label for="floatingInput">Status</label>
-                         <input type="text" class="form-control" id="floatingInput" placeholder="Status" name="Status">           
-                         </div>
-
                          <br>
                      <button type="submit" class="btn btn-primary">Register</button>   Already has an account? 
                       <a href="index.jsp"><button type="button" class="btn btn-danger" >Sign In</button></a>
