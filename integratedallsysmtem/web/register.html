@@ -53,15 +53,12 @@
                      <form action="RegisterController" method="post">
                          
                          <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Title (Mr. , Mrs.)" name="title">
+                            <input type="text" class="form-control" placeholder="Title (Mr. , Ir)" name="title">
                             <span class="input-group-text">Name</span>
                             <input type="text" class="form-control" placeholder="Full Name" name="Name" required>
                           </div>
                          
-                         <div class="form-floating">
-                         <label for="floatingInput">Name</label>
-                         <input type="text" class="form-control" id="floatingInput" placeholder="Full Name" name="Name" required>           
-                         </div>
+                       
                      
                         <div class="form-floating">
                         <label for="floatingPassword">Password</label>
@@ -97,13 +94,18 @@
                          
                          <div class="form-floating">
                          <label for="floatingInput">Phone No.</label>
-                         <input type="text" class="form-control" id="floatingInput" placeholder="012345679" name="PhoneNo" required>           
+                         <input type="text" class="form-control" id="floatingInput" placeholder="012345679" name="Phoneno" required>           
+                         </div>
+                         
+                          <div class="form-floating">
+                         <label for="floatingInput">Course Name</label>
+                         <input type="text" class="form-control" id="floatingInput" placeholder="Architecture" name="coursename" required>           
                          </div>
                          
                          <label for="floatingInput">Education Level</label><br>
                              <div class="form-row align-items-center">
                                 <div class="col-auto my-1">   
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="GraduateYear">
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="edulevel">
                                     <option selected>Choose Education Level</option>
                                     <option value="Foundation">Foundation</option>
                                     <option value="Diploma">Diploma</option>

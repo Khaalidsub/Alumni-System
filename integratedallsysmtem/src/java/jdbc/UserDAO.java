@@ -90,8 +90,8 @@ public class UserDAO {
         try {
            
             //create SQL statement
-              String insert_users ="INSERT INTO alumniuser(Name, password, Address, Email,CurrentJob, qualification,GraduateYear,  PhoneNo, PreviousJob, SalaryPrevious , SalaryCurrent ,Status ) " +
-                     " VALUES  (?,?,?,?,?,?,?,?,?,?,?,?) ";            
+              String insert_users ="INSERT INTO alumniuser(Title ,Alumniname, password, Alumnimatrics, Gender,Alumnicitizenship, Alumniemail,Phoneno, Coursename ,Edulevel, GraduateYear ) " +
+                     " VALUES  (?,?,?,?,?,?,?,?,?,?,?) ";            
             
             //prepare statement
             psRegisterController = con.prepareStatement(insert_users);            

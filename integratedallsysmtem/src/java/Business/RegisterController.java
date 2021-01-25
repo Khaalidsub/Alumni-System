@@ -67,33 +67,36 @@ public class RegisterController extends HttpServlet{
             throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
         
+         String title = request.getParameter("title");
          String Name = request.getParameter("Name");
          String password = request.getParameter("password");
-         String Address = request.getParameter("Address");
+         String matrics = request.getParameter("matrics");
+         String gender = request.getParameter("gender");
+         String citizenship = request.getParameter("citizenship");
+         String edulevel = request.getParameter("edulevel");
          String Email = request.getParameter("Email");
-	 String CurrentJob = request.getParameter("CurrentJob");
-         String qualification = request.getParameter("qualification");
 	 int GraduateYear = Integer.parseInt(request.getParameter("GraduateYear"));	 
-	 String PhoneNo = request.getParameter("PhoneNo");
-	 String PreviousJob = request.getParameter("PreviousJob");
-         double SalaryPrevious = Double.parseDouble(request.getParameter("SalaryPrevious"));
-	 double SalaryCurrent = Double.parseDouble(request.getParameter("SalaryCurrent"));	 
-         String Status = request.getParameter("Status");
+	 String Phoneno = request.getParameter("Phoneno");
+         String courseName = request.getParameter("courseName");
+        
+	
+         
          try{
              PreparedStatement preparedStatement = jdbcUtility.getPsRegister();
              
-             preparedStatement.setString(1,Name);           
-             preparedStatement.setString(2,password);
-             preparedStatement.setString(3, Address);
-             preparedStatement.setString(4,Email);
-             preparedStatement.setString(5, CurrentJob);            
-             preparedStatement.setString(6, qualification);    
-             preparedStatement.setInt(7,GraduateYear);
-             preparedStatement.setString(8,PhoneNo);
-             preparedStatement.setString(9,PreviousJob);
-             preparedStatement.setDouble(10,SalaryPrevious);
-             preparedStatement.setDouble(11,SalaryCurrent);     
-             preparedStatement.setString(12,Status);
+             preparedStatement.setString(1,title); 
+             preparedStatement.setString(2,Name);           
+             preparedStatement.setString(3,password);
+             preparedStatement.setString(4, matrics);
+             preparedStatement.setString(5, gender);
+             preparedStatement.setString(6, citizenship);
+             preparedStatement.setString(7,Email);
+             preparedStatement.setString(8,Phoneno);
+             preparedStatement.setString(9,courseName);
+             preparedStatement.setString(10, edulevel);    
+             preparedStatement.setInt(11,GraduateYear);
+             
+      
              
              int insertStatus = 0;
              insertStatus = preparedStatement.executeUpdate();
@@ -109,6 +112,7 @@ public class RegisterController extends HttpServlet{
                  out.println("</script>");
          }
          }
+         
          catch (SQLException ex)
 	{
             while (ex != null) {
