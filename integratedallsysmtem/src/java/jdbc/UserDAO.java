@@ -90,11 +90,14 @@ public class UserDAO {
         try {
            
             //create SQL statement
-              String insert_users ="INSERT INTO alumniuser(Title ,Alumniname, password, Alumnimatrics, Gender,Alumnicitizenship, Alumniemail,Phoneno, Coursename ,Edulevel, GraduateYear ) " +
-                     " VALUES  (?,?,?,?,?,?,?,?,?,?,?) ";            
+              String insert_users ="INSERT INTO alumni(Title ,Alumniname, password, Alumnimatrics, Gender,Alumnicitizenship, Alumniemail,Phoneno, Coursename ,Edulevel, GraduateYear ) " +
+                     " VALUES  (?,?,?,?,?,?,?,?,?,?,?) ";     
+              String insert_address = "INSERT INTO alumniaddress(Houseno, Streetname,Region , City , State , Postalcode , Country) ) " +
+                    " VALUES  (?,?,?,?,?,?,?) ";
             
             //prepare statement
-            psRegisterController = con.prepareStatement(insert_users);            
+            psRegisterController = con.prepareStatement(insert_users);    
+            psRegisterController = con.prepareStatement(insert_address);  
         }
         catch (SQLException ex){
             

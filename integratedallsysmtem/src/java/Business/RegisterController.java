@@ -78,6 +78,15 @@ public class RegisterController extends HttpServlet{
 	 int GraduateYear = Integer.parseInt(request.getParameter("GraduateYear"));	 
 	 String Phoneno = request.getParameter("Phoneno");
          String courseName = request.getParameter("courseName");
+         
+         String Houseno = request.getParameter("Houseno");
+         String Streetname = request.getParameter("Streetname");
+         String Region = request.getParameter("Region");
+         String City = request.getParameter("City");
+         String State = request.getParameter("State");
+         String Postalcode = request.getParameter("Postalcode");
+         String Country = request.getParameter("Country");
+         
         
 	
          
@@ -95,6 +104,15 @@ public class RegisterController extends HttpServlet{
              preparedStatement.setString(9,courseName);
              preparedStatement.setString(10, edulevel);    
              preparedStatement.setInt(11,GraduateYear);
+             
+             preparedStatement.setString(12,Houseno);
+             preparedStatement.setString(13,Streetname);
+             preparedStatement.setString(14,Region);
+             preparedStatement.setString(15,City);
+             preparedStatement.setString(16,State);
+             preparedStatement.setString(17,Postalcode);
+             preparedStatement.setString(18,Country);
+             
              
       
              

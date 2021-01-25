@@ -52,27 +52,27 @@
                      <br>
                      <form action="RegisterController" method="post">
                          
+                         <label for="floatingPassword"><b>Name</b></label>
                          <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Title (Mr. , Ir)" name="title">
-                            <span class="input-group-text">Name</span>
                             <input type="text" class="form-control" placeholder="Full Name" name="Name" required>
                           </div>
                          
                        
                      
                         <div class="form-floating">
-                        <label for="floatingPassword">Password</label>
+                        <label for="floatingPassword"><b>password</b></label>
                         <input type="password" class="form-control" id="floatingPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
                                placeholder="Password" name="password" required>  
                         </div>
                          
                          <div class="form-floating">
-                         <label for="floatingInput">Matrics No.</label>
+                         <label for="floatingInput"><b>Matrics no.</b></label>
                          <input type="text" class="form-control" id="floatingInput" placeholder="ex : A15FA0142" name="matrics">           
                          </div>
                          
-                         <label for="floatingInput">Gender</label><br>
+                         <label for="floatingInput"><b>Gender</b></label><br>
                          <div class="custom-control custom-radio custom-control-inline">
                              <input type="radio" id="customRadioInline1" name="gender" class="custom-control-input" value="Male">
                             <label class="custom-control-label" for="customRadioInline1">Male</label>
@@ -81,28 +81,44 @@
                             <input type="radio" id="customRadioInline2" name="gender" class="custom-control-input" value="Female">
                             <label class="custom-control-label" for="customRadioInline2">Female</label>
                           </div>
+                         <br><br>
+                         <label for="floatingInput"><b>Address</b></label><br>
+                         <div class="input-group mb-3">
+                             <input type="text" class="form-control" placeholder="House No" name="Houseno" >
+                            <input type="text" class="form-control" placeholder="Street Name"name="Streetname" >
+                          </div>
+                         <div class="input-group mb-3">
+                             <input type="text" class="form-control" placeholder="Region" name="Region">
+                            <input type="text" class="form-control" placeholder="City" name="City">
+                          </div>
+                          <div class="input-group mb-3">
+                             <input type="text" class="form-control" placeholder="State"name="State" >
+                             <input type="text" class="form-control" placeholder="Postal Code"name="Postalcode" >
+                            <input type="text" class="form-control" placeholder="Country" name="Country">
+                          </div>
+                         
                          
                          <div class="form-floating">
-                         <label for="floatingInput">Citizenship</label>
+                         <label for="floatingInput"><b>Citizenship</b></label>
                          <input type="text" class="form-control" id="floatingInput" placeholder="Malaysia" name="citizenship">           
                          </div>
                     
                          <div class="form-floating">
-                         <label for="floatingInput">Email address</label>
+                         <label for="floatingInput"><b>Email Address</b></label>
                          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="Email" required>           
                          </div>
                          
                          <div class="form-floating">
-                         <label for="floatingInput">Phone No.</label>
+                             <label for="floatingInput"><b>Phone no.</b></label>
                          <input type="text" class="form-control" id="floatingInput" placeholder="012345679" name="Phoneno" required>           
                          </div>
                          
                           <div class="form-floating">
-                         <label for="floatingInput">Course Name</label>
+                         <label for="floatingInput"><b>Course name</b></label>
                          <input type="text" class="form-control" id="floatingInput" placeholder="Architecture" name="coursename" required>           
                          </div>
                          
-                         <label for="floatingInput">Education Level</label><br>
+                         <label for="floatingInput"><b>Education Level</b></label><br>
                              <div class="form-row align-items-center">
                                 <div class="col-auto my-1">   
                                   <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="edulevel">
@@ -118,7 +134,7 @@
                          
                          
                             
-                         <label for="floatingInput">Graduate </label><br>
+                         <label for="floatingInput"><b>Graduate Year</b> </label><br>
                              <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                   <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Graduate Year</label>
