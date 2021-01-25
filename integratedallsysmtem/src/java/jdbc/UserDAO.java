@@ -149,7 +149,7 @@ public class UserDAO {
         loadDriver(driver);
         Connection con = getConnection();
         
-        String sql = "select * from alumniuser where Email = ? and password = ?";
+        String sql = "select * from alumni where Alumniemail = ? and password = ?";
         PreparedStatement ps;
         
 
@@ -163,7 +163,7 @@ public class UserDAO {
             
             if(result.next()){
                 signIn = new SignIn();
-                signIn.setName(result.getString("Name"));
+                signIn.setName(result.getString("Alumniname"));
                 signIn.setEmail(email);
             }
              con.close();      

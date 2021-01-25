@@ -28,11 +28,30 @@ import java.util.logging.Logger;
  */
 public class AlumniDAO {
 
-    private String url = "jdbc:mysql://localhost:3306/flying_wheel?useTimezone=true&serverTimezone=UTC";
+    private static AlumniDAO instance;
+
+    private String url = "jdbc:mysql://localhost:3306/alumni?useTimezone=true&serverTimezone=UTC";
     private String use = "root";
     private String password = "";
 
     private Alumni alumni;
+
+    private AlumniDAO() {
+        try {
+            Thread.sleep(1000);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static AlumniDAO getInstance() {
+        if (instance == null) {
+            instance = new AlumniDAO();
+        }
+        return instance;
+    }
 
     /**
      *
@@ -51,7 +70,7 @@ public class AlumniDAO {
 
             myConn = DriverManager.getConnection(url, use, password);
             // create sql statement
-            String sql = "select * from alumni where email=?";
+            String sql = "select * from alumni where Alumniemail=?";
 
             // create prepared statement
             stmt = myConn.createStatement();
@@ -66,7 +85,7 @@ public class AlumniDAO {
             //check if user is found
             if (rs.next()) {
 
-                Alumni foundAlumni = new Alumni(rs.getString("alumniCitizenship"), rs.getString("alumniEmail"), rs.getString("alumniName"), rs.getString("batchName"), EduLevel.valueOf(rs.getString("eduLevel")), Gender.valueOf(rs.getString("gender")), rs.getInt("graduateYear"), alumniTitle.valueOf(rs.getString("alumniTitle")));
+                Alumni foundAlumni = new Alumni(rs.getString("Alumnicitizenship"), rs.getString("Alumniemail"), rs.getString("Alumniname"), rs.getString("Batchname"), EduLevel.valueOf(rs.getString("Edulevel")), Gender.valueOf(rs.getString("Gender")), rs.getInt("Graduateyear"), alumniTitle.valueOf(rs.getString("Title")));
                 return foundAlumni;
                 //if user is a customer
 
@@ -109,7 +128,7 @@ public class AlumniDAO {
 
             //process resultset
             while (rs.next()) {
-                Alumni foundAlumni = new Alumni(rs.getString("alumniCitizenship"), rs.getString("alumniEmail"), rs.getString("alumniName"), rs.getString("batchName"), EduLevel.valueOf(rs.getString("eduLevel")), Gender.valueOf(rs.getString("gender")), rs.getInt("graduateYear"), alumniTitle.valueOf(rs.getString("alumniTitle")));
+                Alumni foundAlumni = new Alumni(rs.getString("Alumnicitizenship"), rs.getString("Alumniemail"), rs.getString("Alumniname"), rs.getString("Batchname"), EduLevel.valueOf(rs.getString("Edulevel")), Gender.valueOf(rs.getString("Gender")), rs.getInt("Graduateyear"), alumniTitle.valueOf(rs.getString("Title")));
 
                 //list of all managers
                 alumnis.add(foundAlumni);
@@ -128,6 +147,90 @@ public class AlumniDAO {
      * @param alumniEmail
      */
     public Alumni getDetailedAlumniInfo(String alumniEmail) {
+        System.out.println("hiii" + alumniEmail);
+        Connection myConn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            // get a connection
+            Class.forName("com.mysql.jdbc.Driver");
+
+            myConn = DriverManager.getConnection(url, use, password);
+            // create sql statement
+            String sql = "SELECT * FROM alumni WHERE Alumniemail=? ";
+
+            //"select * from alumni where Alumniemail=? "
+            // create prepared statement
+            stmt = myConn.createStatement();
+
+            ps = myConn.prepareStatement(sql);
+            // set params
+            ps.setString(1, alumniEmail);
+
+            //execute query
+            rs = ps.executeQuery();
+
+            //check if user is found
+            if (rs.next()) {
+
+                Alumni foundAlumniInfo = new Alumni(rs.getString("Alumnicitizenship"), rs.getString("Alumniemail"), rs.getString("Alumnimatric"), rs.getString("Alumniname"), rs.getString("Batchname"), rs.getString("Coursename"), EduLevel.valueOf(rs.getString("Edulevel")), Gender.valueOf(rs.getString("Gender")), rs.getInt("Graduateyear"), rs.getInt("Phoneno"), alumniTitle.valueOf(rs.getString("Title")), rs.getString("AlumniaddressID"));
+                return foundAlumniInfo;
+                //if user is a customer
+
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // close JDBC objects
+            close(myConn, stmt, rs);
+        }
+
+        return null;
+    }
+
+    public AlumniAddress getAlumniAddressInfo(String alumniAddressID) {
+        System.out.println("hiii" + alumniAddressID);
+        Connection myConn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            // get a connection
+            Class.forName("com.mysql.jdbc.Driver");
+
+            myConn = DriverManager.getConnection(url, use, password);
+            // create sql statement
+            String sql = "SELECT * FROM alumniaddress WHERE AlumniaddressID=? ";
+
+            //"select * from alumni where Alumniemail=? "
+            // create prepared statement
+            stmt = myConn.createStatement();
+
+            ps = myConn.prepareStatement(sql);
+            // set params
+            ps.setString(1, alumniAddressID);
+
+            //execute query
+            rs = ps.executeQuery();
+
+            //check if user is found
+            if (rs.next()) {
+
+                AlumniAddress foundAlumniAddressInfo = new AlumniAddress(rs.getString("City"), rs.getString("Country"), rs.getString("Houseno"), rs.getString("Postalcode"), rs.getString("Region"), rs.getString("State"), rs.getString("Streetname"));
+                return foundAlumniAddressInfo;
+                //if user is a customer
+
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // close JDBC objects
+            close(myConn, stmt, rs);
+        }
+
         return null;
     }
 
@@ -136,8 +239,11 @@ public class AlumniDAO {
      * @param alumniName
      * @param query
      */
-    public List<Alumni> getFilteredAlumni(String alumniName, String query) {
-                   List<Alumni> alumnis = new ArrayList<>();
+    public List<Alumni> getFilteredAlumni(String alumniName, String query, String queryValue) {
+        List<Alumni> alumnis = new ArrayList<>();
+        if (alumniName == null) {
+            alumniName = "";
+        }
 
         Connection myConn = null;
         Statement stmt = null;
@@ -150,22 +256,28 @@ public class AlumniDAO {
             myConn = DriverManager.getConnection(url, use, password);
             // create sql statement
             //check if email exists
-            String sql = "SELECT * FROM `alumni` WHERE  " + query +"="+alumniName;
+            String sql = "SELECT * FROM `alumni` WHERE "+query+" LIKE '%' ? '%' AND Alumniname LIKE '%' ? '%'";
 
             // create prepared statement
             stmt = myConn.createStatement();
-
             ps = myConn.prepareStatement(sql);
-
+            System.out.println(alumniName+ query + queryValue);
+            
+      
+            
+            ps.setString(1, queryValue);
+             ps.setString(2, alumniName);
             //execute query
-            rs = ps.executeQuery();
+            rs
+                    = ps.executeQuery();
 
             //process resultset
             while (rs.next()) {
-                Alumni foundAlumni = new Alumni(rs.getString("alumniCitizenship"), rs.getString("alumniEmail"), rs.getString("alumniName"), rs.getString("batchName"), EduLevel.valueOf(rs.getString("eduLevel")), Gender.valueOf(rs.getString("gender")), rs.getInt("graduateYear"), alumniTitle.valueOf(rs.getString("alumniTitle")));
 
+                Alumni foundAlumniInfo = new Alumni(rs.getString("Alumnicitizenship"), rs.getString("Alumniemail"), rs.getString("Alumnimatric"), rs.getString("Alumniname"), rs.getString("Batchname"), rs.getString("Coursename"), EduLevel.valueOf(rs.getString("Edulevel")), Gender.valueOf(rs.getString("Gender")), rs.getInt("Graduateyear"), rs.getInt("Phoneno"), alumniTitle.valueOf(rs.getString("Title")), rs.getString("AlumniaddressID"));
                 //list of all managers
-                alumnis.add(foundAlumni);
+
+                alumnis.add(foundAlumniInfo);
             }
         } catch (Exception ex) {
             Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -181,7 +293,7 @@ public class AlumniDAO {
      * @param alumniName
      */
     public List<Alumni> getSearchedAlumni(String alumniName) {
-             List<Alumni> alumnis = new ArrayList<>();
+        List<Alumni> alumnis = new ArrayList<>();
 
         Connection myConn = null;
         Statement stmt = null;
@@ -194,22 +306,23 @@ public class AlumniDAO {
             myConn = DriverManager.getConnection(url, use, password);
             // create sql statement
             //check if email exists
-            String sql = "SELECT * FROM `alumni` WHERE  alumniName="+alumniName;
+            String sql = "SELECT * FROM `alumni` WHERE Alumniname LIKE '%' ? '%'";
 
             // create prepared statement
             stmt = myConn.createStatement();
 
             ps = myConn.prepareStatement(sql);
-
+            ps.setString(1, alumniName);
             //execute query
             rs = ps.executeQuery();
 
             //process resultset
             while (rs.next()) {
-                Alumni foundAlumni = new Alumni(rs.getString("alumniCitizenship"), rs.getString("alumniEmail"), rs.getString("alumniName"), rs.getString("batchName"), EduLevel.valueOf(rs.getString("eduLevel")), Gender.valueOf(rs.getString("gender")), rs.getInt("graduateYear"), alumniTitle.valueOf(rs.getString("alumniTitle")));
 
+                Alumni foundAlumniInfo = new Alumni(rs.getString("Alumnicitizenship"), rs.getString("Alumniemail"), rs.getString("Alumnimatric"), rs.getString("Alumniname"), rs.getString("Batchname"), rs.getString("Coursename"), EduLevel.valueOf(rs.getString("Edulevel")), Gender.valueOf(rs.getString("Gender")), rs.getInt("Graduateyear"), rs.getInt("Phoneno"), alumniTitle.valueOf(rs.getString("Title")), rs.getString("AlumniaddressID"));
                 //list of all managers
-                alumnis.add(foundAlumni);
+
+                alumnis.add(foundAlumniInfo);
             }
         } catch (Exception ex) {
             Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -223,8 +336,44 @@ public class AlumniDAO {
     /**
      *
      * @param alumni
+     * @return
      */
-    public void updateAlumniDetails(Alumni alumni) {
+    public Alumni updateAlumniDetails(Alumni alumni) {
+        Connection myConn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String sql = "UPDATE `alumni` SET `Title` =?, `Phoneno` = ?, `Graduateyear` = ? WHERE alumniEmail=? ";
+            myConn = DriverManager.getConnection(url, use, password);
+            stmt = myConn.createStatement();
+            ps = myConn.prepareStatement(sql);
+            ps.setString(1, alumni.getTitle().toString());
+            ps.setString(2, String.valueOf(alumni.getPhoneNo()));
+            ps.setString(3, String.valueOf(alumni.getGraduateYear()));
+            ps.setString(4, String.valueOf(alumni.getAlumniEmail()));
+            ps.executeUpdate();
+
+            String sql2 = "UPDATE `alumniaddress` SET `Streetname` =?, `Houseno` = ?, `Postalcode` = ?,  `state` = ?, `city` = ?, `country` = ?, `region` = ? WHERE AlumniaddressID=? ";
+            stmt = myConn.createStatement();
+            ps = myConn.prepareStatement(sql2);
+            ps.setString(1, alumni.getAlumniAddress().getStreetName());
+            ps.setString(2, alumni.getAlumniAddress().getHouseNo());
+            ps.setString(3, alumni.getAlumniAddress().getPostalCode());
+            ps.setString(4, alumni.getAlumniAddress().getState());
+            ps.setString(5, alumni.getAlumniAddress().getCity());
+            ps.setString(6, alumni.getAlumniAddress().getCountry());
+            ps.setString(7, alumni.getAlumniAddress().getRegion());
+            ps.setString(8, alumni.getAlumniAddressID());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(myConn, stmt, rs);
+        }
+
+        return null;
 
     }
 
