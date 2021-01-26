@@ -168,7 +168,7 @@ public class AlumniController extends HttpServlet {
         SignIn signIn = (SignIn) session.getAttribute("signIn");
         try {
             Alumni alumni;
-            System.out.println("session"+signIn.getEmail() != null);
+            System.out.println("session" + signIn.getEmail() != null);
             if (request.getParameter("alumniEmail") != null) {
                 alumni = alumniDao.getAlumniInfo(request.getParameter("alumniEmail"));
             } else if (signIn != null) {
@@ -176,7 +176,6 @@ public class AlumniController extends HttpServlet {
             } else {
                 alumni = alumniDao.getAlumniInfo("6naseer.far@wditu.com");
             }
-          
 
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/alumni/alumniProfile.jsp");
@@ -201,19 +200,26 @@ public class AlumniController extends HttpServlet {
     }
 
     public void updateAlumniInfoPage(HttpServletRequest request, HttpServletResponse response) {
-
+        HttpSession session = request.getSession();
+        SignIn signIn = (SignIn) session.getAttribute("signIn");
+        RequestDispatcher dispatcher;
         try {
             Alumni alumni;
             AlumniAddress alumniAddress;
             System.out.println(request.getParameter("alumniEmail"));
-            if (request.getParameter("alumniEmail") != null) {
+
+            if (signIn != null) {
+                alumni = alumniDao.getDetailedAlumniInfo(signIn.getEmail());
+
+                alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
+            } else if (request.getParameter("alumniEmail") != null) {
                 alumni = alumniDao.getDetailedAlumniInfo(request.getParameter("alumniEmail"));
                 alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
             } else {
                 alumni = alumniDao.getDetailedAlumniInfo("6naseer.far@wditu.com");
                 alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
             }
-            RequestDispatcher dispatcher;
+
             dispatcher = request.getRequestDispatcher("/alumni/edit_information.jsp");
             request.setAttribute("alumni", alumni);
             request.setAttribute("alumniAddress", alumniAddress);
