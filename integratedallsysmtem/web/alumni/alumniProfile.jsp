@@ -17,41 +17,7 @@
     <body>
 
 
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-
-            <div class="container">
-
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="javascript:;">Home</a>
-                    </li>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="AlumniController?command=MY-PROFILE">MyProfile</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="reportHomeUser.jsp">Report</a>
-                    </li>
-
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Connect</a>
-                    </li>
-                </ul>
-
-                <ul class="navbar-nav">
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="h#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${signIn.getName()}</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown07">
-                            <a class="dropdown-item" href="#">Profile</a>
-                            <a class="dropdown-item" href="LogoutController">Logout</a>
-                        </div>
-                    </li>                  
-                </ul>
-            </div>
-
-        </nav>    
+   <jsp:include page="../headerNav.jsp" />    
                         <div class="container" style="margin-top: 100px">
             <div class="row">
                 
