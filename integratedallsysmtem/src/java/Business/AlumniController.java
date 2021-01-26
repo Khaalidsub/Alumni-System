@@ -46,15 +46,13 @@ public class AlumniController extends HttpServlet {
 
         String command = request.getParameter("command");
 
-        HttpSession session = request.getSession();
-        SignIn signIn = (SignIn) session.getAttribute("signIn");
+        validateUser(request, response);
         try {
 
             // if the command is missing, then default to login
-            if (command == null) {
-                command = "ALUMNI-INFO";
-            }
-
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+            response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+            response.setDateHeader("Expires", 0);
             switch (command) {
                 case "ALUMNI-SEARCH":
                     getAlumniList(request, response);
@@ -65,14 +63,17 @@ public class AlumniController extends HttpServlet {
                     break;
                 case "ALUMNI-INFO":
                     getAlumniInfo(request, response);
-
+                    break;
                 case "INFO-DETAIL":
                     getDetailedAlumniInfo(request, response);
-
+                    break;
                 case "EDIT-PROFILE":
                     updateAlumniInfoPage(request, response);
 
                     break;
+
+                default:
+                    getHomePage(request, response);
 
             }
 
@@ -87,23 +88,25 @@ public class AlumniController extends HttpServlet {
             throws ServletException, IOException {
         String command = request.getParameter("command");
 
+        validateUser(request, response);
         try {
 
             // if the command is missing, then default to login
-            if (command == null) {
-                command = "ALUMNI-INFO";
-            }
-
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+            response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+            response.setDateHeader("Expires", 0);
             switch (command) {
                 case "UPDATE-ALUMNI":
                     updateAlumniInfo(request, response);
-
+                    break;
                 case "SEARCH-ALUMNI":
                     getSearchedAlumni(request, response);
                     break;
                 case "FILTER-ALUMNI":
                     getFilteredAlumniList(request, response);
                     break;
+                default:
+                    getHomePage(request, response);
             }
 
         } catch (Exception exc) {
@@ -113,6 +116,21 @@ public class AlumniController extends HttpServlet {
 
     public void finalize() throws Throwable {
 
+    }
+
+    public void getHomePage(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        RequestDispatcher dispatcher;
+
+        try {
+            if (session.getAttribute("admin") != null) {
+                dispatcher = request.getRequestDispatcher("adminHome.jsp");
+            } else {
+                dispatcher = request.getRequestDispatcher("home.jsp");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void updateAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
@@ -163,21 +181,25 @@ public class AlumniController extends HttpServlet {
      */
     public void getAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        SignIn signIn = (SignIn) session.getAttribute("signIn");
+        SignIn signIn = null;
+        RequestDispatcher dispatcher;
+        if (request.getAttribute("command") == "MY-PROFILE") {
+            signIn = (SignIn) session.getAttribute("signIn");
+        }
+
         try {
             Alumni alumni;
-            System.out.println("session" + signIn.getEmail() != null);
+
             if (request.getParameter("alumniEmail") != null) {
                 alumni = alumniDao.getAlumniInfo(request.getParameter("alumniEmail"));
+                request.setAttribute("alumni", alumni);
             } else if (signIn != null) {
                 alumni = alumniDao.getAlumniInfo(signIn.getEmail());
-            } else {
-                alumni = alumniDao.getAlumniInfo("6naseer.far@wditu.com");
+                request.setAttribute("alumni", alumni);
             }
 
-            RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/alumni/alumniProfile.jsp");
-            request.setAttribute("alumni", alumni);
+
             dispatcher.forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
@@ -323,76 +345,20 @@ public class AlumniController extends HttpServlet {
     }
 
     public void validateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        HttpSession session = request.getSession(true);
 
-//         String command = request.getParameter("command");
-//        String userType = request.getSession("userType");
-////       int register = request.getSession("login");
-//         
-//         if (userType == "UTM_Alumni"){
-//             
-//             if (login == 1){
-//               
-//                if (register == 1){
-//                try {
-//
-//            
-//            if (command == null) {
-//                command = "ALUMNI-INFO";
-//            }
-//
-//            switch (command) {
-//                case "UPDATE-ALUMNI":
-//                    updateAlumniInfo(request, response);
-//
-//                case "SEARCH-ALUMNI":
-//                    getSearchedAlumni(request, response);
-//                    break;
-//                case "FILTER-ALUMNI":
-//                    getFilteredAlumniList(request, response);
-//                    
-//                case "INFO-DETAIL":
-//                    getDetailedAlumniInfo(request, response);
-//                    
-//                case "ALUMNI-INFO":
-//                    getAlumniInfo(request, response);
-//                    
-//                    break;
-//            }
-//
-//        } catch (Exception exc) {
-//            throw new ServletException(exc);
-//        }
-//        }
-//                 else {
-//                    try {
-//            if (command == null) {
-//                command = "ALUMNI-INFO";
-//            }
-//
-//            switch (command) {
-//                
-//
-//                case "SEARCH-ALUMNI":
-//                    getSearchedAlumni(request, response);
-//                    break;
-//                case "FILTER-ALUMNI":
-//                    getFilteredAlumniList(request, response);
-//                    
-//                case "INFO-DETAIL":
-//                    getDetailedAlumniInfo(request, response);
-//                    
-//                case "ALUMNI-INFO":
-//                    getAlumniInfo(request, response);
-//                    
-//                    break;
-//            }
-//
-//        } catch (Exception exc) {
-//            throw new ServletException(exc);
-//        }
-//            }   
-//            } else {   getDetailedAlumniInfo(request, response);}  
-//             
-//        } else { getDetailedAlumniInfo(request, response);}     
+        try {
+            if (session.getAttribute("admin") != null || session.getAttribute("signIn") != null) {
+
+                return;
+
+            } else {
+                response.sendRedirect("index.jsp");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
