@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -17,9 +18,17 @@
     <body>
 
 
-   <jsp:include page="../headerNav.jsp" />    
+         <c:choose>
+            <c:when test="${signIn != null}">
+                <jsp:include page="../headerNav.jsp" />  
+            </c:when>
+            <c:when test="${admin != null}">
+                <jsp:include page="../adminHeaderNav.jsp" />  
+            </c:when> 
+         </c:choose>
                         <div class="container" style="margin-top: 100px">
             <div class="row">
+              
                 
                 <div class="col-sm-4">
 
@@ -29,8 +38,8 @@
                         /> <br /><br /><br />
                     <div>${alumni.alumniName}</div>
                     <br /><br />
-   
-                        <c:if test="${param.command eq 'MY-PROFILE'}">
+                    <c:choose>
+                        <c:when test="${param.command eq 'MY-PROFILE'}">
                     <img
                         class="vector-HIQFF0"
                         src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-1@2x.svg"
@@ -42,8 +51,21 @@
                         src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-2@2x.svg"
                         />
                     <a  href="AlumniController?command=EDIT-PROFILE&alumniEmail=${alumni.alumniEmail}">   Edit information</a>
-                   </c:if>
-            
+                   </c:when>
+                          <c:when test="${admin != null}">
+                    <img
+                        class="vector-HIQFF0"
+                        src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-1@2x.svg"
+                        />
+                    <a href="AlumniController?command=INFO-DETAIL&alumniEmail=${alumni.alumniEmail}">  View information</a>
+                    <br /><br />
+                    <img
+                        class="vector-g5WeGn"
+                        src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector-2@2x.svg"
+                        />
+                    <a  href="AlumniController?command=EDIT-PROFILE&alumniEmail=${alumni.alumniEmail}">   Edit information</a>
+                   </c:when>
+            </c:choose>
 
                 </div>
 

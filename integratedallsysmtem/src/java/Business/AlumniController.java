@@ -48,8 +48,6 @@ public class AlumniController extends HttpServlet {
 
         HttpSession session = request.getSession();
         SignIn signIn = (SignIn) session.getAttribute("signIn");
-        System.out.println("session exists : " + signIn.getEmail());
-        request.setAttribute("signEmail", signIn.getEmail());
         try {
 
             // if the command is missing, then default to login

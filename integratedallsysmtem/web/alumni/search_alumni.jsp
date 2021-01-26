@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -14,17 +15,24 @@
         <link href="./css/view_profile.css" rel="stylesheet" />
     </head>
     <body>
-      
-
-     <jsp:include page="../headerNav.jsp" />    
-            <div class="search-container">
-                <form action="AlumniController" method="post">
-                    <input type="hidden" name="command" value="SEARCH-ALUMNI" />
-                    <input type="text" value="${param.alumniName}" name="alumniName" placeholder="Search for alumni" class="search-for-alumni border-class-1 comfortaa-regular-normal-chicago-20px">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div> 
+        <c:choose>
+            <c:when test="${signIn != null}">
+                <jsp:include page="../headerNav.jsp" />  
+            </c:when>
+            <c:when test="${admin != null}">
+                <jsp:include page="../adminHeaderNav.jsp" />  
+            </c:when>
+        </c:choose>
+        <div class="search-container">
+           
+            <form action="AlumniController" method="post">
+                <input type="hidden" name="command" value="SEARCH-ALUMNI" />
+                <input type="text" value="${param.alumniName}" name="alumniName" placeholder="Search for alumni" class="search-for-alumni border-class-1 comfortaa-regular-normal-chicago-20px">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div> 
         <div class="container" style="margin-top:30px">
+             
             <div class="row">  
                 <div class="col-sm-2">
                     <div class="col">
@@ -44,8 +52,8 @@
                     </div>
                     <div class="mt-5">
                         <form action="AlumniController" method="post">
-                               <input type="hidden" name="command" value="FILTER-ALUMNI" />
-                               <input type="hidden" name="filter" value="${param.filter}" />
+                            <input type="hidden" name="command" value="FILTER-ALUMNI" />
+                            <input type="hidden" name="filter" value="${param.filter}" />
                             <label class="mb-2">Filter by : ${param.filter}</label>
                             <div class="input-group">
 

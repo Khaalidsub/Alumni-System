@@ -1,3 +1,4 @@
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -15,7 +16,14 @@
     <body>
 
 
-           <jsp:include page="../headerNav.jsp" />    
+           <c:choose>
+            <c:when test="${signIn != null}">
+                <jsp:include page="../headerNav.jsp" />  
+            </c:when>
+            <c:when test="${admin != null}">
+                <jsp:include page="../adminHeaderNav.jsp" />  
+            </c:when>
+        </c:choose>
         <div class="container" style="margin-top:100px">
             <div class="row">  
                 <div class="col-6">

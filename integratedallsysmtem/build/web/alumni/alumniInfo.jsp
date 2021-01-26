@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +19,14 @@
     </head>
 
     <body>
-    <jsp:include page="../headerNav.jsp" />      
+        <c:choose>
+            <c:when test="${signIn != null}">
+                <jsp:include page="../headerNav.jsp" />  
+            </c:when>
+            <c:when test="${admin != null}">
+                <jsp:include page="../adminHeaderNav.jsp" />  
+            </c:when> 
+        </c:choose> 
         <div class="container" style="margin-top:100px">
             <div class="d-flex flex-column justify-content-center align-items-center">  
                 <div class="col-6">
