@@ -42,24 +42,15 @@
     </head>
     <body class="sb-nav-fixed">
 
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="reportingHomeAdmin.html">Report</a>
-            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            </form>
+       <jsp:include page="adminHeaderNav.jsp" />  
 
-            <ul class="navbar-nav ml-auto ml-md-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="adminHome.jsp">Homepage</a>
-                        <a class="dropdown-item" href="logActivityAdmin.jsp">View Activity Log</a>
-                        <a class="dropdown-item" href="insertLogActivity.html">Edit Activity Log</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+      <main role="main" class="container">
+
+         <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+               <li class="breadcrumb-item active" aria-current="page">Home</li>
+            </ol>
+         </nav> 
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
