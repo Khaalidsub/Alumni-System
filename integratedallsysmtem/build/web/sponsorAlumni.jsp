@@ -15,6 +15,35 @@
         <link href="CSS/style.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+                <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Jekyll v4.1.1">
+        <title>Alumni FABU</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="CSS/bootstrap.min.css" rel="stylesheet">
+
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+
+        <!-- Custom styles for this template -->
+        <link href="css/navbar-top-fixed.css" rel="stylesheet">
     </head>
     <body class="sb-nav-fixed">
         <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
@@ -23,23 +52,15 @@
          <sql:query dataSource = "${snapshot}" var = "result">
             SELECT * from funding;
          </sql:query>
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="reportHomeAlumni.html">Report</a>
-            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            </form>
+<jsp:include page="headerNav.jsp" />    
 
-            <ul class="navbar-nav ml-auto ml-md-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="logActivityAlumni.jsp">View Activity Log</a>
-                        <a class="dropdown-item" href="insertLogActivity.html">Edit Activity Log</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+        <main role="main" class="container">
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Home</li>
+                </ol>
+            </nav>  
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -52,7 +73,11 @@
                             </a>
                            
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="chartsAAlumni.jsp">
+                            <a class="nav-link" href="logActivityAlumni.jsp">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Log Activity
+                            </a>
+                            <a class="nav-link" href="chartsAlumni.jsp">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
                             </a>

@@ -11,7 +11,7 @@
          
                <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
-                    <a class="nav-link" href="javascript:;">Home</a>
+                    <a class="nav-link" href="adminHome.jsp">Home</a>
                   </li>
                    <li class="nav-item active">
                     <a class="nav-link" href="reportHomeAdmin.jsp">Report</a>
