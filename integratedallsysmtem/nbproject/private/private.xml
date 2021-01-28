@@ -3,19 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/web/register.html</file>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/web/alumni/alumni_update_info.jsp</file>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/web/index.jsp</file>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/web/profile.jsp</file>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/web/adminHeaderNav.jsp</file>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/web/alumni/alumniProfile.jsp</file>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/web/eventAlumni.jsp</file>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/src/java/webservice/ApplicationConfig.java</file>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/src/java/webservice/database.java</file>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/web/alumni/alumniInfo.jsp</file>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/src/java/webservice/mobileAPI.java</file>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/web/home.jsp</file>
-            <file>file:/D:/Program%20File/Android/New%20folder/Alumni-System/integratedallsysmtem/src/java/Business/AlumniController.java</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/ProjekSDA/Alumni-System/integratedallsysmtem/web/register.html</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/ProjekSDA/Alumni-System/integratedallsysmtem/src/java/jdbc/UserDAO.java</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/ProjekSDA/Alumni-System/integratedallsysmtem/src/java/Business/RegisterController.java</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/ProjekSDA/Alumni-System/integratedallsysmtem/src/java/jdbc/AlumniDAO.java</file>
+            <file>file:/C:/Users/Muaz%20Amir/Documents/NetBeansProjects/ProjekSDA/Alumni-System/integratedallsysmtem/src/java/Business/SignInController.java</file>
         </group>
     </open-files>
 </project-private>
