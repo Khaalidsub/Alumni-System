@@ -234,6 +234,129 @@ public class AlumniDAO {
         return null;
     }
 
+    public int getnumberofAddresses() {
+        Connection myConn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            // get a connection
+            Class.forName("com.mysql.jdbc.Driver");
+
+            myConn = DriverManager.getConnection(url, use, password);
+            // create sql statement
+            String sql = "SELECT count(*)FROM alumniaddress";
+
+            //"select * from alumni where Alumniemail=? "
+            // create prepared statement
+            stmt = myConn.createStatement();
+
+            ps = myConn.prepareStatement(sql);
+            // set params
+
+            //execute query
+            rs = ps.executeQuery();
+
+            //check if user is found
+            rs.next();
+            int count = rs.getInt(1);
+            return count;
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // close JDBC objects
+            close(myConn, stmt, rs);
+        }
+        return 0;
+
+    }
+
+    public List<AlumniAddress> getAlumniAddressInfoList() {
+        List<AlumniAddress> alumniaddress = new ArrayList<>();
+        Connection myConn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            // get a connection
+            Class.forName("com.mysql.jdbc.Driver");
+
+            myConn = DriverManager.getConnection(url, use, password);
+            // create sql statement
+            String sql = "SELECT * FROM alumniaddress";
+
+            //"select * from alumni where Alumniemail=? "
+            // create prepared statement
+            stmt = myConn.createStatement();
+
+            ps = myConn.prepareStatement(sql);
+            // set params
+
+            //execute query
+            rs = ps.executeQuery();
+
+            //check if user is found
+            if (rs.next()) {
+
+                AlumniAddress foundAlumniAddressInfo = new AlumniAddress(rs.getString("City"), rs.getString("Country"), rs.getString("Houseno"), rs.getString("Postalcode"), rs.getString("Region"), rs.getString("State"), rs.getString("Streetname"));
+                foundAlumniAddressInfo.setalumniID(rs.getString("AlumniaddressID"));
+                alumniaddress.add(foundAlumniAddressInfo);
+                //if user is a customer
+
+            }
+            return alumniaddress;
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // close JDBC objects
+            close(myConn, stmt, rs);
+        }
+
+        return null;
+    }
+
+    public AlumniAddress addAlumniAddress(AlumniAddress alumniAddress, String alumniID) {
+//     
+        Connection myConn = null;
+        Statement stmt = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            // get a connection
+            Class.forName("com.mysql.jdbc.Driver");
+
+            myConn = DriverManager.getConnection(url, use, password);
+            // create sql statement
+            String insert_address = "INSERT INTO alumniaddress(Houseno, Streetname,Region , City , State , Postalcode , Country, AlumniaddressID)"
+                    + " VALUES  (?,?,?,?,?,?,?,?) ";
+
+            //"select * from alumni where Alumniemail=? "
+            // create prepared statement
+            stmt = myConn.createStatement();
+
+            ps = myConn.prepareStatement(insert_address);
+            // set params
+            ps.setString(1, alumniAddress.getHouseNo());
+            ps.setString(2, alumniAddress.getStreetName());
+            ps.setString(3, alumniAddress.getRegion());
+            ps.setString(4, alumniAddress.getCity());
+            ps.setString(5, alumniAddress.getState());
+            ps.setString(6, alumniAddress.getPostalCode());
+            ps.setString(7, alumniAddress.getCountry());
+            ps.setString(8, alumniID);
+            //execute query
+            ps.executeUpdate();
+
+        } catch (Exception ex) {
+            Logger.getLogger(AlumniDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // close JDBC objects
+            close(myConn, stmt, rs);
+        }
+
+        return null;
+    }
+
     /**
      *
      * @param alumniName
@@ -256,17 +379,15 @@ public class AlumniDAO {
             myConn = DriverManager.getConnection(url, use, password);
             // create sql statement
             //check if email exists
-            String sql = "SELECT * FROM `alumni` WHERE "+query+" LIKE '%' ? '%' AND Alumniname LIKE '%' ? '%'";
+            String sql = "SELECT * FROM `alumni` WHERE " + query + " LIKE '%' ? '%' AND Alumniname LIKE '%' ? '%'";
 
             // create prepared statement
             stmt = myConn.createStatement();
             ps = myConn.prepareStatement(sql);
-            System.out.println(alumniName+ query + queryValue);
-            
-      
-            
+            System.out.println(alumniName + query + queryValue);
+
             ps.setString(1, queryValue);
-             ps.setString(2, alumniName);
+            ps.setString(2, alumniName);
             //execute query
             rs
                     = ps.executeQuery();

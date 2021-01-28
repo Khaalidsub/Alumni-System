@@ -1,6 +1,5 @@
 package Middleware;
 
-
 /**
  * @author SleepingLotus
  * @version 1.0
@@ -106,39 +105,45 @@ public class AlumniAddress {
         this.streetName = streetName;
     }
 
-	private String city;
-	private String country;
-	private String houseNo;
-	private String postalCode;
-	private String region;
-	private String state;
-	private String streetName;
+    public String getalumniID() {
+        return alumniID;
+    }
 
-	public AlumniAddress(String city, String country, String houseNo, String postalCode, String region, String state, String streetName ){
-      
-            this.city=city;
-            this.country=country;
-            this.houseNo=houseNo;
-            this.postalCode=postalCode;
-            this.region=region;
-            this.state=state;
-            this.streetName=streetName;
-	}
-        public AlumniAddress(){
-            
-        }
+    public void setalumniID(String id) {
+        this.alumniID = id;
+    }
+    private String city;
+    private String country;
+    private String houseNo;
+    private String postalCode;
+    private String region;
+    private String state;
+    private String streetName;
+    private String alumniID;
+
+    public AlumniAddress(String city, String country, String houseNo, String postalCode, String region, String state, String streetName) {
+
+        this.city = city;
+        this.country = country;
+        this.houseNo = houseNo;
+        this.postalCode = postalCode;
+        this.region = region;
+        this.state = state;
+        this.streetName = streetName;
+    }
+
+    public AlumniAddress() {
+
+    }
 
     @Override
-	public void finalize() throws Throwable {
+    public void finalize() throws Throwable {
 
-	}
+    }
 
     @Override
     public String toString() {
         return "AlumniAddress{" + "city=" + city + ", country=" + country + ", houseNo=" + houseNo + ", postalCode=" + postalCode + ", region=" + region + ", state=" + state + ", streetName=" + streetName + '}';
     }
 
-  
-        
-        
 }//end AlumniAddress

@@ -183,8 +183,10 @@ public class AlumniController extends HttpServlet {
         HttpSession session = request.getSession();
         SignIn signIn = null;
         RequestDispatcher dispatcher;
-        if (request.getAttribute("command") == "MY-PROFILE") {
+
+        if (request.getParameter("command").equals("MY-PROFILE")) {
             signIn = (SignIn) session.getAttribute("signIn");
+            System.out.println("Business.AlumniController.getAlumniInfo() :" + signIn.getEmail() + signIn.getName());
         }
 
         try {
@@ -260,6 +262,7 @@ public class AlumniController extends HttpServlet {
             System.out.println(request.getParameter("alumniEmail"));
             if (request.getParameter("alumniEmail") != null) {
                 alumni = alumniDao.getDetailedAlumniInfo(request.getParameter("alumniEmail"));
+                System.out.print("here in get detaild : " + alumni.toString());
                 alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
             } else {
                 alumni = alumniDao.getDetailedAlumniInfo("6naseer.far@wditu.com");
