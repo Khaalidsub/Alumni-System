@@ -267,5 +267,13 @@ public class Alumni implements User {
     public void setTitle(alumniTitle title) {
         this.title = title;
     }
+    
+    @Override
+    public String dispWelcome(){
+        
+        String destPage = "home.jsp";
+        return destPage;
+        
+    }
 
 }

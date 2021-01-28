@@ -10,17 +10,20 @@ package Middleware;
  *
  * @author Muaz Amir
  */
+
 public class Creator {
     
     public User FactoryMethod(int accountType){
-        
+         
         if(accountType == 1){
-            return new Admin();
-        }
-        else if(accountType == 2){
             return new Alumni();
+           
         }
-        return null;
+        else {
+            return new Admin();
+           
+        }
+        
     }
     
 }

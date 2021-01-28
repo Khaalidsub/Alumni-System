@@ -21,6 +21,8 @@ public interface User {
 	 void dispSuccess();
 
 	 void dispUserAcc();
+         
+         String dispWelcome();
 
 	 void showSuggestions();
 }

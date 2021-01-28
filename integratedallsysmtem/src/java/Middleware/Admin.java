@@ -134,5 +134,13 @@ public class Admin implements User {
 	public void showSuggestions(){
 
 	}
+        
+         @Override
+     public String dispWelcome(){
+        
+        String destPage =   "adminHome.jsp"; 
+        return destPage;
+        
+    }
 
 }

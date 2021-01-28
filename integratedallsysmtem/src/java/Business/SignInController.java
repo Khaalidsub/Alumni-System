@@ -6,6 +6,7 @@
 package Business;
 
 import Middleware.Admin;
+import Middleware.Creator;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 
 
 import Middleware.SignIn;
+import Middleware.User;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
@@ -73,7 +75,7 @@ public class SignInController extends HttpServlet {
 
 	
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
           
@@ -81,8 +83,10 @@ public class SignInController extends HttpServlet {
         String email = request.getParameter("Email");
         String password = request.getParameter("password");
         
-       
+       int user;
         
+       Creator crt = new Creator();
+      
         
         try{
            Admin admin = jdbcUtility.checkAdminLogin(email, password);
@@ -90,14 +94,21 @@ public class SignInController extends HttpServlet {
            String destPage = "index.jsp";
            
            if(signIn != null){
+                       
                       HttpSession session = request.getSession();
                       session.setAttribute("signIn", signIn);
-                      destPage ="home.jsp";
+                      user = 1;
+                      User obj = crt.FactoryMethod(user);
+                      destPage = obj.dispWelcome();
            }
            if(admin != null){
+               
                       HttpSession session = request.getSession();
                       session.setAttribute("admin", admin);
-                      destPage ="adminHome.jsp";
+                      user = 2;
+                      User obj = crt.FactoryMethod(user);
+                      
+                      destPage = obj.dispWelcome();
            }
            else{
                String message = "Invalid email or password";
