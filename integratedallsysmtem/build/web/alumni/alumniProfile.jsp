@@ -6,13 +6,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href= "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
         <link href="./css/alumni_style.css" rel="stylesheet" /> 
-<link href="./css/navbar-top-fixed.css" rel="stylesheet">
+<link href="./css/navbar-top-fixed.css" rel="stylesheet">-->
+        <jsp:include page="../bootstrap5.jsp" /> 
         <title></title>
     </head>
     <body>
@@ -27,10 +28,10 @@
             </c:when> 
          </c:choose>
                         <div class="container" style="margin-top: 100px">
-            <div class="row">
+            <div class="card d-flex flex-row justify-content-around align-items-center shadow">
               
                 
-                <div class="col-sm-4">
+                <div class=" card p-5 text-center d-flex flex-column justify-content-center shadow border-dark rounded">
 
                     <img
                         class="vector-a4vd0b"
@@ -69,7 +70,7 @@
 
                 </div>
 
-                <div class="col-sm-8">           
+                <div class=" p-5 m-2 rounded">           
 
 
                     <div class="auto-flex3-Xa1OFb">
