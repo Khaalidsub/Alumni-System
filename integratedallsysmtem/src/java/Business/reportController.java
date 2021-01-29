@@ -105,7 +105,7 @@ public class reportController extends HttpServlet {
             if (insertStatus == 1) {
                 out.println("<script>");
                 out.println("    alert('Log Activity insert success');");
-                out.println("    window.location = '/reporting_system/logActivity.jsp'");
+                out.println("    window.location = '/integratedallsysmtem/logActivityAdmin.jsp'");
                 out.println("</script>");
             }
         }
@@ -123,7 +123,7 @@ public class reportController extends HttpServlet {
             
             out.println("<script>");
             out.println("    alert('Log Activity insert failed');");
-            out.println("    window.location = '/reporting_system/logActivity.jsp'");
+            out.println("    window.location = '/integratedallsysmtem/logActivityAdmin.jsp'");
             out.println("</script>");            
 	}
 	catch (java.lang.Exception ex)
@@ -134,7 +134,7 @@ public class reportController extends HttpServlet {
             
             out.println("<script>");
             out.println("    alert('Log Activity insert failed');");
-            out.println("    window.location = '/reporting_system/logActivity.jsp'");
+            out.println("    window.location = '/integratedallsysmtem/logActivityAdmin.jsp'");
             out.println("</script>");
 	}   
     }

@@ -212,7 +212,7 @@
                                                                                 <tr class="row100 body">
                                                                                    
                                                                                <td class="cell100 column1"><c:out value="Virtual Streaming Workshop" /></td>
-                                                                               <c:forEach var = "ta" items = "${resu.rows}">
+                                                                               <c:forEach var = "ta" items = "${resa.rows}">
                                                                                 <td class="cell100 column2"><c:out value="${ta.Virtual}" /></td>
                                                                                  </c:forEach>
                                                                               
@@ -220,7 +220,7 @@
                                                                                  <tr class="row100 body">
                                                                                    
                                                                                <td class="cell100 column1"><c:out value="COMPFAIR21" /></td>
-                                                                               <c:forEach var = "tu" items = "${resa.rows}">
+                                                                               <c:forEach var = "tu" items = "${resu.rows}">
                                                                                 <td class="cell100 column2"><c:out value="${tu.COMPFAIR21}" /></td>
                                                                                  </c:forEach>
                                                                               
