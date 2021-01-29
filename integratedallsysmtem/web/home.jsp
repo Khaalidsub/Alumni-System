@@ -74,9 +74,9 @@
                 <div class="col-md-12">
 
                     <div class="card shadow d-flex flex-column justify-content-start">
-                        <div class="card-body">
-                            <h2>Home</h2>
-                            <p>Welcome to UTM Alumni System</p>
+                        <div class="card-body text-center">
+                           
+                            <h2>Welcome to UTM Alumni FABU</h2>
 
                         </div>
                         <div class="d-flex flex-row justify-content-center m-5">
