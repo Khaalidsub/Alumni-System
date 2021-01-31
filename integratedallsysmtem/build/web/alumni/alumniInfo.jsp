@@ -8,7 +8,7 @@
         <meta charset="utf-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-          <jsp:include page="../bootstrap5.jsp" /> 
+        <jsp:include page="../bootstrap5.jsp" /> 
 
     </head>
 
@@ -32,9 +32,19 @@
                                  />
 
                         </div>
-                        <div>
-                            <a href="AlumniController?command=EDIT-PROFILE" class="btn btn-warning">Edit Profile</a>
+                        <c:choose>
+                            <c:when test="${signIn != null}">
+                                <div>
+                                    <a href="AlumniController?command=EDIT-PROFILE" class="btn btn-warning">Edit Profile</a>
+                                </div>  
+                            </c:when>
+                            <c:when test="${admin != null}">
+                              <div>
+                            <a href="AlumniController?command=EDIT-PROFILE&alumniEmail=${alumni.alumniEmail}" class="btn btn-warning">Edit Profile</a>
                         </div>
+                            </c:when> 
+                        </c:choose> 
+
                     </div>
 
 
