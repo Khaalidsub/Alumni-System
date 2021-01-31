@@ -54,51 +54,7 @@
          </nav>  
           
         </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="reportHomeAdmin.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-                           <a class="nav-link" href="insertLogActivity.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Edit Log Activity
-                            </a>
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            
-                            <a class="nav-link" href="logActivityAdmin.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Log Activity
-                            </a>
-                            
-                            <a class="nav-link" href="chartsAdmin.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                            <a class="nav-link" href="sponsorAdmin.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Sponsor
-                            </a>
-                            
-                            <a class="nav-link" href="eventAdmin.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Event
-                            </a>
-                            
-                            
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        ${admin.getAdminName()}
-                    </div>
-                </nav>
-            </div>
-            <div id="layoutSidenav_content">
+        
                 <main>
                 
                     <div class="container-fluid">

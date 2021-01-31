@@ -49,44 +49,7 @@
                     <li class="breadcrumb-item active" aria-current="page">Home</li>
                 </ol>
             </nav>  
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="reportHomeUser.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-                            
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="logActivityAlumni.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Log Activity
-                            </a>
-                            <a class="nav-link" href="chartsAlumni.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                             <a class="nav-link" href="sponsorAlumni.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Sponsor
-                            </a>
-                            
-                            <a class="nav-link" href="eventAlumni.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Event
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        ${signIn.getName()}
-                    </div>
-                </nav>
-            </div>
-            <div id="layoutSidenav_content">
+        
                 <main>
                     <div class="container-fluid">
                     <div class="utm"><img src="pic/utm.png" width="600" height="200"> </div>
@@ -108,16 +71,16 @@
                                 Qualified Architect
                             </div>
                             <div class="card-body"><canvas id="myAreaChart" width="100" height="30"></canvas></div>
-                            <div class="card-footer small text-muted">Viewed on <?php echo date("H:i:sa") . " " .date("Y/m/d") ?></div>
+                            <div class="card-footer small text-muted">Viewed on <%= (new java.util.Date()).toLocaleString()%></div>
                         </div>
                         
                             <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-chart-area mr-1"></i>
-                                Qualified Architect
+                                Local/International
                             </div>
                             <div class="card-body"><canvas id="myPieChart" width="100" height="30"></canvas></div>
-                            <div class="card-footer small text-muted">Viewed on <?php echo date("H:i:sa") . " " .date("Y/m/d") ?></div>
+                            <div class="card-footer small text-muted">Viewed on <%= (new java.util.Date()).toLocaleString()%></div>
                         </div>
                        
                         <div class="row">
@@ -128,7 +91,7 @@
                                         Event Participation
                                     </div>
                                     <div class="card-body"><canvas id="eventStat" width="100" height="50"></canvas></div>
-                                    <div class="card-footer small text-muted">Viewed on <?php echo date("H:i:sa") . " " .date("Y/m/d") ?></div>
+                                    <div class="card-footer small text-muted">Viewed on <%= (new java.util.Date()).toLocaleString()%></div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -138,7 +101,7 @@
                                     Alumni Sponsorship Involvement
                                 </div>
                                 <div class="card-body"><canvas id="sponsor" width="100" height="50"></canvas></div>
-                                <div class="card-footer small text-muted">Viewed on <?php echo date("H:i:sa") . " " .date("Y/m/d") ?></div>
+                                <div class="card-footer small text-muted">Viewed on <%= (new java.util.Date()).toLocaleString()%></div>
                                 </div>
                         </div>
                         
