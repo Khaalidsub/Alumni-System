@@ -1,5 +1,17 @@
 version: "3.8"
 services:
+  nginx:
+    depends_on:
+      - alumni_api
+      - phpmyadmin
+    restart: always
+    container_name: alumni_nginx
+    image: "sda/alumni_nginx"
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "80:80"
   alumni_api:
     container_name: alumni_api
     image: "sda/alumni_api"
@@ -14,13 +26,16 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: sdadatabase
     ports:
-      - 3306:3306
+      - 6666:3306
     volumes:
       - ./sdadatabase.sql:/docker-entrypoint-initdb.d/sdadatabase.sql
   phpmyadmin:
+    container_name: phpmyadmin
     image: phpmyadmin
     restart: always
+    depends_on:
+      - db
     ports:
-      - 80:80
+      - 6969:80
     environment:
       - PMA_ARBITRARY=1
