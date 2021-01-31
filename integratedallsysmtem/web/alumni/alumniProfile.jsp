@@ -6,15 +6,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href= "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-        <link href="./css/alumni_style.css" rel="stylesheet" /> 
-<link href="./css/navbar-top-fixed.css" rel="stylesheet">-->
+
         <jsp:include page="../bootstrap5.jsp" /> 
-        <title></title>
+        <title>Alumni Profile</title>
     </head>
     <body>
 
@@ -31,10 +25,10 @@
             <div class="card d-flex flex-row justify-content-around align-items-center shadow">
               
                 
-                <div class=" card p-5 text-center d-flex flex-column justify-content-center shadow border-dark rounded">
+                <div class=" card p-5 text-center d-flex flex-column justify-content-center shadow border-dark rounded align-items-center">
 
                     <img
-                        class="vector-a4vd0b"
+                        class="w-50"
                         src="https://anima-uploads.s3.amazonaws.com/projects/5fedca635c07fd3ab0e1d2bd/releases/5fedca9c5122d4b9a1c05998/img/vector@2x.svg"
                         /> <br /><br /><br />
                     <div>${alumni.alumniName}</div>

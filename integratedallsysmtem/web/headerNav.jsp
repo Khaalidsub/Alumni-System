@@ -4,7 +4,7 @@
     Author     : SleepingLotus
 --%>
 
- <script src="https://kit.fontawesome.com/43d73fdaf8.js" crossorigin="anonymous"></script>
+ <!--<script src="https://kit.fontawesome.com/43d73fdaf8.js" crossorigin="anonymous"></script>-->
 
  <nav class="navbar  navbar-expand-md navbar-dark fixed-top bg-dark">
 
@@ -20,10 +20,10 @@
                     </li>
                     <li class="nav-item active">
                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                             <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" id="navbardrop" data-toggle="dropdown">
                               Events
                             </a>
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu" aria-labelledby="navbardrop">
                               <a class="dropdown-item" href="EventController?action=view">Upcoming Events</a>
                               <a class="dropdown-item" href="EventController?action=joinedEvents">Your Events</a>
                               <a class="dropdown-item" href="PaymentController?action=fundingList">Funding History</a>
@@ -45,8 +45,8 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="h#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${signIn.getName()}</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown07">
+                        <a class="nav-link dropdown-toggle"  type="button"  id="dropdown07" data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${signIn.getName()}</a>
+                        <div class="dropdown-menu dropdown-toggle" aria-labelledby="dropdown07">
                             <a class="dropdown-item" href="AlumniController?command=MY-PROFILE">Profile</a>
                             <a class="dropdown-item" href="LogoutController">Logout</a>
                         </div>
