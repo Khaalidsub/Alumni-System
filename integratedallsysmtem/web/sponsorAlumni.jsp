@@ -173,7 +173,7 @@
                                                             
 								<tr class="row100 head">
 									<th class="cell100 column1">Name</th>
-									<th class="cell100 column2">Number of Participant </th>
+									<th class="cell100 column2">Number of Sponsors </th>
 								</tr>
 							</thead>
 						</table>
