@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2021 at 03:20 PM
+-- Generation Time: Jan 24, 2021 at 12:12 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -18,8 +18,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sdadatabase`
+-- Database: `test_2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `adminID` int(10) NOT NULL,
+  `adminName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `adminEmail` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `adminPassword` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`adminID`, `adminName`, `adminEmail`, `adminPassword`) VALUES
+(1, 'Aidiel', 'aidiel@um.com', '123'),
+(2, 'Kamal', 'kamarul@gmail.com', 'kama1');
 
 -- --------------------------------------------------------
 
@@ -37,6 +58,7 @@ CREATE TABLE `alumni` (
   `Edulevel` varchar(250) DEFAULT NULL,
   `Coursename` varchar(250) DEFAULT NULL,
   `Alumniemail` varchar(250) DEFAULT NULL,
+  `password` varchar(200) NOT NULL,
   `Phoneno` varchar(250) DEFAULT NULL,
   `AlumniaddressID` varchar(250) DEFAULT NULL,
   `Graduateyear` varchar(250) DEFAULT NULL,
@@ -47,17 +69,17 @@ CREATE TABLE `alumni` (
 -- Dumping data for table `alumni`
 --
 
-INSERT INTO `alumni` (`AlumniID`, `Batchname`, `Alumniname`, `Alumnimatric`, `Gender`, `Alumnicitizenship`, `Edulevel`, `Coursename`, `Alumniemail`, `Phoneno`, `AlumniaddressID`, `Graduateyear`, `Title`) VALUES
-(1, '35', 'TAN HUI MIN', 'DX200001', 'Female', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', 'yali@salute.moscow', '0135894176', 'Aid001', '2002', 'Ms'),
-(2, '35', 'NUR LIYANA BINTI ENCHIK ARIS', 'DX20002', 'Female', 'Malaysia', 'Diploma', 'DIPLOMA SENI BINA', 'ljo_oow@theoriginsprogram.net', '0115894276', 'Aid002', '2002', 'Ms'),
-(3, '35', 'NUR SYAZWANI BINTI MOHD KHAIRI', 'TK3243245', 'Female', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', '6naseer.far@wditu.com', '0123325453', 'Aid003', '2002', 'Mr'),
-(4, '35', 'ONG TEE YAU', 'DX20003', 'Male', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', 'zfranci@vitaminc.news', '0165894756', 'Aid004', '2002', 'Mr'),
-(5, '35', 'PANG LAI KIN', 'DX20004', 'Female', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', 'iahmadmahmoud612@usn.pw', '0139584716', 'Aid005', '2002', 'Ms'),
-(6, '35', 'RAJA MOHD ZULKARNAIN', 'DX20005', 'Male', 'SINGAPORE', 'Diploma', 'DIPLOMA SENI BINA', '9macielbob@michiganpepsi.com', '0196847534', 'Aid006', '2002', 'Ir'),
-(7, '35', 'SAZLI BIN YAHAYA', 'DX20006', 'Male', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', 'cworawitsamartb@usn.pw', '0195874568', 'Aid007', '2002', 'Mr'),
-(8, '35', 'THIAN SOO YING', 'DX20007', 'Female', 'MALAYSIAN', 'Diploma', 'DIPLOMA SENI BINA', 'hyoun@culturesnacks.us', '0195486278', 'Aid008', '2002', 'Dr'),
-(9, '35', 'SITI SARAH BINTI MUKTATI', 'DX20008', 'Female', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', 'ksimo.laasri.501d@lotomoneymaker.com', '0132654139', 'Aid009', '2002', 'Dr'),
-(10, '35', 'NUR \'ATIKAH BINTI ROHAIZAN', 'DX20009', 'Female', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', 'jhsha451t@arunachalnews.com', '01119583214', 'Aid010', '2002', 'Ir');
+INSERT INTO `alumni` (`AlumniID`, `Batchname`, `Alumniname`, `Alumnimatric`, `Gender`, `Alumnicitizenship`, `Edulevel`, `Coursename`, `Alumniemail`, `password`, `Phoneno`, `AlumniaddressID`, `Graduateyear`, `Title`) VALUES
+(1, '35', 'TAN HUI MIN', 'DX200001', 'Female', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', 'yali@salute.moscow', '123456', '0135894176', 'Aid001', '2002', 'Ms'),
+(2, '35', 'NUR LIYANA BINTI ENCHIK ARIS', 'DX20002', 'Female', 'Malaysia', 'Diploma', 'DIPLOMA SENI BINA', 'ljo_oow@theoriginsprogram.net', '123456', '0115894276', 'Aid002', '2002', 'Ms'),
+(3, '35', 'NUR SYAZWANI BINTI MOHD KHAIRI', 'TK3243245', 'Female', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', '6naseer.far@wditu.com', '123456', '0123325453', 'Aid003', '2002', 'Mr'),
+(4, '35', 'ONG TEE YAU', 'DX20003', 'Male', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', 'zfranci@vitaminc.news', '123456', '0165894756', 'Aid004', '2002', 'Mr'),
+(5, '35', 'PANG LAI KIN', 'DX20004', 'Female', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', 'iahmadmahmoud612@usn.pw', '123456', '0139584716', 'Aid005', '2002', 'Ms'),
+(6, '35', 'RAJA MOHD ZULKARNAIN', 'DX20005', 'Male', 'SINGAPORE', 'Diploma', 'DIPLOMA SENI BINA', '9macielbob@michiganpepsi.com', '123456', '0196847534', 'Aid006', '2002', 'Ir'),
+(7, '35', 'SAZLI BIN YAHAYA', 'DX20006', 'Male', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', 'cworawitsamartb@usn.pw', '123456', '0195874568', 'Aid007', '2002', 'Mr'),
+(8, '35', 'THIAN SOO YING', 'DX20007', 'Female', 'MALAYSIAN', 'Diploma', 'DIPLOMA SENI BINA', 'hyoun@culturesnacks.us', '123456', '0195486278', 'Aid008', '2002', 'Dr'),
+(9, '35', 'SITI SARAH BINTI MUKTATI', 'DX20008', 'Female', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', 'ksimo.laasri.501d@lotomoneymaker.com', '123456', '0132654139', 'Aid009', '2002', 'Dr'),
+(10, '35', 'NUR \'ATIKAH BINTI ROHAIZAN', 'DX20009', 'Female', 'MALAYSIA', 'Diploma', 'DIPLOMA SENI BINA', 'jhsha451t@arunachalnews.com', '123456', '01119583214', 'Aid010', '2002', 'Ir');
 
 -- --------------------------------------------------------
 
@@ -91,6 +113,44 @@ INSERT INTO `alumniaddress` (`City`, `Country`, `Houseno`, `Postalcode`, `Region
 ('KUALA LUMPUR', 'MALAYSIA', 'NO 59', '58100', 'TAMAN DESA', 'KUALA LUMPUR', 'JALAN DESA MESRA', 'Aid008'),
 ('JOHOR BAHRU', 'MALAYSIA', 'NO 29', '81110', 'TAMAN SERI PULAI', 'JOHOR', 'JALAN ARA 13', 'Aid009'),
 ('KUALA LUMPUR', 'MALAYSIA', 'NO 11', '50480', 'BUKIT TUNKU', 'KUALA LUMPUR', 'CHANGKAT TUNKU', 'Aid010');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alumniuser`
+--
+
+CREATE TABLE `alumniuser` (
+  `Name` varchar(200) DEFAULT NULL,
+  `password` varchar(100) NOT NULL,
+  `Address` varchar(200) NOT NULL,
+  `Email` varchar(200) DEFAULT NULL,
+  `CurrentJob` varchar(200) DEFAULT NULL,
+  `qualification` varchar(100) NOT NULL,
+  `GraduateYear` int(50) DEFAULT NULL,
+  `PhoneNo` varchar(200) DEFAULT NULL,
+  `PreviousJob` varchar(200) DEFAULT NULL,
+  `SalaryPrevious` double DEFAULT NULL,
+  `SalaryCurrent` double DEFAULT NULL,
+  `Status` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `alumniuser`
+--
+
+INSERT INTO `alumniuser` (`Name`, `password`, `Address`, `Email`, `CurrentJob`, `qualification`, `GraduateYear`, `PhoneNo`, `PreviousJob`, `SalaryPrevious`, `SalaryCurrent`, `Status`) VALUES
+('muaz', '1234', '092,Jalan angka', 'la@yahoo.com', 'student', '', 2020, '01123412', 'kerani', 900, 3000, 'single'),
+('ahmad', 'wawa', 'Jalan ampang', 'ahmad@gmail.com', 'software engineer', '', 2019, '01233413', 'Cikgu', 2000, 5000, 'single'),
+('afiq', '', 'Jalan Panglima 3', 'afiq@gmail.com', 'Monitor', '', 2021, '012341234', 'Kedai Runcit', 2323, 4000, 'Single'),
+('Burhan', 'haha', 'kemamang', 'bob12@gmail.com', 'cosplayer', '', 2017, '01234213', 'cuci rumah', 800, 9000, 'complicated'),
+('Hafiz', 'haha', 'Jalan Kampung', 'hafiz@gmail.com', 'engineer', '', 2019, '01234233', 'Teacher', 1000, 3000, 'single'),
+('Afiq Zaidin', '123', '96, TAMAN LAKSAMANA, JALAN TEMENGGONG AHMAD', 'afiqz@gmail.com', 'Jobless', 'Qualified', 2016, '21234', 'Programmer', 4000, 1000, 'Single'),
+('Adel', '123', '96, TAMAN LAKSAMANA', 'aidiel@gmail.com', 'Jobless', 'Qualified', 2017, '334', 'Programmer', 2333, 425, 'Single'),
+('Melo', '123', 'adfaw', 'melo@gmail.com', 'Jobless', 'Unqualified', 2014, '213213', 'Programmer', 2333, 1000, 'Single'),
+('Buni', '123', 'Taman Naga', 'buni@gmail.com', 'Jobless', 'Unqualified', 2012, '21234', 'Programmer', 4000, 425, 'Single'),
+('Arbaah', '123', 'Taman Naga', 'arbaah@gmail.com', 'Jobless', 'Unqualified', 2017, '334', 'Programmer', 4000, 1000, 'Single'),
+('Syamsul', '123', '96, TAMAN LAKSAMANA, JALAN TEMENGGONG AHMAD', 'syamsul@gmail.com', 'Jobless', 'Qualified', 2005, '123', 'Programmer', 4000, 1000, 'Single');
 
 -- --------------------------------------------------------
 
@@ -230,7 +290,14 @@ CREATE TABLE `logactivity` (
 --
 
 INSERT INTO `logactivity` (`id`, `name`, `eventName`, `sponsorship`, `qualified`, `nationality`, `addeddate`) VALUES
-(9, 'Muhammad Afiq Bin Mohd Murad', 'Suskom12', 'Yes', 'Diploma', 'Malaysian', '2021-01-01 05:48:39');
+(11, 'Ali', 'Cabaran Mahasiswa Norma Baharu', 'Yes', 'Master', 'Malaysian', '2021-01-09 01:44:59'),
+(12, 'Abu', 'Virtual Streaming Workshop', 'Yes', 'Diploma', 'Malaysian', '2021-01-09 01:45:25'),
+(13, 'Ahmad', 'COMPFAIR21', 'No', 'Diploma', 'Malaysian', '2021-01-09 01:45:44'),
+(14, 'Razak', 'Virtual Streaming Workshop', 'No', 'Diploma', 'Malaysian', '2021-01-09 01:46:22'),
+(15, 'Osman', 'Cabaran Mahasiswa Norma Baharu', 'Yes', 'Degree', 'Malaysian', '2021-01-09 01:46:43'),
+(16, 'Omar', 'Cabaran Mahasiswa Norma Baharu', 'Yes', 'Master', 'Egypt', '2021-01-09 01:47:09'),
+(17, 'Jannah', 'Cabaran Mahasiswa Norma Baharu', 'Yes', 'Master', 'Indonesia', '2021-01-09 01:47:38'),
+(18, 'Razak', 'Cabaran Mahasiswa Norma Baharu', 'No', 'Diploma', 'Indonesia', '2021-01-14 00:46:01');
 
 -- --------------------------------------------------------
 
@@ -357,7 +424,7 @@ ALTER TABLE `alumni`
 -- AUTO_INCREMENT for table `logactivity`
 --
 ALTER TABLE `logactivity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
