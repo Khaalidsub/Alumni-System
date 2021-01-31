@@ -28,6 +28,8 @@
         <link href="CSS/bootstrap.min.css" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="./css/navbar-top-fixed.css" rel="stylesheet">
+        
+        <script src="https://kit.fontawesome.com/43d73fdaf8.js" crossorigin="anonymous"></script>
        
         <style>
            
@@ -64,6 +66,20 @@
                 padding: 20px 0;
             }
             
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+              }
+              
+            .table{
+                border-radius: 5px;
+                box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.19);
+            }
+            
+
             
          
             
@@ -93,7 +109,7 @@
                 
             
             
-                <table border="1" class="myTable table-hover thead-dark">
+                <table border="1" class="myTable table table-striped table-bordered table-hover thead-dark">
                     <thead class="thead-dark">
                         <tr>
                           <th>Index</th>
@@ -137,10 +153,13 @@
                         
             
         </main>
+        <footer class="footer mt-auto py-3 bg-dark">
+
+        </footer>
                         
         <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
-
+        
         <script type="text/javascript">
 
             $(document).ready(function() {

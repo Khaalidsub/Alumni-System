@@ -4,6 +4,8 @@
     Author     : SleepingLotus
 --%>
 
+ <script src="https://kit.fontawesome.com/43d73fdaf8.js" crossorigin="anonymous"></script>
+
  <nav class="navbar  navbar-expand-md navbar-dark fixed-top bg-dark">
 
             <div class="container">
@@ -35,8 +37,12 @@
                         <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Connect</a>
                     </li>
                 </ul>
+                
 
                 <ul class="navbar-nav">
+                    <li class="nav-item active"></li>
+                        <a class="nav-link" href="AnnouncementController?"><div class="icon_wrap"><i class="far fa-bell"></i></div></a>
+                    </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="h#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${signIn.getName()}</a>
