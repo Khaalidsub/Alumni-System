@@ -46,12 +46,15 @@
       <link href="css/navbar-top-fixed.css" rel="stylesheet">
     </head>
     <body class="sb-nav-fixed">
+        
         <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
          url = "jdbc:mysql://localhost/sdadatabase"
          user = "root"  password = ""/>
+        
          <sql:query dataSource = "${snapshot}" var = "result">
             SELECT * from funding;
          </sql:query>
+            
       <jsp:include page="adminHeaderNav.jsp" />  
 
       <main role="main" class="container">
@@ -60,11 +63,13 @@
             <ol class="breadcrumb">
                <li class="breadcrumb-item active" aria-current="page">Home</li>
             </ol>
+             
          </nav>  
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
+                        
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
                             <a class="nav-link" href="reportHomeAdmin.jsp">
@@ -95,6 +100,7 @@
                                 Event
                             </a>
                         </div>
+                        
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>

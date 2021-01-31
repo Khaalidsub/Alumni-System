@@ -17,10 +17,10 @@
                     <a class="nav-link" href="reportHomeAdmin.jsp">Report</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="javascript:;">Manage User</a>
+                    <a class="nav-link" href="manageAlumni.jsp">Manage Alumni</a>
                   </li>
                     <li class="nav-item active">
-                    <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Alumni</a>
+                    <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Connect With Alumni</a>
                   </li>
                   
                </ul>
