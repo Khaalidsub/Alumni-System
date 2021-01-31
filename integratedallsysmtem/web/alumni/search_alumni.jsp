@@ -63,7 +63,7 @@
                         </form>   
                     </div>
                     <div class="d-flex flex-row justify-content-between align-items-center">
-                      
+
                         <div class="d-flex justify-content-end my-5 ">
 
                             <form class="d-flex flex-row" action="AlumniController" method="post">
@@ -78,11 +78,27 @@
 
 
 
-                <div class="col-sm-10 d-flex flex-column align-items-end">
+                <div class="col-sm-10 d-flex flex-column align-items-start">
+                    <div class="d-flex flex-row align-items-center">
+                         <c:if test="${not empty error}">
+                        <div class="alert alert-dismissible fade show alert-danger" role="alert">
+                            
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <strong>${error}</strong>
+                        </div>  
+                    </c:if>
 
-
+                    <c:if test="${not empty search_info}">
+                        <div class="alert alert-dismissible fade show alert-info" role="alert">
+                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <strong>${search_info}</strong>
+                        </div>  
+                    </c:if> 
+                    </div>
+ 
+                 
                     <table class="table border rounded table-bordered caption-top">
-                          <caption>List of Alumni</caption>
+                        <caption>List of Alumni</caption>
                         <c:forEach var="tempAlumni" items="${ALUMNI_LIST}">
                             <tr class="spaceUnder"><td  class="d-flex flex-row justify-content-center" rowspan="2">
 

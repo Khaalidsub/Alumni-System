@@ -300,15 +300,29 @@ public class AlumniController extends HttpServlet {
      */
     public void getFilteredAlumniList(HttpServletRequest request, HttpServletResponse response) {
         List<Alumni> alumnis = new ArrayList<>();
+        RequestDispatcher dispatcher;
         try {
             String alumniName = request.getParameter("alumniName");
+
             String query = request.getParameter("filter");
             String queryValue = request.getParameter(query + "_input");
+            if (alumniName == null || alumniName.trim().equals("")) {
 
-            alumnis = alumniDao.getFilteredAlumni(alumniName, query, queryValue);
-            RequestDispatcher dispatcher;
+            }
+            if (query == null) {
+                request.setAttribute("error", "Invalid Query Input!");
+            } else if (queryValue == null || queryValue.trim().equals("")) {
+                request.setAttribute("error", "Invalid Search Input!");
+            } else {
+                alumnis = alumniDao.getFilteredAlumni(alumniName, query, queryValue);
+                request.setAttribute("ALUMNI_LIST", alumnis);
+            }
+            if (alumnis.size() < 1) {
+                 request.setAttribute("search_info", "No Alumni Found");
+            }
+
             dispatcher = request.getRequestDispatcher("/alumni/search_alumni.jsp");
-            request.setAttribute("ALUMNI_LIST", alumnis);
+
             dispatcher.forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
