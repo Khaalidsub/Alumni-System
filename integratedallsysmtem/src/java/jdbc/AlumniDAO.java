@@ -30,7 +30,7 @@ public class AlumniDAO {
 
     private static AlumniDAO instance;
 
-    private String url = "jdbc:mysql://db:3306/sdadatabase?useTimezone=true&serverTimezone=UTC";
+    private String url = "jdbc:mysql://localhost/sdadatabase?useTimezone=true&serverTimezone=UTC";
     private String use = "root";
     private String password = "";
 

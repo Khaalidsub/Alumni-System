@@ -42,7 +42,7 @@ public class EventDAO extends HttpServlet {
   
     private String driver = "com.mysql.jdbc.Driver";
     private String dbName = "sdadatabase";
-    private String url = "jdbc:mysql://db:3306/" + dbName + "?";
+    private String url = "jdbc:mysql://localhost/" + dbName + "?";
     private String userName = "root";
     private String password = "";
     
