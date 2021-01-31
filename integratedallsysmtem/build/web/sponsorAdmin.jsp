@@ -54,7 +54,20 @@
          <sql:query dataSource = "${snapshot}" var = "result">
             SELECT * from funding;
          </sql:query>
-            
+         <sql:query dataSource = "${snapshot}" var = "res">
+            SELECT COUNT(eventName) AS Cabaran FROM logactivity
+            WHERE eventName='Cabaran Mahasiswa Norma Baharu' AND sponsorship='Yes';
+</sql:query>
+                 
+                  <sql:query dataSource = "${snapshot}" var = "resa">
+            SELECT COUNT(eventName) AS Virtual FROM logactivity
+            WHERE eventName='Virtual Streaming Workshop' AND sponsorship='Yes';
+</sql:query>
+                 
+                  <sql:query dataSource = "${snapshot}" var = "resu">
+            SELECT COUNT(eventName) AS COMPFAIR21 FROM logactivity
+            WHERE eventName='COMPFAIR21' AND sponsorship='Yes';
+</sql:query>   
       <jsp:include page="adminHeaderNav.jsp" />  
 
       <main role="main" class="container">
@@ -159,6 +172,64 @@
 				</div>
                         
                         
+                        
+                    </div>
+                    <div class="wrap-table100">
+				<div class="table100 ver1 m-b-110">
+					<div class="table100-head">
+						<table>
+							<thead>
+                                                            
+								<tr class="row100 head">
+									<th class="cell100 column1">Name</th>
+									<th class="cell100 column2">Number of Participant </th>
+								</tr>
+							</thead>
+						</table>
+                                            
+                                            
+					</div>
+
+					<div class="table100-body js-pscroll">
+                                                                                              
+                                                                                    
+                                                                                
+						<table>
+							<tbody>
+								
+                                                                                
+                                                                               <tr class="row100 body">
+                                                                                   
+                                                                               <td class="cell100 column1"><c:out value="Cabaran Mahasiswa Norma Baharu" /></td>
+                                                                               <c:forEach var = "te" items = "${res.rows}">
+                                                                                <td class="cell100 column2"><c:out value="${te.Cabaran}" /></td>
+                                                                                 </c:forEach>
+                                                                              
+                                                                                </tr>
+                                                                                <tr class="row100 body">
+                                                                                   
+                                                                               <td class="cell100 column1"><c:out value="Virtual Streaming Workshop" /></td>
+                                                                               <c:forEach var = "ta" items = "${resa.rows}">
+                                                                                <td class="cell100 column2"><c:out value="${ta.Virtual}" /></td>
+                                                                                 </c:forEach>
+                                                                              
+                                                                                </tr>
+                                                                                 <tr class="row100 body">
+                                                                                   
+                                                                               <td class="cell100 column1"><c:out value="COMPFAIR21" /></td>
+                                                                               <c:forEach var = "tu" items = "${resu.rows}">
+                                                                                <td class="cell100 column2"><c:out value="${tu.COMPFAIR21}" /></td>
+                                                                                 </c:forEach>
+                                                                              
+                                                                                </tr>
+                                                                                
+									
+								
+
+							</tbody>
+						</table>
+					</div>
+				</div>
                         
                     </div>
                 </main>
