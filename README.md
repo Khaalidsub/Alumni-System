@@ -42,6 +42,12 @@ Since we are working with different modules, the repository is seperated into di
 - Alumni_Branch -> for Group Sus
 - Event_Branch -> for Group Backspace
 
+To chech all the available branches :
+
+```
+git branch -a
+```
+
 In order to change to your branch, use the following command :
 
 ```
