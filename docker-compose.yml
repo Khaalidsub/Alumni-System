@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  alumni_api:
+    container_name: alumni_api
+    image: "sda/alumni_api"
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 8050:8080
+  db:
+    image: mariadb:10.3
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: sdadatabase
+    ports:
+      - 3306:3306
+    volumes:
+      - ./sdadatabase.sql:/docker-entrypoint-initdb.d/sdadatabase.sql
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      - PMA_ARBITRARY=1
