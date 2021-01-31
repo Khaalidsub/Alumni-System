@@ -16,45 +16,52 @@ import jdbc.reportingDAO;
  * @created 30-Dec-2020 11:16:38 PM
  */
 public class Event {
-
-    /**
-     * @return the eventName
-     */
-    public String getEventName() {
-        return eventName;
-    }
-
-    /**
-     * @param eventName the eventName to set
-     */
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
-    }
-
-    /**
-     * @return the eventAlumniParticipant
-     */
-    public int getEventAlumniParticipant() {
-        return eventAlumniParticipant;
-    }
-
-    /**
-     * @param eventAlumniParticipant the eventAlumniParticipant to set
-     */
-    public void setEventAlumniParticipant(int eventAlumniParticipant) {
-        this.eventAlumniParticipant = eventAlumniParticipant;
-    }
     
-    private String eventName;
-    private int eventAlumniParticipant;
+        private String date;
+        private String eventID;
+        private String eventName;
+        private String fee;
+        private String organizer;
+        private String time;
+        private String venue;
+        private String fundingID;
+        private Funding funding;
+        private Payment payment;
+        private int pID;
+        private String paymentStatus = "not paid";
+        private int eventAlumniParticipant;
 
-	public Event(){
-            
-	}
+        /**
+         * @return the eventName
+         */
+        public String getEventName() {
+            return eventName;
+        }
 
-	public void finalize() throws Throwable {
+        /**
+         * @param eventName the eventName to set
+         */
+        public void setEventName(String eventName) {
+            this.eventName = eventName;
+        }
 
-	}
+        /**
+         * @return the eventAlumniParticipant
+         */
+        public int getEventAlumniParticipant() {
+            return eventAlumniParticipant;
+        }
+
+        /**
+         * @param eventAlumniParticipant the eventAlumniParticipant to set
+         */
+        public void setEventAlumniParticipant(int eventAlumniParticipant) {
+            this.eventAlumniParticipant = eventAlumniParticipant;
+        }
+
+        public Event(){
+
+        }
 
 	public void getEventInfo(int eventAlumniParticipant,String eventName){
             this.setEventAlumniParticipant(eventAlumniParticipant);
@@ -68,5 +75,163 @@ public class Event {
 	public int displayLatestEventInvolvement(){
             return getEventAlumniParticipant();
 	}
+        
+        
 
+        /**
+         *
+         * @param eventID
+         * @param eventName
+         * @param date
+         * @param time
+         * @param venue
+         * @param organizer
+         * @param fee
+         * @param fundingID
+         */
+        public Event(String eventID, String eventName,String date, String time, String venue, String organizer, String fee, String fundingID ){
+                this.eventID = eventID;
+                this.eventName = eventName;
+                this.date = date;
+                this.time = time;
+                this.venue = venue;
+                this.organizer = organizer;
+                this.fee = fee;
+                this.fundingID = fundingID;
+        }
+
+        public void addFunding(Funding f){
+            funding = f;
+        }
+
+        public Funding getFunding(){
+            return funding;
+        }
+
+       public String getFundingID(){
+           return fundingID;
+       }
+
+        public void addPayment(Payment p){
+            payment = p;
+        }
+
+        public Payment getPayment(){
+            return payment;
+        }    
+
+        public void setPaymentID(int pid){
+            pID = pid;
+            paymentStatus = "paid";
+        }
+
+        public String getPaymentStatus(){
+            return paymentStatus;
+        }
+
+        /**
+         *
+         */
+        public void confirmation(){
+
+        }
+
+        /**
+         *
+         * @return
+         */
+        public String getDate(){
+            return date;
+        }
+
+        /**
+         *
+         */
+        public void getEventDetails(){
+
+        }
+
+        /**
+         *
+         * @return
+         */
+        public String getEventID(){
+            return eventID;
+        }
+
+        /**
+         *
+         * @return
+         */
+        public String getFee(){
+            return fee;
+        }
+
+        /**
+         *
+         * @return
+         */
+        public String getOrganizer(){
+            return organizer;
+        }
+
+        /**
+         *
+         * @return
+         */
+        public String getTime(){
+            return time;
+        }
+
+        /**
+         *
+         * @return
+         */
+        public String getVenue(){
+            return venue;
+        }
+
+	/**
+	 * 
+	 * @param eventID
+	 * @param eventName
+	 */
+	public void retreiveEvent(String eventID, String eventName){
+
+	}
+
+	/**
+	 * 
+	 * @param eventID
+	 * @param eventName
+	 */
+	public void retreivelist(String eventID, String eventName){
+            
+            
+	}
+
+        /**
+         *
+         */
+        public void save(){
+            
+	}
+
+	/**
+	 * 
+	 * @param eventID
+	 * @param alumniID
+	 */
+	public void saveDataAlumni(String eventID, String alumniID){
+
+	}
+
+	/**
+	 * 
+	 * @param eventID
+	 * @param staffID
+	 */
+	public void saveDataStaff(String eventID, String staffID){
+
+	}
 }

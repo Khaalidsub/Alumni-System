@@ -17,9 +17,19 @@
                         <a class="nav-link" href="AlumniController?command=MY-PROFILE">MyProfile</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="reportHomeUser.jsp">Report</a>
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                              Events
+                            </a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="EventController?action=view">Upcoming Events</a>
+                              <a class="dropdown-item" href="EventController?action=joinedEvents">Your Events</a>
+                              <a class="dropdown-item" href="PaymentController?action=fundingList">Funding History</a>
+                            </div>
+                          </li>
                     </li>
-
+                    <li class="nav-item active">
+                        <a class="nav-link" href="reportHomeUser.jsp">Report</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Connect</a>
