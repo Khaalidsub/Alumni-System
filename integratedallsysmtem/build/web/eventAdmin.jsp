@@ -50,8 +50,8 @@
     </head>
     <body class="sb-nav-fixed">
         <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
-         url = "jdbc:mysql://localhost/sdadatabase"
-         user = "root"  password = ""/>
+            url = "jdbc:mysql://db:3306/sdadatabase"
+         user = "root"  password = "sdadatabase123"/>
          <sql:query dataSource = "${snapshot}" var = "result">
             SELECT * from event;
          </sql:query>
