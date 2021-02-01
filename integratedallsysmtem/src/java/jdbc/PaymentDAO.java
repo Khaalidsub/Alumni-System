@@ -49,7 +49,7 @@ public class PaymentDAO extends HttpServlet {
   
     private String driver = "com.mysql.jdbc.Driver";
     private String dbName = "sdadatabase";
-    private String url = "jdbc:mysql://db:3306/" + dbName + "?";
+    private String url = "jdbc:mysql://localhost:/" + dbName + "?";
     private String userName = "root";
     private String password = "sdadatabase123";
     
@@ -64,6 +64,97 @@ public class PaymentDAO extends HttpServlet {
         return con;
     }
     
+    public int getAlumniID(String email, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        
+        HttpSession session = request.getSession();
+                                                                                                                              
+        Connection conn = getConnection();
+       
+        
+        PreparedStatement ps;
+        Statement stmt;
+        String sqlQuery;
+        ResultSet rs;
+        sqlQuery = "SELECT AlumniID FROM alumni WHERE Alumniemail=?";
+        String d = null;
+        int ff = 0;
+        int aID = 0;
+        try
+        {   
+           
+            stmt = conn.createStatement();
+            ps = conn.prepareStatement(sqlQuery);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+         
+            if(rs.next()) {
+     
+                aID = rs.getInt("AlumniID");
+                
+            }
+     
+            ps.close();
+            rs.close();
+            conn.close();
+          
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+//            Logger.getLogger(EventMapping.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+        return aID;
+            
+        
+    }
+    
+    public String getEventName(int eID) throws ServletException, IOException{
+        
+                                                                                  
+        Connection conn = getConnection();
+       
+        
+        PreparedStatement ps;
+        Statement stmt;
+        String sqlQuery;
+        ResultSet rs;
+        sqlQuery = "SELECT eventName FROM event WHERE eventID=?";
+        String d = null;
+        int ff = 0;
+        String eventName = null;
+        try
+        {   
+           
+            stmt = conn.createStatement();
+            ps = conn.prepareStatement(sqlQuery);
+            ps.setInt(1, eID);
+            rs = ps.executeQuery();
+         
+            if(rs.next()) {
+     
+                eventName = rs.getString("eventName");
+                
+            }
+     
+            ps.close();
+            rs.close();
+            conn.close();
+          
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+//            Logger.getLogger(EventMapping.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+        return eventName;
+            
+        
+    }
+    
     private static PaymentDAO firstInstance = null;
     
     public static PaymentDAO getInstance(){
@@ -76,50 +167,7 @@ public class PaymentDAO extends HttpServlet {
         return firstInstance;
     }
 
-    /**
-     *
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        HttpSession session = request.getSession();
- 
-        Connection conn = getConnection();
-        
-        
-        String message = null;  // message will be sent back to client
-        PreparedStatement statement;
-        ResultSet rs;
-        
-        String sql = "SELECT fileName FROM payment WHERE paymentID=?";
-        
-        try {
-            // constructs SQL statement
-            
-            statement = conn.prepareStatement(sql);
-            
-            statement.setString(1, "20");
-                        
-            rs = statement.executeQuery();
-        
-         
-                // sends the statement to the database server
-                
-                if (rs.next()) {
-                    InputStream input = rs.getBinaryStream("filename");
-//                    OutputStream output = response.getOutputStream();
-                    response.setContentType("image/gif");
-                    
-                }
-            } catch (SQLException ex) {
-                message = "ERROR: " + ex.getMessage();
-                ex.printStackTrace();
-            } 
-        
-    }
+   
     
     /**
      *
@@ -134,14 +182,15 @@ public class PaymentDAO extends HttpServlet {
      */
     
     
-    public String insertReceipt(InputStream is,String eID, int aID, String name, String cat, double amount, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    public String insertReceipt(InputStream is,int eID, String aEmail, String name, String cat, double amount, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
  
         Connection conn = getConnection();
+        int aID = getAlumniID(aEmail, request, response);
         
         String message = null;  // message will be sent back to client
         PreparedStatement statement;
-        String sql = "INSERT INTO payment (fileName, paidDate, paidTime, alumniName, alumniID, eventName, eventID, paymentStatus, paymentAmount, paymentType) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO viewpayment (Alumniname, AlumniID, eventName, eventID, fileName, status, paymentType, paymentAmount, paidDate, paidTime) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             // constructs SQL statement
@@ -150,21 +199,24 @@ public class PaymentDAO extends HttpServlet {
             
             if (is != null) {
                 // fetches input stream of the upload file for the blob column
-                statement.setBlob(1, is);
+                
                 java.util.Date date=new java.util.Date();
                 java.sql.Date sqlDate=new java.sql.Date(date.getTime());
                 java.sql.Timestamp sqlTime=new java.sql.Timestamp(date.getTime());
-      
-                statement.setDate(2, sqlDate);
-                statement.setTimestamp(3, sqlTime);
-                statement.setString(4, "hhh");
-                statement.setInt(5, aID);
-                statement.setString(6, "JJJJ");
-                statement.setString(7, eID);
-                statement.setString(8, "Pending");
-                statement.setDouble(9, amount);
-                statement.setString(10, cat);
                 
+                String eventName = getEventName(eID);
+                
+                statement.setString(1, name);
+                statement.setInt(2, aID);
+                statement.setString(3, eventName);
+                statement.setInt(4, eID);
+                statement.setBlob(5, is);
+                statement.setString(6, "Pending");
+                statement.setString(7, cat);
+                statement.setDouble(8, amount);
+                statement.setDate(9, sqlDate);
+                statement.setTimestamp(10, sqlTime);
+              
             }
                 // sends the statement to the database server
                 int row = statement.executeUpdate();
@@ -190,7 +242,7 @@ public class PaymentDAO extends HttpServlet {
     
     
     
-    public List<Payment> getFundingList(int aId,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    public List<Payment> getFundingList(String aEmail, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         
         HttpSession session = request.getSession();
         List<Payment> fundings;
@@ -198,19 +250,20 @@ public class PaymentDAO extends HttpServlet {
         String dbUrl = null;
         
         Connection conn = getConnection();
+        int aID = getAlumniID(aEmail, request, response);
         //1
         PreparedStatement ps;
         Statement stmt;
         String sqlQuery;
         ResultSet rs;
-        sqlQuery = "SELECT * FROM payment WHERE alumniID=? AND paymentType=?";
+        sqlQuery = "SELECT * FROM viewpayment WHERE AlumniID=? AND paymentType=?";
         int cw = 0;
        
         try
         {   
             stmt = conn.createStatement();
             ps = conn.prepareStatement(sqlQuery);
-            ps.setInt(1, aId);
+            ps.setInt(1, aID);
             ps.setString(2, "fund");
             
             
@@ -220,8 +273,8 @@ public class PaymentDAO extends HttpServlet {
                
                         int paymentID =  rs.getInt("paymentID");
                         String eventName =  rs.getString("eventName");
-                        String eventID = rs.getString("eventID");
-                        String paymentStatus = rs.getString("paymentStatus");
+                        int eventID = rs.getInt("eventID");
+                        String paymentStatus = rs.getString("status");
                         int paymentAmount = rs.getInt("paymentAmount");
                         String paymnetType =  rs.getString("paymentType");
                         InputStream fileName = null;

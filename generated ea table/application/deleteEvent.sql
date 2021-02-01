@@ -1,0 +1,13 @@
+SET FOREIGN_KEY_CHECKS=0
+
+DROP TABLE IF EXISTS `DeleteEvent` CASCADE
+;
+
+CREATE TABLE `DeleteEvent`
+(
+	`deleteEventID` Integer NOT NULL,
+	CONSTRAINT `PK_DeleteEvent` PRIMARY KEY (`deleteEventID`)
+)
+;
+
+SET FOREIGN_KEY_CHECKS=1

@@ -4,7 +4,7 @@
     Author     : SleepingLotus
 --%>
 
- <!--<script src="https://kit.fontawesome.com/43d73fdaf8.js" crossorigin="anonymous"></script>-->
+<script src="https://kit.fontawesome.com/43d73fdaf8.js" crossorigin="anonymous"></script>
 
  <nav class="navbar  navbar-expand-md navbar-dark fixed-top bg-dark">
 
@@ -40,8 +40,8 @@
                 
 
                 <ul class="navbar-nav">
-                    <li class="nav-item active"></li>
-                        <a class="nav-link" href="AnnouncementController?"><div class="icon_wrap"><i class="far fa-bell"></i></div></a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AnnouncementController?command=announcementList" data-toggle="tooltip" title="Announcements"><div class="icon_wrap"><i class="fas fa-bullhorn"></i></div></a>
                     </li>
 
                     <li class="nav-item dropdown">

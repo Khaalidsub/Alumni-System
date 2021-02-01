@@ -1,0 +1,13 @@
+SET FOREIGN_KEY_CHECKS=0
+
+DROP TABLE IF EXISTS `EventHandler` CASCADE
+;
+
+CREATE TABLE `EventHandler`
+(
+	`eventHandlerID` Integer NOT NULL,
+	CONSTRAINT `PK_EventHandler` PRIMARY KEY (`eventHandlerID`)
+)
+;
+
+SET FOREIGN_KEY_CHECKS=1
