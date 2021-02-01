@@ -9,7 +9,7 @@
 nbproject/private/
 nbproject/Makefile-*.mk
 nbproject/Package-*.bash
-build/
+/build/
 nbbuild/
 dist/
 nbdist/

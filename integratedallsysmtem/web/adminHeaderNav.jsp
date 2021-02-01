@@ -17,10 +17,10 @@
                     <a class="nav-link" href="reportHomeAdmin.jsp">Report</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="javascript:;">Manage User</a>
+                    <a class="nav-link" href="manageAlumni.jsp">Manage Alumni</a>
                   </li>
                     <li class="nav-item active">
-                    <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Alumni</a>
+                    <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Connect With Alumni</a>
                   </li>
                   
                </ul>
@@ -28,11 +28,11 @@
                <ul class="navbar-nav">
                   
                   <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="h#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${admin.getAdminName()}</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown07">
-                      <a class="dropdown-item" href="LogoutController">Logout</a>
-                    </div>
-                  </li>                  
+                        <a class="nav-link dropdown-toggle"  type="button"  id="dropdown07" data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${admin.getAdminName()}</a>
+                        <div class="dropdown-menu dropdown-toggle" aria-labelledby="dropdown07">
+                            <a class="dropdown-item" href="LogoutController">Logout</a>
+                        </div>
+                    </li>                   
                </ul>
             </div>
             

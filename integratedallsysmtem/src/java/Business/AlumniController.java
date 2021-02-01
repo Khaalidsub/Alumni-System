@@ -5,6 +5,7 @@
  */
 package Business;
 
+import Middleware.Admin;
 import jdbc.AlumniDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -134,7 +135,7 @@ public class AlumniController extends HttpServlet {
     }
 
     public void updateAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
-
+        HttpSession session = request.getSession();
         String streetName = request.getParameter("streetName");
         String houseNo = request.getParameter("houseNo");
         String postalCode = request.getParameter("postalCode");
@@ -167,8 +168,11 @@ public class AlumniController extends HttpServlet {
             System.out.println("Business.AlumniController.updateAlumniInfo() : " + alumniAddress);
 
             alumniDao.updateAlumniDetails(alumni);
-            request.setAttribute("alumniEmail", alumni.getAlumniEmail());
-            getAlumniInfo(request, response);
+            if ((Admin) session.getAttribute("admin") != null) {
+                request.setAttribute("alumniEmail", request.getParameter("email"));
+            }
+
+            getDetailedAlumniInfo(request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -184,7 +188,7 @@ public class AlumniController extends HttpServlet {
         SignIn signIn = null;
         RequestDispatcher dispatcher;
 
-        if (request.getParameter("command").equals("MY-PROFILE")) {
+        if (request.getParameter("command").equals("MY-PROFILE") || (request.getAttribute("command") != null && request.getAttribute("command").equals("MY-PROFILE"))) {
             signIn = (SignIn) session.getAttribute("signIn");
             System.out.println("Business.AlumniController.getAlumniInfo() :" + signIn.getEmail() + signIn.getName());
         }
@@ -234,17 +238,17 @@ public class AlumniController extends HttpServlet {
                 alumni = alumniDao.getDetailedAlumniInfo(signIn.getEmail());
 
                 alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
+                request.setAttribute("alumni", alumni);
+                request.setAttribute("alumniAddress", alumniAddress);
             } else if (request.getParameter("alumniEmail") != null) {
                 alumni = alumniDao.getDetailedAlumniInfo(request.getParameter("alumniEmail"));
                 alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
-            } else {
-                alumni = alumniDao.getDetailedAlumniInfo("6naseer.far@wditu.com");
-                alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
+                request.setAttribute("alumni", alumni);
+                request.setAttribute("alumniAddress", alumniAddress);
             }
 
             dispatcher = request.getRequestDispatcher("/alumni/edit_information.jsp");
-            request.setAttribute("alumni", alumni);
-            request.setAttribute("alumniAddress", alumniAddress);
+
             dispatcher.forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
@@ -256,22 +260,33 @@ public class AlumniController extends HttpServlet {
      * @param alumniEmail
      */
     public void getDetailedAlumniInfo(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        String alumniEmail = null;
+        if (request.getParameter("alumniEmail") != null) {
+            alumniEmail = request.getParameter("alumniEmail");
+        } else if (request.getAttribute("alumniEmail") != null) {
+            alumniEmail = (String) request.getAttribute("alumniEmail");
+        }
+        SignIn signIn = (SignIn) session.getAttribute("signIn");
         try {
             Alumni alumni;
             AlumniAddress alumniAddress;
-            System.out.println(request.getParameter("alumniEmail"));
-            if (request.getParameter("alumniEmail") != null) {
-                alumni = alumniDao.getDetailedAlumniInfo(request.getParameter("alumniEmail"));
+            System.out.println("in getdetailed : " + alumniEmail);
+            if (alumniEmail != null) {
+                alumni = alumniDao.getDetailedAlumniInfo(alumniEmail);
                 System.out.print("here in get detaild : " + alumni.toString());
                 alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
-            } else {
-                alumni = alumniDao.getDetailedAlumniInfo("6naseer.far@wditu.com");
+                request.setAttribute("alumni", alumni);
+                request.setAttribute("alumniAddress", alumniAddress);
+            } else if (signIn != null) {
+                alumni = alumniDao.getDetailedAlumniInfo(signIn.getEmail());
                 alumniAddress = alumniDao.getAlumniAddressInfo(alumni.getAlumniAddressID());
+                request.setAttribute("alumni", alumni);
+                request.setAttribute("alumniAddress", alumniAddress);
             }
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/alumni/alumniInfo.jsp");
-            request.setAttribute("alumni", alumni);
-            request.setAttribute("alumniAddress", alumniAddress);
+
             dispatcher.forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(AlumniController.class.getName()).log(Level.SEVERE, null, ex);
