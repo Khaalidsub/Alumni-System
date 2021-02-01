@@ -23,7 +23,7 @@ services:
   db:
     image: mariadb:10.3
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: sdadatabase123
       MYSQL_DATABASE: sdadatabase
     ports:
       - 6666:3306
@@ -38,4 +38,4 @@ services:
     ports:
       - 6868:80
     environment:
-      - PMA_ARBITRARY=1
+      MYSQL_ROOT_PASSWORD: sdadatabase123

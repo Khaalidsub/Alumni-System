@@ -43,7 +43,7 @@ public class AnnouncementDAO extends HttpServlet {
     private String dbName = "sdadatabase";
     private String url = "jdbc:mysql://db:3306/" + dbName + "?";
     private String userName = "root";
-    private String password = "";
+    private String password = "sdadatabase123";
   
 //   @Override
 //   public void init() throws ServletException

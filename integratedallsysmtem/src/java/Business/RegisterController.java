@@ -35,7 +35,7 @@ public class RegisterController extends HttpServlet {
         String dbName = "sdadatabase";
         String url = "jdbc:mysql://db:3306/" + dbName + "?";
         String userName = "root";
-        String password = "";
+        String password = "sdadatabase123";
 
         jdbcUtility = new UserDAO(driver,
                 url,
@@ -115,7 +115,7 @@ public class RegisterController extends HttpServlet {
             if (insertStatus == 1) {
                 out.println("<script>");
                 out.println("  alert('Register Success');");
-                out.println("    window.location.href  = '/integratedallsysmtem/index.jsp'");
+                out.println("    window.location.href  = '/alumni_system/index.jsp'");
                 out.println("</script>");
             }
         } catch (SQLException ex) {

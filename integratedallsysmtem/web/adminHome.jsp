@@ -6,8 +6,6 @@
 
 <%@page  language="java" contentType="text/html" pageEncoding="UTF-8"%>
 
-<!doctype html>
-<html lang="en"><%@page  language="java" contentType="text/html" pageEncoding="UTF-8"%>
 
 <!doctype html>
 <html lang="en">

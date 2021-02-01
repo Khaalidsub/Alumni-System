@@ -37,7 +37,7 @@ public class reportController extends HttpServlet {
         String dbName = "sdadatabase";
         String url = "jdbc:mysql://db:3306/" + dbName + "?";
         String userName = "root";
-        String password = "";
+        String password = "sdadatabase123";
 
         jdbcUtility = new reportingDAO(driver,
                                       url,
