@@ -1,8 +1,20 @@
 version: "3.8"
 services:
+  nginx:
+    depends_on:
+      - alumni_api
+      - phpmyadmin
+    restart: always
+    container_name: alumni_nginx
+    image: "sleepinglotus/alumni_nginx"
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "80:80"
   alumni_api:
     container_name: alumni_api
-    image: "sda/alumni_api"
+    image: "sleepinglotus/alumni_api"
     build:
       dockerfile: Dockerfile
       context: .
@@ -11,16 +23,19 @@ services:
   db:
     image: mariadb:10.3
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: sdadatabase123
       MYSQL_DATABASE: sdadatabase
     ports:
-      - 3306:3306
+      - 6666:3306
     volumes:
       - ./sdadatabase.sql:/docker-entrypoint-initdb.d/sdadatabase.sql
   phpmyadmin:
+    container_name: phpmyadmin
     image: phpmyadmin
     restart: always
+    depends_on:
+      - db
     ports:
-      - 80:80
+      - 6868:80
     environment:
-      - PMA_ARBITRARY=1
+      MYSQL_ROOT_PASSWORD: sdadatabase123
