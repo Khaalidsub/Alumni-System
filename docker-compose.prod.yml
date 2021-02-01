@@ -7,17 +7,11 @@ services:
     restart: always
     container_name: alumni_nginx
     image: "sleepinglotus/alumni_nginx"
-    build:
-      dockerfile: Dockerfile
-      context: ./nginx
     ports:
       - "80:80"
   alumni_api:
     container_name: alumni_api
     image: "sleepinglotus/alumni_api"
-    build:
-      dockerfile: Dockerfile
-      context: .
     ports:
       - 8050:8080
   db:
