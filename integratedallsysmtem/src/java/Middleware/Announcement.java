@@ -8,7 +8,7 @@ package Middleware;
  */
 public class Announcement {
 
-	private String announcementID;
+	private int announcementID;
 
     /**
      *
@@ -37,7 +37,7 @@ public class Announcement {
 
     }
     
-    public Announcement(String aID,String aName,String author,String date,String desc){
+    public Announcement(int aID,String aName,String author,String date,String desc){
         announcementID = aID;
         announcementName = aName;
         this.author = author;
@@ -66,7 +66,7 @@ public class Announcement {
 	 * 
 	 * @param announcementID
 	 */
-	public void announcementList(String announcementID){
+	public void announcementList(int announcementID){
 
 	}
 
@@ -78,7 +78,7 @@ public class Announcement {
 	 * @param date
 	 * @param description
 	 */
-	public void create(String announcementID, String announcementName, String author, String date, String description){
+	public void create(int announcementID, String announcementName, String author, String date, String description){
 
 	}
 
@@ -86,7 +86,7 @@ public class Announcement {
 	 * 
 	 * @param announcementID
 	 */
-	public void deleteAnnouncement(String announcementID){
+	public void deleteAnnouncement(int announcementID){
 
 	}
 
@@ -98,7 +98,7 @@ public class Announcement {
 	 * @param date
 	 * @param description
 	 */
-	public void RetreiveAnnouncement(String announcementID, String announcementName, String author, String date, String description){
+	public void RetreiveAnnouncement(int announcementID, String announcementName, String author, String date, String description){
 
 	}
 
@@ -107,7 +107,7 @@ public class Announcement {
 	 * @param announcementID
 	 * @param announcementName
 	 */
-	public void RetreiveList(String announcementID, String announcementName){
+	public void RetreiveList(int announcementID, String announcementName){
 
 	}
 

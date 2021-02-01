@@ -8,13 +8,13 @@ package Middleware;
  */
 public class Funding {
 
-	private String alumniID;
+	private int alumniID;
 	private String alumniName;
         
-	private String eventID;
+	private int eventID;
 	private String eventName;
 	private String fundingDesc;
-	private String fundingID;
+	private int fundingID;
         private String date;
         private String fundingName;
         private String description;                
@@ -44,7 +44,7 @@ public class Funding {
 	 * @param amount
 	 * @param receiverName
 	 */
-	public void create(String fundingID, String eventID ,String date, String fundingName, String description){
+	public void create(int fundingID, int eventID ,String date, String fundingName, String description){
             this.eventID = eventID;
             this.description = description;
             this.fundingID = fundingID;

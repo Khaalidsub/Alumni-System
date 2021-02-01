@@ -110,14 +110,14 @@ public class mobileAPI {
          
             while (rs.next()) {
      
-                String eID = rs.getString("eventID");
+                int eID = rs.getInt("eventID");
                 String eName =  rs.getString("eventName");
                 String date =  rs.getString("date");
                 String time = rs.getString("time");
                 String venue = rs.getString("venue");
                 String org = rs.getString("organizer");
                 String fee =  rs.getString("fee");
-                String fID = rs.getString("fundingID");
+                int fID = rs.getInt("fundingID");
                 
            
               
@@ -174,7 +174,7 @@ public class mobileAPI {
          
             while (rs.next()) {
      
-                 String aID = rs.getString("announcementID");
+                 int aID = rs.getInt("announcementID");
                 String aName =  rs.getString("announcementName");
                 String author = rs.getString("author");
                 String date = rs.getString("date");

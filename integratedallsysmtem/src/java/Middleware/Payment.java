@@ -10,9 +10,9 @@ import java.io.InputStream;
  */
 public class Payment {
 
-	private String alumniID;
+	private int alumniID;
 	private String alumniName;
-	private String eventID;
+	private int eventID;
 	private String eventName;
 	private int paidAmount;
 	private InputStream fileName;
@@ -32,7 +32,7 @@ public class Payment {
      * @param paymnetType
      */
         
-    public Payment(int paymentID, InputStream fileName, String eventName, String eventID, String paymentStatus, int paymentAmount, String paymnetType){
+    public Payment(int paymentID, InputStream fileName, String eventName, int eventID, String paymentStatus, int paymentAmount, String paymnetType){
         this.paymentID = paymentID;
         this.eventName = eventName;
         this.paidAmount = paymentAmount;
@@ -63,7 +63,7 @@ public class Payment {
         return eventName;
     }    
 
-    public String getEventID(){
+    public int getEventID(){
         return eventID;
     }    
 

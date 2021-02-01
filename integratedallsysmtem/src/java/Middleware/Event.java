@@ -18,13 +18,13 @@ import jdbc.reportingDAO;
 public class Event {
     
         private String date;
-        private String eventID;
+        private int eventID;
         private String eventName;
         private String fee;
         private String organizer;
         private String time;
         private String venue;
-        private String fundingID;
+        private int fundingID;
         private Funding funding;
         private Payment payment;
         private int pID;
@@ -89,7 +89,7 @@ public class Event {
          * @param fee
          * @param fundingID
          */
-        public Event(String eventID, String eventName,String date, String time, String venue, String organizer, String fee, String fundingID ){
+        public Event(int eventID, String eventName,String date, String time, String venue, String organizer, String fee, int fundingID ){
                 this.eventID = eventID;
                 this.eventName = eventName;
                 this.date = date;
@@ -108,7 +108,7 @@ public class Event {
             return funding;
         }
 
-       public String getFundingID(){
+       public int getFundingID(){
            return fundingID;
        }
 
@@ -155,7 +155,7 @@ public class Event {
          *
          * @return
          */
-        public String getEventID(){
+        public int getEventID(){
             return eventID;
         }
 
@@ -233,5 +233,55 @@ public class Event {
 	 */
 	public void saveDataStaff(String eventID, String staffID){
 
+	}
+        
+        public void setDate(String date){
+                this.date = date;
+	}
+
+	/**
+	 * 
+	 * @param eventID
+	 */
+	public void setEventID(int eventID){
+                this.eventID = eventID;
+	}
+
+	/**
+	 * 
+	 * @param eventName
+	 */
+	
+
+	/**
+	 * 
+	 * @param fee
+	 */
+	public void setFee(String fee){
+                this.fee = fee;
+	}
+
+	/**
+	 * 
+	 * @param organizer
+	 */
+	public void setOrganizer(String organizer){
+                this.organizer = organizer;
+	}
+
+	/**
+	 * 
+	 * @param time
+	 */
+	public void setTime(String time){
+                this.time = time;
+	}
+
+	/**
+	 * 
+	 * @param venue
+	 */
+	public void setVenue(String venue){
+                this.venue = venue;
 	}
 }
