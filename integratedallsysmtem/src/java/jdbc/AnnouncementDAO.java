@@ -41,9 +41,9 @@ public class AnnouncementDAO extends HttpServlet {
     private Connection con;
     private String driver = "com.mysql.jdbc.Driver";
     private String dbName = "sdadatabase";
-    private String url = "jdbc:mysql://localhost:/" + dbName + "?";
+    private String url = "jdbc:mysql://db:/" + dbName + "?";
     private String userName = "root";
-    private String password = "";
+    private String password = "sdadatabase123";
   
     private static AnnouncementDAO firstInstance = null;
     
@@ -61,7 +61,7 @@ public class AnnouncementDAO extends HttpServlet {
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sdadatabase", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://db:3306/sdadatabase", "root", "sdadatabase123");
         } catch (Exception e) {
             System.out.println(e);
         }

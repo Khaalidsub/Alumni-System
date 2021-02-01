@@ -52,9 +52,9 @@ public class mobileAPI {
          
          String driver = "com.mysql.jdbc.Driver"; 
         String dbName = "sdadatabase";
-        String url = "jdbc:mysql://localhost:3306/" + dbName + "?";
+        String url = "jdbc:mysql://db:3306/" + dbName + "?";
         String userName = "root";
-        String dbpassword = "";
+        String dbpassword = "sdadatabase123";
         
            SignIn si=new SignIn();
         UserDAO user=new UserDAO(driver,url,userName,dbpassword);
