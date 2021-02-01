@@ -33,7 +33,7 @@ public class RegisterController extends HttpServlet {
         String driver = "com.mysql.jdbc.Driver";
 
         String dbName = "sdadatabase";
-        String url = "jdbc:mysql://localhost/" + dbName + "?";
+        String url = "jdbc:mysql://localhost:3306/" + dbName + "?";
         String userName = "root";
         String password = "";
 
