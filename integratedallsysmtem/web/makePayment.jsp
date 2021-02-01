@@ -28,7 +28,7 @@
                 padding: 30px 60px;
                 border-radius: 5px;
                 width: 60%;
-                margin-top: 20px;
+                margin-top: 30px;
                 
             }
             
@@ -41,7 +41,11 @@
                 border-top: 2px solid black;
 
             }
-            
+
+            table{
+                margin-bottom: 20px;
+                    
+            }
             
             
            
@@ -61,11 +65,11 @@
             <div class="row">
                 <div class="col">
             
-                    <h1>Recipient Info</h1>
-                    <p>Name: Murli</p>
-                    <p>Payment method: Make online transfer - upload receipt</p>
-                    <p>Recipient Bank: Bank Islam</p>
-                    <p>Recipient account.no: 8979768670</p>
+                    <h1>Recipient Info</h1><br>
+                    <p><b>Name:</b>   Murli</p>
+                    <p><b>Payment method:</b>    Make online transfer - upload receipt</p>
+                    <p><b>Recipient Bank:</b>    Bank Islam</p>
+                    <p><b>Recipient account.no:</b>    8979768670</p>
                     <hr>
 
                     <% String eID = request.getParameter("eventID"); %>
@@ -76,10 +80,10 @@
                     <h1>Payment Details</h1><br>
                     
                     <form action="PaymentController" enctype="multipart/form-data" method="post">
-                        <table width="350" cellspacing="5" cellpadding="5">
+                        <table  cellspacing="5" cellpadding="5">
                             <tr>
-                              <th width="200" scope="row"><div align="left">Name:</div></th>
-                              <td width=""><label>
+                              <th  scope="row"><div align="left">Name:</div></th>
+                              <td><label>
                                 <input type="text" id="name" name="name" required="">
                               </label></td>
                             </tr>
@@ -97,7 +101,7 @@
                             </tr>
                            
                             <tr>
-                                <th scope="row"><div align="left">Payment Category (Choose only that applicable)* :</div></th>
+                                <th scope="row"><div align="left">Payment Category(Choose only that applicable) :</div></th>
                                 <td><label>
                                     <input type="radio" id="eventFee" name="category" value="fee">
                                     <label for="eventFee">Event Fee</label>&nbsp;
@@ -108,29 +112,25 @@
                             </tr>
                             
                             <tr>
-                              <th scope="row"><div align="left">Amount (RM):</div></th>
+                              <th scope="row"><div align="left">Amount(RM):</div></th>
                               <td><label>
                                  <input  type="text" name="amount" required=""/>
                               </label></td>
                             </tr>
                             <tr>
                              <tr>
-                              <th scope="row"><div align="left">Receipt (Screenshot):</div></th>
+                              <th scope="row"><div align="left">Receipt(Screenshot):</div></th>
                               <td><label>
                                 <input  type="file" name="photo" size="50" required=""/>
                               </label></td>
                             </tr>
                             <tr>
                                 
-                                
-                            <th scope="row"><div align="left"></div></th>
-                              <td><label>
-                                <button value="r" type="submit" class="btn btn-warning">Submit</button>
-                                <button type="reset" class="btn btn-outline-danger">Reset</button>
-                               
-                              </label></td>
-                            </tr>
+                        
                         </table>
+                              
+                            <button value="r" type="submit" class="btn btn-warning">Submit</button>
+                            <button type="reset" class="btn btn-outline-danger">Reset</button>
 
                     </form>
                 </div>
