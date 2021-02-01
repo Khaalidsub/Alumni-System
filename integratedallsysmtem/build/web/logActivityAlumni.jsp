@@ -66,7 +66,7 @@
                 </ol>
             </nav>  
        
-                <main>
+            
                 
                     <div class="container-fluid">
                     <div class="utm"><img src="pic/utm.png" width="600" height="200"> </div>
@@ -77,7 +77,7 @@
                         </ol>
                                        
                         <div class="limiter">
-		<div class="container-table100">
+		<div class="flex flex-column justify-content-center">
 			<div class="wrap-table100">
 				<div class="table100 ver1 m-b-110">
 					<div class="table100-head">
@@ -125,6 +125,7 @@
                         
                     </div>
                 </main>
+<br>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">

@@ -47,7 +47,7 @@ public class Announcement {
         
     }
     
-    public String getAnnouncementID(){
+    public int getAnnouncementID(){
         return announcementID;
     }
     

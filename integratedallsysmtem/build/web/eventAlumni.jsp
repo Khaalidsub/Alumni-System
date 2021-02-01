@@ -92,7 +92,7 @@
                         </ol>
                                        
                         <div class="limiter">
-		<div class="container-table100">
+		<div class=" flex flex-column justify-content-center">
 			<div class="wrap-table100">
 				<div class="table100 ver1 m-b-110">
 					<div class="table100-head">
