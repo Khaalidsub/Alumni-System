@@ -82,7 +82,7 @@ public class AnnouncementController extends HttpServlet {
             
 //            view = new ViewAnnouncement();
             try {
-                aDAO = new AnnouncementDAO();
+                aDAO = AnnouncementDAO.getInstance();
            
                 announcements = aDAO.getAnnouncementList();
                 

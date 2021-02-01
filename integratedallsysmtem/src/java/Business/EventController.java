@@ -95,7 +95,7 @@ public class EventController extends HttpServlet {
         Event joinedEvent = null;  
         
         try {
-            eventMapping = new EventDAO();
+            eventMapping = EventDAO.getInstance();
             joinedEvent = eventMapping.getJoinedEvent(eId);
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/viewJoined.jsp");
@@ -115,7 +115,7 @@ public class EventController extends HttpServlet {
     
         List<Event> joinedEvents = null;  
         try {
-            eventMapping = new EventDAO();
+            eventMapping = EventDAO.getInstance();
             joinedEvents = eventMapping.getJoinedEventList(aEmail, request, response);
            
             RequestDispatcher dispatcher;
@@ -137,7 +137,7 @@ public class EventController extends HttpServlet {
      * @throws java.io.IOException
 	 */
     public void confirmAlumni(String aEmail, int eventID,  HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        eventMapping = new EventDAO();
+        eventMapping = EventDAO.getInstance();
        
         int r = eventMapping.insertJoinedEvent(eventID, aEmail, request, response);  
         
@@ -253,7 +253,7 @@ public class EventController extends HttpServlet {
             
             Event event = null;  
             try {
-                eventMapping = new EventDAO();
+                eventMapping = EventDAO.getInstance();
            
                 event = eventMapping.getSelectedEvent(eId ,request, response);
                 
@@ -277,7 +277,7 @@ public class EventController extends HttpServlet {
             int alumniID = 2;
             List<Event> events = null;  
             try {
-                eventMapping = new EventDAO();
+                eventMapping = EventDAO.getInstance();
            
                 events = eventMapping.getEventList(request, response);
                 listEvent(events, request, response);

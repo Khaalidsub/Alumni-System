@@ -142,7 +142,7 @@ public class PaymentController extends HttpServlet {
        
         SignIn signIn = null;
         signIn = (SignIn) session.getAttribute("signIn");
-        pD = new PaymentDAO();
+        pD = PaymentDAO.getInstance();
         int alumniID = 2;
         String message = pD.insertReceipt(fileName, eventID, signIn.getEmail(), name, cat , amount, request, response);  
         
