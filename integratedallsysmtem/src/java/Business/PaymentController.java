@@ -3,6 +3,7 @@ package Business;
 import Middleware.Event;
 import jdbc.PaymentDAO;
 import Middleware.Payment;
+import Middleware.SignIn;
 import jdbc.EventDAO;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.util.ArrayList;
@@ -50,7 +51,6 @@ public class PaymentController extends HttpServlet {
             throws ServletException{
 
         String command = request.getParameter("action");
-        String event = request.getParameter("eventID");
 
         try {
             switch (command) {
@@ -102,7 +102,10 @@ public class PaymentController extends HttpServlet {
 //            // gets values of text fields
 //            String firstName = request.getParameter("firstName");
 //            String lastName = request.getParameter("lastName");
-            String eventID = request.getParameter("eventID");
+            
+            int eventID = Integer.parseInt(request.getParameter("eventID"));
+
+            
             InputStream inputStream = null; // input stream of the upload file
             String name = request.getParameter("name");
             String category = request.getParameter("category");
@@ -134,11 +137,14 @@ public class PaymentController extends HttpServlet {
      
     //after paid 
      
-    public void uploadReceipt(InputStream fileName, String eventID, String name, String cat, double amount, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    public void uploadReceipt(InputStream fileName, int eventID, String name, String cat, double amount, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
-        pD = new PaymentDAO();
+       
+        SignIn signIn = null;
+        signIn = (SignIn) session.getAttribute("signIn");
+        pD = PaymentDAO.getInstance();
         int alumniID = 2;
-        String message = pD.insertReceipt(fileName, eventID, alumniID, name, cat , amount, request, response);  
+        String message = pD.insertReceipt(fileName, eventID, signIn.getEmail(), name, cat , amount, request, response);  
         
         session.setAttribute("message", message);
         
@@ -147,12 +153,15 @@ public class PaymentController extends HttpServlet {
     }
     
     public void getFundingList(HttpServletRequest request, HttpServletResponse response){
-    
+        HttpSession session = request.getSession();
+       
+        SignIn signIn = null;
+        signIn = (SignIn) session.getAttribute("signIn");
         List<Payment> fundingList;
-        int alumniID = 2;
+        
         try {
             PaymentDAO pd =  PaymentDAO.getInstance();
-            fundingList = pd.getFundingList(alumniID, request, response);
+            fundingList = pd.getFundingList(signIn.getEmail(), request, response);
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/fundingHistory.jsp");
             request.setAttribute("FUNDING_LIST",fundingList);

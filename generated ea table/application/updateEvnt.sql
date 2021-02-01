@@ -1,0 +1,13 @@
+SET FOREIGN_KEY_CHECKS=0
+
+DROP TABLE IF EXISTS `UpdateEvent` CASCADE
+;
+
+CREATE TABLE `UpdateEvent`
+(
+	`updateEventID` Integer NOT NULL,
+	CONSTRAINT `PK_UpdateEvent` PRIMARY KEY (`updateEventID`)
+)
+;
+
+SET FOREIGN_KEY_CHECKS=1

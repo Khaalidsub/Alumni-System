@@ -46,6 +46,17 @@ public class Announcement {
         
         
     }
+    
+    public int getAnnouncementID(){
+        return announcementID;
+    }
+    
+    public String getDescription(){
+        return description;
+    }
+    
+  
+
 
 	public void finalize() throws Throwable {
 

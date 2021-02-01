@@ -1,0 +1,13 @@
+SET FOREIGN_KEY_CHECKS=0
+
+DROP TABLE IF EXISTS `JoinEvent` CASCADE
+;
+
+CREATE TABLE `JoinEvent`
+(
+	`joinEventID` Integer NOT NULL,
+	CONSTRAINT `PK_JoinEvent` PRIMARY KEY (`joinEventID`)
+)
+;
+
+SET FOREIGN_KEY_CHECKS=1

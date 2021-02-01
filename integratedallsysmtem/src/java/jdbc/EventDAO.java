@@ -32,7 +32,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 
-
 /**
  *
  * @author haiswin
@@ -42,9 +41,21 @@ public class EventDAO extends HttpServlet {
   
     private String driver = "com.mysql.jdbc.Driver";
     private String dbName = "sdadatabase";
-    private String url = "jdbc:mysql://localhost:3306/" + dbName + "?";
+    private String url = "jdbc:mysql://localhost:/" + dbName + "?";
     private String userName = "root";
     private String password = "";
+    
+    private static EventDAO firstInstance = null;
+    
+    public static EventDAO getInstance(){
+        
+        if(firstInstance == null){
+            firstInstance = new EventDAO();
+            
+        }
+        
+        return firstInstance;
+    }
     
     public Connection getConnection() {
         Connection con = null;
@@ -55,6 +66,76 @@ public class EventDAO extends HttpServlet {
             System.out.println(e);
         }
         return con;
+    }
+    
+     public int getAlumniID(String email, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        
+        HttpSession session = request.getSession();
+                                                                                                                              
+        Connection conn = getConnection();
+       
+        
+        PreparedStatement ps;
+        Statement stmt;
+        String sqlQuery;
+        ResultSet rs;
+        sqlQuery = "SELECT AlumniID FROM alumni WHERE Alumniemail=?";
+        String d = null;
+        int ff = 0;
+        int aID = 0;
+        try
+        {   
+           
+            stmt = conn.createStatement();
+            ps = conn.prepareStatement(sqlQuery);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+         
+            if(rs.next()) {
+     
+                aID = rs.getInt("AlumniID");
+                
+            }
+     
+            ps.close();
+            rs.close();
+            conn.close();
+          
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+//            Logger.getLogger(EventMapping.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+        return aID;
+            
+        
+    }
+     
+    public List<Event> getAllRecords() {
+        List<Event> list = new ArrayList<Event>();
+
+        try {
+            Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement("select * from event");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Event e = new Event();
+                e.setEventID(rs.getInt("eventID"));
+                e.setEventName(rs.getString("eventName"));
+                e.setDate(rs.getString("date"));
+                e.setTime(rs.getString("time"));
+                e.setVenue(rs.getString("venue"));
+                e.setOrganizer(rs.getString("organizer"));
+                e.setFee(rs.getString("fee"));
+                list.add(e);
+            }
+        } catch (Exception f) {
+            System.out.println(f);
+        }
+        return list;
     }
 
     
@@ -95,18 +176,16 @@ public class EventDAO extends HttpServlet {
          
             while (rs.next()) {
      
-                String eID = rs.getString("eventID");
+                int eID = rs.getInt("eventID");
                 String eName =  rs.getString("eventName");
                 String date =  rs.getString("date");
                 String time = rs.getString("time");
                 String venue = rs.getString("venue");
                 String org = rs.getString("organizer");
                 String fee =  rs.getString("fee");
-                String fID = rs.getString("fundingID");
+                int fID = rs.getInt("fundingID");
                 
-                d = eID;
-              
-               
+           
                 Event foundEvent;
                 foundEvent = new Event(eID,eName,date ,time,venue,org,fee,fID);
                 ff = 3;
@@ -134,11 +213,11 @@ public class EventDAO extends HttpServlet {
     }
 
     
-    public Event getSelectedEvent(String eId, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    public Event getSelectedEvent(int eId, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         
         HttpSession session = request.getSession();
         Event event = null;
-        String seventID = eId;
+        int seventID = eId;
         Funding foundFund = null;
        
         Connection conn = getConnection();
@@ -153,23 +232,23 @@ public class EventDAO extends HttpServlet {
         {   
             stmt = conn.createStatement();
             ps = conn.prepareStatement(sqlQuery);
-            ps.setString(1, seventID);
+            ps.setInt(1, seventID);
             rs = ps.executeQuery();
       
            
             if(rs.next()) {
               
-                String eID = rs.getString("eventID");
+                int eID = rs.getInt("eventID");
                 String eName =  rs.getString("eventName");
                 String date =  rs.getString("date");
                 String time = rs.getString("time");
                 String venue = rs.getString("venue");
                 String org = rs.getString("organizer");
                 String fee =  rs.getString("fee");
-                String fID = rs.getString("fundingID");
+                int fID = rs.getInt("fundingID");
                 event = new Event(eID,eName,date ,time,venue,org,fee,fID);
                 
-                if(fID != null){
+                if(fID != 0){
                     c = 1;
                     PreparedStatement ps1;
                     String sqlQuery1;
@@ -180,7 +259,7 @@ public class EventDAO extends HttpServlet {
                     {   
                         
                         ps1 = conn.prepareStatement(sqlQuery1);
-                        ps1.setString(1, fID);
+                        ps1.setInt(1, fID);
                         rs1 = ps1.executeQuery();
                         
 
@@ -219,7 +298,7 @@ public class EventDAO extends HttpServlet {
                     {   
                         
                         ps2 = conn.prepareStatement(sqlQuery2);
-                        ps2.setString(1, seventID);
+                        ps2.setInt(1, seventID);
                         rs2 = ps2.executeQuery();
                         
 
@@ -262,11 +341,11 @@ public class EventDAO extends HttpServlet {
         
     }
     
-    public Event getJoinedEvent(String eId, int aId) throws ServletException, IOException{
+    public Event getJoinedEvent(int eId) throws ServletException, IOException{
         
 //        HttpSession session = request.getSession();
         Event event = null;
-        String seventID = eId;
+        int seventID = eId;
         Funding foundFund = null;
                 
         Connection conn = getConnection();
@@ -282,24 +361,24 @@ public class EventDAO extends HttpServlet {
         {   
             stmt = conn.createStatement();
             ps = conn.prepareStatement(sqlQuery);
-            ps.setString(1, seventID);
+            ps.setInt(1, seventID);
             rs = ps.executeQuery();
       
            
             if(rs.next()) {
               
-                String eID = rs.getString("eventID");
+                int eID = rs.getInt("eventID");
                 String eName =  rs.getString("eventName");
                 String date =  rs.getString("date");
                 String time = rs.getString("time");
                 String venue = rs.getString("venue");
                 String org = rs.getString("organizer");
                 String fee =  rs.getString("fee");
-                String fID = rs.getString("fundingID");
+                int fID = rs.getInt("fundingID");
      
                 event = new Event(eID,eName,date ,time,venue,org,fee,fID);
                 
-                if(fID != null){
+                if(fID != 0){
                     c = 1;
                     PreparedStatement ps1;
                     String sqlQuery1;
@@ -310,7 +389,7 @@ public class EventDAO extends HttpServlet {
                     {   
                         
                         ps1 = conn.prepareStatement(sqlQuery1);
-                        ps1.setString(1, fID);
+                        ps1.setInt(1, fID);
                         rs1 = ps1.executeQuery();
                         
 
@@ -359,12 +438,13 @@ public class EventDAO extends HttpServlet {
     }
     
     
-    public int insertJoinedEvent(String eId, int aId, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    public int insertJoinedEvent(int eId, String aEmail, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         
         HttpSession session = request.getSession();
         Event event = null;
         int result = 0;
                 
+        int aID = getAlumniID(aEmail, request, response);
         Connection conn = getConnection();
         
         PreparedStatement pss;
@@ -377,8 +457,8 @@ public class EventDAO extends HttpServlet {
             stmt = conn.createStatement();
             pss = conn.prepareStatement(sqlTest);
            
-            pss.setInt(1, aId);
-            pss.setString(2, eId);
+            pss.setInt(1, aID);
+            pss.setInt(2, eId);
      
             rs = pss.executeQuery();
             while (rs.next()) {
@@ -395,13 +475,13 @@ public class EventDAO extends HttpServlet {
         if(result == 0){
             
             PreparedStatement pi;
-            String sqlInsert = "INSERT INTO alumni_event(alumniID,eventID) VALUES(?,?)";
+            String sqlInsert = "INSERT INTO alumni_event(AlumniID,eventID) VALUES(?,?)";
             
             try {
                 pi = conn.prepareStatement(sqlInsert);
                 result = 2;
-                pi.setInt(1, aId);
-                pi.setString(2, eId);
+                pi.setInt(1, aID);
+                pi.setInt(2, eId);
                 
                     // execute insert SQL stetement
                 pi.executeUpdate();
@@ -418,7 +498,7 @@ public class EventDAO extends HttpServlet {
           
     }
     
-    public List<Event> getJoinedEventList(int aId,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    public List<Event> getJoinedEventList(String aEmail, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         
         HttpSession session = request.getSession();
         List<Event> events;
@@ -426,57 +506,59 @@ public class EventDAO extends HttpServlet {
         String dbUrl = null;
         Connection conn = getConnection();
         
+        int aID = getAlumniID(aEmail, request, response);
+        
         //1
         PreparedStatement ps;
         Statement stmt;
         String sqlQuery;
         ResultSet rs;
-        sqlQuery = "SELECT e.* FROM event e , alumni_event a WHERE e.eventID = a.eventID AND a.alumniID=?";
+        sqlQuery = "SELECT e.* FROM event e , alumni_event a WHERE e.eventID = a.eventID AND a.AlumniID=?";
         int cw = 0;
        
         try
         {   
             stmt = conn.createStatement();
             ps = conn.prepareStatement(sqlQuery);
-            ps.setInt(1, aId);
+            ps.setInt(1, aID);
             rs = ps.executeQuery();
            
             while (rs.next()){
     
-                String eID = rs.getString("eventID");
+                int eID = rs.getInt("eventID");
                 String eName =  rs.getString("eventName");
                 String date =  rs.getString("date");
                 String time = rs.getString("time");
                 String venue = rs.getString("venue");
                 String org = rs.getString("organizer");
                 String fee =  rs.getString("fee");
-                String fID = rs.getString("fundingID");
+                int fID = rs.getInt("fundingID");
                 
                 Event foundEvent;
                 foundEvent = new Event(eID,eName,date ,time,venue,org,fee,fID);
-              
+                
         
                 if(!("Free".equals(fee))){
-                    
+                    cw = 1;
                     PreparedStatement ps1;
                       
                     ResultSet rs1;
                     String sqlQuery2;
-                    sqlQuery2 = "SELECT paymentID, paymentStatus FROM payment WHERE eventID=? AND alumniID=?";
+                    sqlQuery2 = "SELECT paymentID, status FROM viewpayment WHERE eventID=? AND AlumniID=?";
 
                     try
                     {   
-                        stmt = conn.createStatement();
+                        
                         ps1 = conn.prepareStatement(sqlQuery2);
-                        ps1.setString(1, eID);
-                        ps1.setInt(2, aId);
+                        ps1.setInt(1, eID);
+                        ps1.setInt(2, aID);
                         rs1 = ps1.executeQuery();
 
 
                         if (rs1.next()) {
 
                             int pID = rs1.getInt("paymentID");
-                            String paymentStatus = rs1.getString("paymentStatus");
+                            String paymentStatus = rs1.getString("status");
                             
                             Payment paid = new Payment(pID, paymentStatus);
                             foundEvent.addPayment(paid);
@@ -489,12 +571,12 @@ public class EventDAO extends HttpServlet {
                     catch (Exception ex)
                     {
                         ex.printStackTrace();
-                        Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
+                        
                     }
-                    cw = 99;
+                    
                     events.add(foundEvent);
                 }else{
-                    cw =88;
+                    
                     events.add(foundEvent);
                 }    
                     
@@ -519,100 +601,100 @@ public class EventDAO extends HttpServlet {
         
     }
     
-    
-    public Event getPaidEvent(String eId, int aId, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        
-        HttpSession session = request.getSession();
-        Event event = null;
-        String seventID = eId;
-                
-        Connection conn = getConnection();
-        
-        PreparedStatement ps;
-        Statement stmt;
-        String sqlQuery;
-        ResultSet rs;
-        sqlQuery = "SELECT * FROM `event` WHERE eventID=?";
-       
-       int c = 0;
-        try
-        {   
-            stmt = conn.createStatement();
-            ps = conn.prepareStatement(sqlQuery);
-            ps.setString(1, seventID);
-            rs = ps.executeQuery();
-      
-           
-            if(rs.next()) {
-               
-                c = 9;
-                String eID = rs.getString("eventID");
-                String eName =  rs.getString("eventName");
-                String date =  rs.getString("date");
-                String time = rs.getString("time");
-                String venue = rs.getString("venue");
-                String org = rs.getString("organizer");
-                String fee =  rs.getString("fee");
-                String fID = rs.getString("fundingID");
-          
-                event = new Event(eID,eName,date ,time,venue,org,fee,fID);
-               
-                PreparedStatement ps1;
-                ResultSet rs1;
-                String sqlQuery2;
-                sqlQuery2 = "SELECT paymentID, paymentStatus, fileName, paidDate, paidTime FROM payment WHERE eventID=? AND alumniID=?";
-
-                    try
-                    {   
-                        stmt = conn.createStatement();
-                        ps1 = conn.prepareStatement(sqlQuery2);
-                        ps1.setString(1, eID);
-                        ps1.setInt(2, aId);
-                        rs1 = ps1.executeQuery();
-
-
-                        if (rs1.next()) {
-
-                            int pID = rs1.getInt("paymentID");
-                            String paymentStatus = rs1.getString("paymentStatus");
-                            String fileName = rs1.getString("fileName");
-                            
-                            Payment paid = new Payment(pID, paymentStatus);
-                            event.addPayment(paid);
-
-                        }else{
-                            
-                            event.addPayment(null);
-                        }
-
-                        
-             
-                    }
-                    catch (Exception ex)
-                    {
-                        ex.printStackTrace();
-                        Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                
-            } 
-     
-            ps.close();
-            rs.close();
-            conn.close();
-          
-        }
-        catch (Exception ex)
-        {
-            ex.printStackTrace();
-//            Logger.getLogger(EventMapping.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+//    
+//    public Event getPaidEvent(String eId, int aId, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+//        
+//        HttpSession session = request.getSession();
+//        Event event = null;
+//        String seventID = eId;
+//                
+//        Connection conn = getConnection();
+//        
+//        PreparedStatement ps;
+//        Statement stmt;
+//        String sqlQuery;
+//        ResultSet rs;
+//        sqlQuery = "SELECT * FROM `event` WHERE eventID=?";
+//       
+//       int c = 0;
+//        try
+//        {   
+//            stmt = conn.createStatement();
+//            ps = conn.prepareStatement(sqlQuery);
+//            ps.setString(1, seventID);
+//            rs = ps.executeQuery();
+//      
+//           
+//            if(rs.next()) {
+//               
+//                c = 9;
+//                String eID = rs.getString("eventID");
+//                String eName =  rs.getString("eventName");
+//                String date =  rs.getString("date");
+//                String time = rs.getString("time");
+//                String venue = rs.getString("venue");
+//                String org = rs.getString("organizer");
+//                String fee =  rs.getString("fee");
+//                String fID = rs.getString("fundingID");
+//          
+//                event = new Event(eID,eName,date ,time,venue,org,fee,fID);
+//               
+//                PreparedStatement ps1;
+//                ResultSet rs1;
+//                String sqlQuery2;
+//                sqlQuery2 = "SELECT paymentID, paymentStatus, fileName, paidDate, paidTime FROM payment WHERE eventID=? AND alumniID=?";
+//
+//                    try
+//                    {   
+//                        stmt = conn.createStatement();
+//                        ps1 = conn.prepareStatement(sqlQuery2);
+//                        ps1.setString(1, eID);
+//                        ps1.setInt(2, aId);
+//                        rs1 = ps1.executeQuery();
+//
+//
+//                        if (rs1.next()) {
+//
+//                            int pID = rs1.getInt("paymentID");
+//                            String paymentStatus = rs1.getString("paymentStatus");
+//                            String fileName = rs1.getString("fileName");
+//                            
+//                            Payment paid = new Payment(pID, paymentStatus);
+//                            event.addPayment(paid);
+//
+//                        }else{
+//                            
+//                            event.addPayment(null);
+//                        }
+//
+//                        
+//             
+//                    }
+//                    catch (Exception ex)
+//                    {
+//                        ex.printStackTrace();
+//                        Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
+//                    }
+//                
+//            } 
+//     
+//            ps.close();
+//            rs.close();
+//            conn.close();
+//          
+//        }
+//        catch (Exception ex)
+//        {
+//            ex.printStackTrace();
+////            Logger.getLogger(EventMapping.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
 //        HttpSession session = request.getSession(); 
-        session.setAttribute("cou", seventID);
-        return event;
-            
+//        session.setAttribute("cou", seventID);
+//        return event;
+//            
         
-    }
+//    }
     
     
 

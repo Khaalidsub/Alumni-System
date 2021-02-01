@@ -1,6 +1,7 @@
 package Business;
 
 import Middleware.Event;
+import Middleware.SignIn;
 import jdbc.EventDAO;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.util.ArrayList;
@@ -34,9 +35,11 @@ public class EventController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException{
-
+        HttpSession session = request.getSession();
+        SignIn signIn = null;
+        signIn = (SignIn) session.getAttribute("signIn");
         String command = request.getParameter("action");
-        String event = request.getParameter("eventID");
+        int event = 0;
         
         try {
             switch (command) {
@@ -47,21 +50,24 @@ public class EventController extends HttpServlet {
                     
                 // view an upcoming event    
                 case "selectEvent":
+                    event = Integer.parseInt(request.getParameter("eventID"));
                     getEvent(event,request,response);
                     break;
                     
                 //join upcimng event
                 case "join":
-                    confirmAlumni(event, request, response);
+                    event = Integer.parseInt(request.getParameter("eventID"));
+                    confirmAlumni(signIn.getEmail(), event, request, response);
                     break;
                     
                 //view all joined events    
                 case "joinedEvents":
-                    getJoinedEvents(request,response);
+                    getJoinedEvents(signIn.getEmail(), request,response);
                     break;
                 
                 //view an upcoming event    
                 case "selectJoinedEvent":
+                    event = Integer.parseInt(request.getParameter("eventID"));
                     getJoinedEvent(event, request, response);
                     break;
                  
@@ -84,13 +90,13 @@ public class EventController extends HttpServlet {
 
     }
     
-    public void getJoinedEvent(String eId, HttpServletRequest request, HttpServletResponse response){
+    public void getJoinedEvent(int eId, HttpServletRequest request, HttpServletResponse response){
             
         Event joinedEvent = null;  
-        int alumniID = 2;
+        
         try {
-            eventMapping = new EventDAO();
-            joinedEvent = eventMapping.getJoinedEvent(eId , alumniID);
+            eventMapping = EventDAO.getInstance();
+            joinedEvent = eventMapping.getJoinedEvent(eId);
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/viewJoined.jsp");
             request.setAttribute("JOINED_EVENT",joinedEvent);
@@ -104,13 +110,13 @@ public class EventController extends HttpServlet {
     }
     
     
-     public void getJoinedEvents(HttpServletRequest request, HttpServletResponse response){
+     public void getJoinedEvents(String aEmail, HttpServletRequest request, HttpServletResponse response){
             
-        int alumniID = 2;
+    
         List<Event> joinedEvents = null;  
         try {
-            eventMapping = new EventDAO();
-            joinedEvents = eventMapping.getJoinedEventList(alumniID, request, response);
+            eventMapping = EventDAO.getInstance();
+            joinedEvents = eventMapping.getJoinedEventList(aEmail, request, response);
            
             RequestDispatcher dispatcher;
             dispatcher = request.getRequestDispatcher("/yourEvents.jsp");
@@ -130,12 +136,12 @@ public class EventController extends HttpServlet {
      * @throws javax.servlet.ServletException
      * @throws java.io.IOException
 	 */
-    public void confirmAlumni(String eventID, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        eventMapping = new EventDAO();
-        int alumniID = 2;
-        int r = eventMapping.insertJoinedEvent(eventID, alumniID, request, response);  
+    public void confirmAlumni(String aEmail, int eventID,  HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        eventMapping = EventDAO.getInstance();
+       
+        int r = eventMapping.insertJoinedEvent(eventID, aEmail, request, response);  
         
-        SaveSuccessAlumni(r, request, response);
+        SaveSuccessAlumni(aEmail, r, request, response);
     }
     
     /** 
@@ -144,13 +150,11 @@ public class EventController extends HttpServlet {
      * @param request
      * @param response
      */
-    public void SaveSuccessAlumni(int r ,HttpServletRequest request, HttpServletResponse response ){
+    public void SaveSuccessAlumni(String aEmail,int r ,HttpServletRequest request, HttpServletResponse response ){
         HttpSession session = request.getSession();
         session.setAttribute("jj", r);
-        
-        
-        
-        getJoinedEvents(request,response);
+      
+        getJoinedEvents(aEmail, request,response);
         
 //         try {
 //               
@@ -245,11 +249,11 @@ public class EventController extends HttpServlet {
 //
 //	}
         
-        public void getEvent(String eId, HttpServletRequest request, HttpServletResponse response){
+        public void getEvent(int eId, HttpServletRequest request, HttpServletResponse response){
             
             Event event = null;  
             try {
-                eventMapping = new EventDAO();
+                eventMapping = EventDAO.getInstance();
            
                 event = eventMapping.getSelectedEvent(eId ,request, response);
                 
@@ -273,7 +277,7 @@ public class EventController extends HttpServlet {
             int alumniID = 2;
             List<Event> events = null;  
             try {
-                eventMapping = new EventDAO();
+                eventMapping = EventDAO.getInstance();
            
                 events = eventMapping.getEventList(request, response);
                 listEvent(events, request, response);

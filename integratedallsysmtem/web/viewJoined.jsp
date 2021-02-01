@@ -109,7 +109,8 @@
             $(".btn").click(function() {
                 
                 var eventID = $(".val").attr('value');
-                window.location.href = "makePayment.jsp?eventID="+eventID;
+                var eventName = $(".val").text();
+                window.location.href = "makePayment.jsp?eventID="+eventID+"&eventName="+eventName;
 //                if (confirm("Are you sure?")) {
 //                    window.location.href = "JoinEventPage?event="+eventID;
 //                } else {
