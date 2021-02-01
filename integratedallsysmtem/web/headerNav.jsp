@@ -31,7 +31,17 @@
                           </li>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="reportHomeUser.jsp">Report</a>
+                         <li class="nav-item dropdown">
+                             <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" id="navbardrop" data-toggle="dropdown">
+                              Report
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbardrop">
+                              <a class="dropdown-item" href="chartsAlumni.jsp">Charts</a>
+                              <a class="dropdown-item" href="eventAlumni.jsp">Event</a>
+                              <a class="dropdown-item" href="sponsorAlumni.jsp">Sponsor</a>
+                              <a class="dropdown-item" href="logActivityAlumni.jsp">Log Activity</a>
+                            </div>
+                          </li>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="AlumniController?command=ALUMNI-SEARCH">Connect</a>
