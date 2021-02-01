@@ -14,8 +14,19 @@
                     <a class="nav-link" href="adminHome.jsp">Home</a>
                   </li>
                    <li class="nav-item active">
-                    <a class="nav-link" href="reportHomeAdmin.jsp">Report</a>
-                  </li>
+                         <li class="nav-item dropdown">
+                             <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" id="navbardrop" data-toggle="dropdown">
+                              Report
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbardrop">
+                              <a class="dropdown-item" href="chartsAdmin.jsp">Charts</a>
+                              <a class="dropdown-item" href="eventAdmin.jsp">Event</a>
+                              <a class="dropdown-item" href="sponsorAdmin.jsp">Sponsor</a>
+                              <a class="dropdown-item" href="logActivityAdmin.jsp">Log Activity</a>
+                              <a class="dropdown-item" href="insertLogActivity.jsp">Edit Log Activity</a>
+                            </div>
+                          </li>
+                    </li>
                   <li class="nav-item active">
                     <a class="nav-link" href="manageAlumni.jsp">Manage Alumni</a>
                   </li>
