@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
+import jdbc.EventDAO;
 
 /**
  * @author murli
@@ -28,6 +29,8 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "AnnouncementController", urlPatterns = {"/AnnouncementController"})
 public class AnnouncementController extends HttpServlet {
     private AnnouncementDAO aDAO;
+    private List<Announcement> announcements = null; 
+    
     
     /**
      *
@@ -39,18 +42,25 @@ public class AnnouncementController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException{
 
-//        String command = request.getParameter("command");
-//        String eventID = request.getParameter("event");
+        String command = request.getParameter("command");
+        
 
         try {
-//            if("list".equals(command)){
-//                eventList(request,response);
-//            }else if("select".equals(command)){
-//                selectEvent(eventID,request,response);
-//                
-//            }
+            switch (command) {
+                case "announcementList":
+                    getList(request, response);
+                    break;
+                case "select":
+                    int announcementID = Integer.parseInt(request.getParameter("announcementID"));
+                    existingAnouncement(announcementID ,request,response);
+                    break;
+
+                default:
+                    break;
+            }
                 
-            getList(request, response);
+                
+            
                 
 
         } catch (Exception exc) {
@@ -69,12 +79,12 @@ public class AnnouncementController extends HttpServlet {
     
     public void getList(HttpServletRequest request, HttpServletResponse response){
                         
-            List<Announcement> announcements = null; 
+            
 //            view = new ViewAnnouncement();
             try {
                 aDAO = new AnnouncementDAO();
            
-                announcements = aDAO.getAnnouncementList(request, response);
+                announcements = aDAO.getAnnouncementList();
                 
                 
             } catch (IOException | ServletException ex) {
@@ -86,7 +96,7 @@ public class AnnouncementController extends HttpServlet {
     }
 
 	public void finalize() throws Throwable {
-
+            
 	}
 
 	/**
@@ -97,16 +107,28 @@ public class AnnouncementController extends HttpServlet {
 	 * @param date
 	 * @param description
 	 */
-	public void announcementDetails(String announcementID, String announcementName, String author, String date, String description){
-
+	public void announcementDetails(int announcementID, String announcementName, String author, String date, String description){
+            
 	}
 
 	/**
 	 * 
 	 * @param anouncementID
 	 */
-	public void existingAnouncement(int anouncementID){
-
+	public void existingAnouncement(int anouncementID, HttpServletRequest request, HttpServletResponse response){
+            AnnouncementDAO a = AnnouncementDAO.getInstance();
+            Announcement selected = null;
+            try {
+                
+                selected = a.getAnnouncement(anouncementID);
+                RequestDispatcher dispatcher;
+                dispatcher = request.getRequestDispatcher("/selectAnnouncement.jsp");
+                request.setAttribute("SELECTED_ANNOUNCEMENT",selected);
+                dispatcher.forward(request, response);
+                
+            } catch (IOException | ServletException ex) {
+                Logger.getLogger(EventController.class.getName()).log(Level.SEVERE, null, ex);
+            } 
 	}
 
 	/**
@@ -118,7 +140,7 @@ public class AnnouncementController extends HttpServlet {
 	 * @param description
 	 */
 	public void getAnnouncement(String announcementID, String announcementName, String author, String date, String description){
-
+                
 	}
 
 	/**

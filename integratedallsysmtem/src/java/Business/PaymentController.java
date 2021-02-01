@@ -102,7 +102,10 @@ public class PaymentController extends HttpServlet {
 //            // gets values of text fields
 //            String firstName = request.getParameter("firstName");
 //            String lastName = request.getParameter("lastName");
+            
             int eventID = Integer.parseInt(request.getParameter("eventID"));
+
+            
             InputStream inputStream = null; // input stream of the upload file
             String name = request.getParameter("name");
             String category = request.getParameter("category");

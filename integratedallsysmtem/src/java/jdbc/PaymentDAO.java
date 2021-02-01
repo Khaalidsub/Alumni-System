@@ -110,6 +110,51 @@ public class PaymentDAO extends HttpServlet {
         
     }
     
+    public String getEventName(int eID) throws ServletException, IOException{
+        
+                                                                                  
+        Connection conn = getConnection();
+       
+        
+        PreparedStatement ps;
+        Statement stmt;
+        String sqlQuery;
+        ResultSet rs;
+        sqlQuery = "SELECT eventName FROM event WHERE eventID=?";
+        String d = null;
+        int ff = 0;
+        String eventName = null;
+        try
+        {   
+           
+            stmt = conn.createStatement();
+            ps = conn.prepareStatement(sqlQuery);
+            ps.setInt(1, eID);
+            rs = ps.executeQuery();
+         
+            if(rs.next()) {
+     
+                eventName = rs.getString("eventName");
+                
+            }
+     
+            ps.close();
+            rs.close();
+            conn.close();
+          
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+//            Logger.getLogger(EventMapping.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+        return eventName;
+            
+        
+    }
+    
     private static PaymentDAO firstInstance = null;
     
     public static PaymentDAO getInstance(){
@@ -145,7 +190,7 @@ public class PaymentDAO extends HttpServlet {
         
         String message = null;  // message will be sent back to client
         PreparedStatement statement;
-        String sql = "INSERT INTO viewpayment (Alumniname, AlumniID, eventName, eventID, fileName, paymentType, paymentAmount, paidDate, paidTime) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO viewpayment (Alumniname, AlumniID, eventName, eventID, fileName, status, paymentType, paymentAmount, paidDate, paidTime) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             // constructs SQL statement
@@ -159,9 +204,11 @@ public class PaymentDAO extends HttpServlet {
                 java.sql.Date sqlDate=new java.sql.Date(date.getTime());
                 java.sql.Timestamp sqlTime=new java.sql.Timestamp(date.getTime());
                 
-                statement.setString(1, "hhh");
+                String eventName = getEventName(eID);
+                
+                statement.setString(1, name);
                 statement.setInt(2, aID);
-                statement.setString(3, "JJJJ");;
+                statement.setString(3, eventName);
                 statement.setInt(4, eID);
                 statement.setBlob(5, is);
                 statement.setString(6, "Pending");

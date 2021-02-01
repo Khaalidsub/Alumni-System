@@ -83,6 +83,7 @@
                 </nav>      
 
             <div class="body">
+             
                 <div class="title">
                     <h1><i class="fas fa-calendar-check"></i>  Your Events</h1>
                     
@@ -100,7 +101,7 @@
 
                             </tr>
                         </thead>
-
+                        
                         <tbody>
 
                             <% 

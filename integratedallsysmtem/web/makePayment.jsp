@@ -70,32 +70,71 @@
 
                     <% String eID = request.getParameter("eventID"); %>
                     <% String pType = request.getParameter("pType"); %>
-                    <h1>Payment Details</h1>
-                    <form action="PaymentController" enctype="multipart/form-data" method="post">
-
-                        <label for="name">Name*:</label><br>
-                        <input type="text" id="name" name="name" required=""><br>
-                        <label for="fname">Event:</label><br>
-                        <input type="text" id="fname" name="eventID" readonly placeholder="<%out.print(eID);%>" value="<%=eID%>"><br>
-                        <label for="fname">Event ID:</label><br>
-                        <input type="text" id="fname" name="eventID" readonly placeholder="<%out.print(eID);%>" value="<%=eID%>"><br>
-
-                        <label for="lname">Payment Category (Choose only that applicable)* :</label><br>
-                        <input type="radio" id="eventFee" name="category" value="fee">
-                        <label for="eventFee">Event Fee</label><br>
-                        <input type="radio" id="Fund" name="category" value="fund">
-                        <label for="Fund">Fund</label><br><br>
-        <!--            <input type="radio" id="fee_fund" name="category" value="fee_fund">
-                        <label for="fee_fund">Event Fee + Fund</label><br><br>-->
-
-                        Amount*:<input  type="text" name="amount" required=""/><br><br>
-                        Photo*: <input  type="file" name="photo" size="50" required=""/><br><br>
-                        
+                   
                     
-                       <button value="r" type="submit" class="btn btn-warning">Submit</button>
+                    
+                    <h1>Payment Details</h1><br>
+                    
+                    <form action="PaymentController" enctype="multipart/form-data" method="post">
+                        <table width="350" cellspacing="5" cellpadding="5">
+                            <tr>
+                              <th width="200" scope="row"><div align="left">Name:</div></th>
+                              <td width=""><label>
+                                <input type="text" id="name" name="name" required="">
+                              </label></td>
+                            </tr>
+<!--                            <tr>
+                              <th scope="row"><div align="left">Event:</div></th>
+                              <td><label>
+                                 <input type="text" id="fname" name="eventName" readonly placeholder="<%out.print(eID);%>" value="<%=eID%>"><br>
+                              </label></td>
+                            </tr>-->
+                            <tr>
+                              <th scope="row"><div align="left">Event ID:</div></th>
+                              <td><label>
+                                 <input type="text" id="fname" name="eventID" readonly placeholder="<%out.print(eID);%>" value="<%=eID%>"><br>
+                              </label></td>
+                            </tr>
+                           
+                            <tr>
+                                <th scope="row"><div align="left">Payment Category (Choose only that applicable)* :</div></th>
+                                <td><label>
+                                    <input type="radio" id="eventFee" name="category" value="fee">
+                                    <label for="eventFee">Event Fee</label>&nbsp;
+                                    <input type="radio" id="Fund" name="category" value="fund">
+                                    <label for="Fund">Fund</label>
+                                    </label>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                              <th scope="row"><div align="left">Amount (RM):</div></th>
+                              <td><label>
+                                 <input  type="text" name="amount" required=""/>
+                              </label></td>
+                            </tr>
+                            <tr>
+                             <tr>
+                              <th scope="row"><div align="left">Receipt (Screenshot):</div></th>
+                              <td><label>
+                                <input  type="file" name="photo" size="50" required=""/>
+                              </label></td>
+                            </tr>
+                            <tr>
+                                
+                                
+                            <th scope="row"><div align="left"></div></th>
+                              <td><label>
+                                <button value="r" type="submit" class="btn btn-warning">Submit</button>
+                                <button type="reset" class="btn btn-outline-danger">Reset</button>
+                               
+                              </label></td>
+                            </tr>
+                        </table>
 
                     </form>
                 </div>
             </div>            
     </body>
 </html>
+

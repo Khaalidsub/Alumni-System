@@ -76,7 +76,7 @@
                 </ol>
             </nav>  
         <div class='container'>
-            
+
             <div class="body">
                 <div class="title">
                     <h1><i class="fas fa-receipt"></i>  Funding History</h1>

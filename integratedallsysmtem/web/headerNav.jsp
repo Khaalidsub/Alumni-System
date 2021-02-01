@@ -40,8 +40,8 @@
                 
 
                 <ul class="navbar-nav">
-                    <li class="nav-item active"></li>
-                        <a class="nav-link" href="AnnouncementController?" data-toggle="tooltip" title="Announcements"><div class="icon_wrap"><i class="fas fa-bullhorn"></i></div></a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="AnnouncementController?command=announcementList" data-toggle="tooltip" title="Announcements"><div class="icon_wrap"><i class="fas fa-bullhorn"></i></div></a>
                     </li>
 
                     <li class="nav-item dropdown">

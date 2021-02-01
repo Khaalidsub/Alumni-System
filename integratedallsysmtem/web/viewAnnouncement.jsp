@@ -61,16 +61,17 @@
         </style>    
     </head>
     <body>
-        
+   
+        <jsp:include page="headerNav.jsp" />   
         <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item active" aria-current="page">Home</li>
                 </ol>
-            </nav>  
+        </nav>  
         
-        <jsp:include page="headerNav.jsp" />    
+         
         
-        <div class='container a'>
+        <div class='container'>
             
             <div class="body">
                 <div class="title">
@@ -79,13 +80,13 @@
                 
 
             <table border="1" class="myTable table table-striped table-bordered table-hover thead-dark">
-                <thead class="thead-dark">
+<!--                <thead class="thead-dark">
                     <tr>
-                      <th>Index</th>
+                      <th>I</th>
                       <th>Name</th>
                       <th>Date</th>
                     </tr>
-                </thead>
+                </thead>-->
 
                 <tbody>
                 
@@ -95,10 +96,9 @@
                     %>
 
                     <tr class='table-row'>
-                        <td><% out.print(i); %> </td>                    
-                        <td><%= a.getAnnouncementName()%></td>
+                            
+                        <td value="<%= a.getAnnouncementID() %>"><%= a.getAnnouncementName()%></td>
                         <td><%= a.getAnnouncementDate()%></td>
-                        
                         
                     </tr>
                     <% 
@@ -111,8 +111,10 @@
             </table>     
          </div>
         </div>  
+    </body>
+                
     
-    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
@@ -121,7 +123,7 @@
     <script type="text/javascript">
      
         $(document).ready(function() {
-            var table = $('#myTable').DataTable();
+            var table = $('.myTable').DataTable();
          
             $('#myTable tbody').on( 'click', 'tr', function () {
                 if ( $(this).hasClass('selected') ) {
@@ -136,12 +138,13 @@
         } );
         
         
+        
         $(document).ready(function($) {
             $(".table-row").click(function() {
                 var currentRow=$(this).closest("tr"); 
                 
-                var eventID = currentRow.find("td:eq(1)").attr('value');
-                console.log(eventID);
+                var aID = currentRow.find("td:eq(0)").attr('value');
+                console.log(aID);
                 
 //                if(zone == "danger"){
 //                    $(this).children('td, th').css('background-color','red');
@@ -151,7 +154,7 @@
 //                var enic = encodeURI(ic);
                
                                           
-                 document.location.href = "ViewEvent?command=select&event="+eventID;
+                 document.location.href = "AnnouncementController?command=select&announcementID="+aID;
                 
              
             });
@@ -159,7 +162,5 @@
     </script>
 
   
-    </body>
-   
 
 </html>

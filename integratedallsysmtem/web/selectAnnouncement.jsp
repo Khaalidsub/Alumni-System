@@ -1,23 +1,24 @@
 <%-- 
-    Document   : viewFree
-    Created on : Jan 25, 2021, 10:43:20 PM
+    Document   : selectAnnouncement
+    Created on : Feb 1, 2021, 7:30:51 AM
     Author     : haisw
 --%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*" %>
-<%@page import="Middleware.Event" %>
+<%@page import="Middleware.Announcement" %>
 
-<%Event event = (Event)request.getAttribute("SELECTED_EVENT");%>
+
+<%Announcement announcement = (Announcement)request.getAttribute("SELECTED_ANNOUNCEMENT");%>
 <%String r = (String)request.getAttribute("RESULT");%>
-
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><%= event.getEventName()%></title>
+        <title><%= announcement.getAnnouncementName()%></title>
         <link rel="shortcut icon" href="image/utm.ico" />
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -97,51 +98,15 @@
             
             <div class="row">
                 <div class="col">
-                    <h1 class="val" value="<%= event.getEventID()%>"><%= event.getEventName()%></h1>
+                    <h1 class="val" value="<%= announcement.getAnnouncementID() %>"><%= announcement.getAnnouncementName() %></h1>
                     <hr class="first">
-                    <h5> <b>Date:</b>  <%= event.getDate() %></h5>
-                    <h5> <b>Time:</b>   <%= event.getTime() %></h5>
-                    <h5> <b>Venue:</b>   <%= event.getVenue() %></h5>
-                    <h5> <b>Organizer:</b>   <%= event.getOrganizer()%></h5>
-                    <h5> <b>Fee:</b>   <%= event.getFee() %></h5>
+                    <p>  <%= announcement.getDescription() %></p>
+
+                    
                 </div>
             </div>  
                 <br>
-                <div>
-                    <% if(session.getAttribute("MESSAGE").equals("joined")){ %>
-                        <button value="r" type="button" class="btn btn-warning join" disabled>Joined</button>
-                    <% }else if(session.getAttribute("MESSAGE").equals("join")){ %>
-                        <button value="r" type="button" class="btn btn-warning join">Join</button>
-                    <% 
-                        }
-                    %>
-                </div>
-            
-            
-            
-            
-            <hr>
-            <h4>Funding Info</h4>
-
-            <%  
-                if(event.getFunding() != null){
-            %>
-                    <h6><b>Name:  </b><%= event.getFunding().getFundingnName()%> </h6>
-                    <h6><b>Description:  </b><%= event.getFunding().getFundingnDesc()%> </h6>
-                    <br>
-                    <button value="r" type="button" class="btn btn-warning fund">Fund</button>
-
-            <%  }else{
-
-            %>
-                    <p>Funding option is not available for this event</p> 
-            <%
-                }                 
-            %>
-            
-           
-            
-        </div>
+                
     
         
     </body>
@@ -154,7 +119,6 @@
             $(".join").click(function() {
                 
                 var eventID = $(".val").attr('value');
-                
                 window.location.href = "EventController?action=join&eventID="+eventID;
 //                if (confirm("Are you sure?")) {
 //                    window.location.href = "JoinEventPage?event="+eventID;
@@ -169,8 +133,7 @@
             $(".fund").click(function() {
                 
                 var eventID = $(".val").attr('value');
-                var eventName = $(".val").text();
-                window.location.href = "makePayment.jsp?eventID="+eventID+"&eventName="+eventName;
+                window.location.href = "makePayment.jsp?eventID="+eventID;
 //                if (confirm("Are you sure?")) {
 //                    window.location.href = "JoinEventPage?event="+eventID;
 //                } else {

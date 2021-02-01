@@ -536,19 +536,19 @@ public class EventDAO extends HttpServlet {
                 
                 Event foundEvent;
                 foundEvent = new Event(eID,eName,date ,time,venue,org,fee,fID);
-              
+                
         
                 if(!("Free".equals(fee))){
-                    
+                    cw = 1;
                     PreparedStatement ps1;
                       
                     ResultSet rs1;
                     String sqlQuery2;
-                    sqlQuery2 = "SELECT paymentID, paymentStatus FROM viewpayment WHERE eventID=? AND AlumniID=?";
+                    sqlQuery2 = "SELECT paymentID, status FROM viewpayment WHERE eventID=? AND AlumniID=?";
 
                     try
                     {   
-                        stmt = conn.createStatement();
+                        
                         ps1 = conn.prepareStatement(sqlQuery2);
                         ps1.setInt(1, eID);
                         ps1.setInt(2, aID);
@@ -558,7 +558,7 @@ public class EventDAO extends HttpServlet {
                         if (rs1.next()) {
 
                             int pID = rs1.getInt("paymentID");
-                            String paymentStatus = rs1.getString("paymentStatus");
+                            String paymentStatus = rs1.getString("status");
                             
                             Payment paid = new Payment(pID, paymentStatus);
                             foundEvent.addPayment(paid);

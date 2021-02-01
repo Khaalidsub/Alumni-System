@@ -56,6 +56,17 @@ public class AnnouncementDAO extends HttpServlet {
         
         return firstInstance;
     }
+    
+    public Connection getConnection() {
+        Connection con = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sdadatabase", "root", "");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return con;
+    }
     /**
      *
      * @param request
@@ -69,13 +80,7 @@ public class AnnouncementDAO extends HttpServlet {
         List<Announcement> announcements;
         announcements = new ArrayList<>();
       
-        try {
-            Class.forName(driver);
-            con = DriverManager.getConnection(url, userName, password);
-            
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Connection con = getConnection();
         
         PreparedStatement ps;
         Statement stmt;
@@ -125,6 +130,57 @@ public class AnnouncementDAO extends HttpServlet {
             
         
     }
+    
+    public Announcement getAnnouncement(int aID){
+     
+        Connection con = getConnection();
+        Announcement foundAnnouncement = null;
+        PreparedStatement ps;
+        String sqlQuery;
+        ResultSet rs;
+        sqlQuery = "SELECT * FROM announcement WHERE announcementID=?";
+       
+        try
+        {   
+            
+            ps = con.prepareStatement(sqlQuery);
+            ps.setInt(1, aID);
+            rs = ps.executeQuery();
+            
+//            if(con == null){
+//                c =10;
+//            }    
+           
+            if (rs.next()) {
+               
+                String aName =  rs.getString("announcementName");
+                String author = rs.getString("author");
+                String date = rs.getString("date");
+                String desc = rs.getString("description");
+             
+               
+                
+                foundAnnouncement = new Announcement(aID,aName,author,date,desc);
+               
+         
+            }
+     
+            ps.close();
+            rs.close();
+            con.close();
+          
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            Logger.getLogger(EventDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+//        HttpSession session = request.getSession(); 
+//        session.setAttribute("count", dbUrl);
+        return foundAnnouncement;
+    }
+
 
     
 //    public Event getSelectedEvent(String eId, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
